@@ -125,7 +125,7 @@ Resources:
                 Effect: Allow
                 Resource: "*"
 
-  CodeBuildServiceRole:
+  ApiTestingCodebuildServiceRoleArn:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -178,8 +178,8 @@ Resources:
       VersioningConfiguration:
         Status: Enabled
 Outputs:
-  CodebuildServiceRoleArn:
+  ApiTestingCodebuildServiceRoleArn:
     Description: ARN Identifier CodeBuildPolicy
     Value: !GetAtt CodeBuildServiceRole.Arn
     Export:
-      Name: CodeBuildServiceRoleArn
+      Name: ApiTestingCodebuildServiceRoleArn
