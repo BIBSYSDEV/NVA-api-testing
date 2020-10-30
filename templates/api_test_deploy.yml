@@ -21,7 +21,7 @@ Parameters:
   GitHubBranch:
     Description: GitHub repo branch name. It defaults to master if not specified.
     Type: String
-    Default: master
+    Default: main
   ApiBaseUrl:
     Type: String
     Description: Address to NVA services
@@ -31,7 +31,7 @@ Resources:
   CodeBuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
-      ServiceRole: !GetAtt CodeBuildServiceRole.Arn
+      ServiceRole: !GetAtt ApiTestingCodebuildServiceRole.Arn
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -44,7 +44,7 @@ Resources:
             Value: !Ref ArtifactStoreBucket
           - Name: ROLE_ARN
             Type: PLAINTEXT
-            Value: !GetAtt CodeBuildServiceRole.Arn
+            Value: !GetAtt ApiTestingCodebuildServiceRole.Arn
       Source:
         Type: CODEPIPELINE
 
@@ -125,7 +125,7 @@ Resources:
                 Effect: Allow
                 Resource: "*"
 
-  ApiTestingCodebuildServiceRoleArn:
+  ApiTestingCodebuildServiceRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -180,6 +180,6 @@ Resources:
 Outputs:
   ApiTestingCodebuildServiceRoleArn:
     Description: ARN Identifier CodeBuildPolicy
-    Value: !GetAtt CodeBuildServiceRole.Arn
+    Value: !GetAtt ApiTestingCodebuildServiceRole.Arn
     Export:
       Name: ApiTestingCodebuildServiceRoleArn
