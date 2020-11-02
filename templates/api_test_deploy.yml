@@ -25,7 +25,7 @@ Parameters:
   ApiBaseUrl:
     Type: String
     Description: Address to NVA services
-    Default: "https://api.sandbox.nva.aws.unit.no/"
+    Default: "https://api.dev.nva.aws.unit.no/"
 
 Resources:
   CodeBuildProject:
@@ -41,21 +41,21 @@ Resources:
         EnvironmentVariables:
           - Name: S3_BUCKET
             Type: PLAINTEXT
-            Value: !Ref ArtifactStoreBucket
+            Value: !Ref ApiTestingArtifactStoreBucket
           - Name: ROLE_ARN
             Type: PLAINTEXT
             Value: !GetAtt ApiTestingCodebuildServiceRole.Arn
       Source:
         Type: CODEPIPELINE
 
-  Pipeline:
+  ApiTestingPipeline:
     Type: AWS::CodePipeline::Pipeline
     Properties:
       ArtifactStore:
         Type: S3
         Location:
-          Ref: ArtifactStoreBucket
-      RoleArn: !GetAtt PipelineRole.Arn
+          Ref: ApiTestingArtifactStoreBucket
+      RoleArn: !GetAtt ApiTestingPipelineRole.Arn
       Stages:
         - Name: Source
           Actions:
@@ -88,9 +88,9 @@ Resources:
                 - Name: SourceArtifact
               OutputArtifacts:
                 - Name: BuildArtifact
-              RunOrder: 1
+              RunOrder: 2
 
-  PipelineRole:
+  ApiTestingPipelineRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -102,7 +102,7 @@ Resources:
         Version: "2012-10-17"
       Path: /
       Policies:
-        - PolicyName: CodePipelineAccess
+        - PolicyName: ApiTestingCodePipelineAccess
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
@@ -114,7 +114,7 @@ Resources:
                   - "s3:GetObjectVersion"
                 Effect: Allow
                 Resource:
-                  - !Sub ${ArtifactStoreBucket.Arn}/*
+                  - !Sub ${ApiTestingArtifactStoreBucket.Arn}/*
               - Action:
                   - "codebuild:StartBuild"
                   - "codebuild:BatchGetBuilds"
@@ -162,7 +162,7 @@ Resources:
                   - "s3:PutObject"
                   - "s3:DeleteObjects"
                 Resource:
-                  - !Sub ${ArtifactStoreBucket.Arn}/*
+                  - !Sub ${ApiTestingArtifactStoreBucket.Arn}/*
         - PolicyName: StsPolicy
           PolicyDocument:
             Version: "2012-10-17"
@@ -172,14 +172,8 @@ Resources:
                   - "sts:AssumeRole"
                 Resource:
                   - "*"
-  ArtifactStoreBucket:
+  ApiTestingArtifactStoreBucket:
     Type: AWS::S3::Bucket
     Properties:
       VersioningConfiguration:
         Status: Enabled
-Outputs:
-  ApiTestingCodebuildServiceRoleArn:
-    Description: ARN Identifier CodeBuildPolicy
-    Value: !GetAtt ApiTestingCodebuildServiceRole.Arn
-    Export:
-      Name: ApiTestingCodebuildServiceRoleArn
