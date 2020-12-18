@@ -2,7 +2,7 @@
 
 ### Karate documentation:
 
-`https://github.com/intuit/karate`
+[Karate](https://github.com/intuit/karate)
 
 ### AWS
 
