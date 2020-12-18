@@ -1,0 +1,31 @@
+{
+    "coordinatingInstitution":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0",
+    "endDate":"2020-07-01T00:00:00.000Z",
+    "id":"#present",
+    "type":"Project",
+    "title":{
+        "no":"Testprosjekt NVA",
+        "en":"Testproject NVA"
+    },
+    "startDate":"2020-01-01T00:00:00.000Z",
+    "participants":[
+        {
+            "identity":"https://api.cristin-test.uio.no/v2/persons/61027",
+            "affiliations":[
+                {
+                    "organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0",
+                    "type":"PRO_MANAGER"
+                }
+            ]
+        },
+        {
+            "identity":"https://api.cristin-test.uio.no/v2/persons/329012",
+            "affiliations":[
+                {
+                    "organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0",
+                    "type":"PRO_PARTICIPANT"
+                }
+            ]
+        }
+    ]
+}

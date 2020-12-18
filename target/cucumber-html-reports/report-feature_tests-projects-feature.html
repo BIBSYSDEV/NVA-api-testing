@@ -1,0 +1,3842 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="js/Chart.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+<title>Cucumber Reports  - Feature: tests/projects.feature</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+                <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation" ><a href="overview-steps.html">Steps</a></li>
+                <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+    
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+            <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>Fri Dec 18 08:27:53 CET 2020</td>
+            <td>18 Dec 2020, 08:27</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+      </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Feature Report</h2>
+      </div>
+</div>
+
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table class="stats-table">
+
+        
+<thead>
+  <tr class="header dont-sort">
+        <th></th>
+    <th colspan="6">Steps</th>
+    <th colspan="3">Scenarios</th>
+    <th colspan="2">Features</th>
+  </tr>
+  <tr>
+    <th>Feature</th>
+        <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="skipped">Skipped</th>
+    <th class="pending">Pending</th>
+    <th class="undefined">Undefined</th>
+    <th class="total">Total</th>
+
+    <th class="passed">Passed</th>
+    <th class="failed">Failed</th>
+    <th class="total">Total</th>
+
+    <th>Duration</th>
+    <th>Status</th>
+  </tr>
+</thead>
+
+
+        <tbody>
+        <tr>
+          <td class="tagname">tests/projects.feature</td>
+                    <td      class="passed"    >112</td>
+          <td >0</td>
+          <td >0</td>
+          <td >0</td>
+          <td >0</td>
+          <td class="total">112</td>
+
+          <td  class="passed"    >7</td>
+          <td >0</td>
+          <td class="total">7</td>
+
+          <td class="duration" data-value="4982648300">4s 982ms</td>
+          <td class="passed">Passed</td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-10">
+      <i class="fa fa-chevron-circle-down fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('show')"></i>
+      <i class="fa fa-chevron-circle-up fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('hide')"></i>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="feature">
+        
+<div class="tags indention">
+  </div>
+
+        
+<div class="brief passed">
+  <span class="keyword indention">Feature</span>
+  <span class="name">tests/projects.feature</span>
+  
+
+  </div>
+
+        <div class="description indention">Project API testing</div>
+
+        <div class="elements inner-level">
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">074ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-1">
+    
+<div class="brief passed">
+  <span class="keyword indention">Background</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-1" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-2">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-2" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</span>
+  
+  <span class="lead-duration duration">006ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-3">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-3" class="collapse collapsable-details">
+        <pre>08:27:48.312 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def existingProject = '435486'</span>
+  
+  <span class="lead-duration duration">003ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def payload = read('../test_files/project_post_body.json')</span>
+  
+  <span class="lead-duration duration">044ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def getResponse = read('../test_files/project_get_result.json')</span>
+  
+  <span class="lead-duration duration">005ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set getResponse.id = 'https://' + path + '/v1/projects/435486'</span>
+  
+  <span class="lead-duration duration">005ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def postResponse = read('../test_files/project_post_result.json')</span>
+  
+  <span class="lead-duration duration">005ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy patchPayload = payload</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">url 'https://' + path + '/v1/projects'</span>
+  
+  <span class="lead-duration duration">003ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-4">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-4" class="collapse collapsable-details">
+        <pre>{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">894ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-5">
+    
+<div class="brief passed">
+  <span class="keyword indention">Scenario</span>
+  <span class="name">GET project success</span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-5" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-6">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-6" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path existingProject</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method get</span>
+  
+  <span class="lead-duration duration">893ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-7">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-7" class="collapse collapsable-details">
+        <pre>08:27:48.596 request:
+1 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/435486
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-type: application/json
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:49.292 response time in milliseconds: 693.08
+1 &lt; 200
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 1717
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:46 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f1-0abdb41758842079437b3eb8
+1 &lt; x-amz-apigw-id: XvL9zG0EDoEFZIg=
+1 &lt; x-amzn-RequestId: b06394a6-cd9c-4c5d-80b6-061d15137004
+{&quot;id&quot;: &quot;https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/435486&quot;, &quot;type&quot;: &quot;Project&quot;, &quot;title&quot;: {&quot;no&quot;: &quot;Digital tekstkompetanse og bruk av l\u00e6ringsressurser i ny grunnskolel\u00e6rerutdanning (DigiGLU)&quot;, &quot;en&quot;: null}, &quot;startDate&quot;: &quot;2013-01-01T00:00:00.000Z&quot;, &quot;endDate&quot;: &quot;2016-05-01T00:00:00.000Z&quot;, &quot;participants&quot;: [{&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_MANAGER&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.14.2.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.14.2.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/329219&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.14.2.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/329878&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.14.2.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/49064&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.0.0.0&quot;}, {&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.14.2.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/35870&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.0.0.0&quot;}, {&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.14.2.0&quot;}]}], &quot;coordinatingInstitution&quot;: &quot;https://api.cristin-test.uio.no/v2/units/201.14.2.0&quot;}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 200</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">match response == getResponse</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">006ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-8">
+    
+<div class="brief passed">
+  <span class="keyword indention">Background</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-8" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-9">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-9" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-10">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-10" class="collapse collapsable-details">
+        <pre>08:27:49.299 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def existingProject = '435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def payload = read('../test_files/project_post_body.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def getResponse = read('../test_files/project_get_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set getResponse.id = 'https://' + path + '/v1/projects/435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def postResponse = read('../test_files/project_post_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy patchPayload = payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">url 'https://' + path + '/v1/projects'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-11">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-11" class="collapse collapsable-details">
+        <pre>{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">565ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-12">
+    
+<div class="brief passed">
+  <span class="keyword indention">Scenario</span>
+  <span class="name">GET project wrong id</span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-12" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-13">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-13" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '1234567890'</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method get</span>
+  
+  <span class="lead-duration duration">555ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-14">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-14" class="collapse collapsable-details">
+        <pre>08:27:49.311 request:
+1 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/1234567890
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-type: application/json
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:49.865 response time in milliseconds: 553.09
+1 &lt; 400
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 80
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:46 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f2-3121a3d47a9ce16676e36d7b
+1 &lt; x-amz-apigw-id: XvL95FloDoEF79Q=
+1 &lt; x-amzn-RequestId: 679e7f9e-7986-4316-bcd2-6e7c6245965b
+{&quot;status&quot;: 400, &quot;trace&quot;: &quot;9cb3d8e0-6a7c-4889-9e61-fad2b78d2de4&quot;, &quot;messages&quot;: []}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 400</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">match response.trace == '#uuid'</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">match response.messages == '#present'</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">match response.status == 400</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">008ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-15">
+    
+<div class="brief passed">
+  <span class="keyword indention">Background</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-15" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-16">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-16" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-17">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-17" class="collapse collapsable-details">
+        <pre>08:27:49.879 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def existingProject = '435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def payload = read('../test_files/project_post_body.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def getResponse = read('../test_files/project_get_result.json')</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set getResponse.id = 'https://' + path + '/v1/projects/435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def postResponse = read('../test_files/project_post_result.json')</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy patchPayload = payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">url 'https://' + path + '/v1/projects'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-18">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-18" class="collapse collapsable-details">
+        <pre>{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">265ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-19">
+    
+<div class="brief passed">
+  <span class="keyword indention">Scenario</span>
+  <span class="name">GET project not authenticated</span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-19" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-20">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-20" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers = { 'Content-type': 'application/json' }</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path existingProject</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method get</span>
+  
+  <span class="lead-duration duration">241ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-21">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-21" class="collapse collapsable-details">
+        <pre>08:27:49.890 request:
+1 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/435486
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-type: application/json
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+
+08:27:50.130 response time in milliseconds: 239.25
+1 &lt; 401
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 80
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:47 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f2-68da73e1223feacb0380abf4
+1 &lt; x-amz-apigw-id: XvL9-EWODoEFtiw=
+1 &lt; x-amzn-RequestId: 545505d5-fb4c-44ba-83e8-f362d78b6ae3
+{&quot;status&quot;: 401, &quot;trace&quot;: &quot;32302c6d-70d8-4b9f-ae25-f902096a697f&quot;, &quot;messages&quot;: []}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 401</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">response.trace == '#uuid'</span>
+  
+  <span class="lead-duration duration">024ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">006ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-22">
+    
+<div class="brief passed">
+  <span class="keyword indention">Background</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-22" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-23">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-23" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-24">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-24" class="collapse collapsable-details">
+        <pre>08:27:50.159 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def existingProject = '435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def payload = read('../test_files/project_post_body.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def getResponse = read('../test_files/project_get_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set getResponse.id = 'https://' + path + '/v1/projects/435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def postResponse = read('../test_files/project_post_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy patchPayload = payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">url 'https://' + path + '/v1/projects'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-25">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-25" class="collapse collapsable-details">
+        <pre>{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">589ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-26">
+    
+<div class="brief passed">
+  <span class="keyword indention">Scenario</span>
+  <span class="name">POST new project</span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-26" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-27">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-27" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '/'</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">request payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method post</span>
+  
+  <span class="lead-duration duration">587ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-28">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-28" class="collapse collapsable-details">
+        <pre>08:27:50.173 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 602
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{&quot;type&quot;:&quot;Project&quot;,&quot;title&quot;:{&quot;no&quot;:&quot;Testprosjekt NVA&quot;,&quot;en&quot;:&quot;Testproject NVA&quot;},&quot;startDate&quot;:&quot;2020-01-01T00:00:00.000Z&quot;,&quot;endDate&quot;:&quot;2020-07-01T00:00:00.000Z&quot;,&quot;participants&quot;:[{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_MANAGER&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]},{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_PARTICIPANT&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}],&quot;coordinatingInstitution&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}
+
+08:27:50.756 response time in milliseconds: 582.18
+1 &lt; 201
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 713
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:47 GMT
+1 &lt; Location: https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039886
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f3-725062ac331990555933dbac
+1 &lt; x-amz-apigw-id: XvL-BHodjoEF_0g=
+1 &lt; x-amzn-RequestId: 2734a80b-c8c1-4313-b727-b21f57b510ec
+{&quot;id&quot;: &quot;https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039886&quot;, &quot;type&quot;: &quot;Project&quot;, &quot;title&quot;: {&quot;no&quot;: &quot;Testprosjekt NVA&quot;, &quot;en&quot;: &quot;Testproject NVA&quot;}, &quot;startDate&quot;: &quot;2020-01-01T00:00:00.000Z&quot;, &quot;endDate&quot;: &quot;2020-07-01T00:00:00.000Z&quot;, &quot;participants&quot;: [{&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_MANAGER&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}], &quot;coordinatingInstitution&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 201</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">match response == postResponse</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">006ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-29">
+    
+<div class="brief passed">
+  <span class="keyword indention">Background</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-29" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-30">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-30" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-31">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-31" class="collapse collapsable-details">
+        <pre>08:27:50.761 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def existingProject = '435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def payload = read('../test_files/project_post_body.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def getResponse = read('../test_files/project_get_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set getResponse.id = 'https://' + path + '/v1/projects/435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def postResponse = read('../test_files/project_post_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy patchPayload = payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">url 'https://' + path + '/v1/projects'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-32">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-32" class="collapse collapsable-details">
+        <pre>{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">225ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-33">
+    
+<div class="brief passed">
+  <span class="keyword indention">Scenario</span>
+  <span class="name">POST project not authenticated</span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-33" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-34">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-34" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers = { 'Content-type': 'application/json' }</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '/'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">request payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method post</span>
+  
+  <span class="lead-duration duration">224ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-35">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-35" class="collapse collapsable-details">
+        <pre>08:27:50.769 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 602
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+{&quot;type&quot;:&quot;Project&quot;,&quot;title&quot;:{&quot;no&quot;:&quot;Testprosjekt NVA&quot;,&quot;en&quot;:&quot;Testproject NVA&quot;},&quot;startDate&quot;:&quot;2020-01-01T00:00:00.000Z&quot;,&quot;endDate&quot;:&quot;2020-07-01T00:00:00.000Z&quot;,&quot;participants&quot;:[{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_MANAGER&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]},{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_PARTICIPANT&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}],&quot;coordinatingInstitution&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}
+
+08:27:50.992 response time in milliseconds: 221.48
+1 &lt; 401
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 80
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:47 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f3-63ab009826a96cc21028d54e
+1 &lt; x-amz-apigw-id: XvL-HHEbDoEFXhQ=
+1 &lt; x-amzn-RequestId: e3598628-0546-4a50-9c56-7219f0bf5aca
+{&quot;status&quot;: 401, &quot;trace&quot;: &quot;d6ac1919-f13e-45d8-9c46-e65ab47e19dc&quot;, &quot;messages&quot;: []}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 401</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">response.trace == '#uuid'</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">004ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-36">
+    
+<div class="brief passed">
+  <span class="keyword indention">Background</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-36" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-37">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-37" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-38">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-38" class="collapse collapsable-details">
+        <pre>08:27:50.998 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def existingProject = '435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def payload = read('../test_files/project_post_body.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def getResponse = read('../test_files/project_get_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set getResponse.id = 'https://' + path + '/v1/projects/435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def postResponse = read('../test_files/project_post_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy patchPayload = payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">url 'https://' + path + '/v1/projects'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-39">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-39" class="collapse collapsable-details">
+        <pre>{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">232ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-40">
+    
+<div class="brief passed">
+  <span class="keyword indention">Scenario</span>
+  <span class="name">POST project missing field</span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-40" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-41">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-41" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy invalidPayload = payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">remove invalidPayload.title</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '/'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">request invalidPayload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method post</span>
+  
+  <span class="lead-duration duration">231ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-42">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-42" class="collapse collapsable-details">
+        <pre>08:27:51.007 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 545
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{&quot;type&quot;:&quot;Project&quot;,&quot;startDate&quot;:&quot;2020-01-01T00:00:00.000Z&quot;,&quot;endDate&quot;:&quot;2020-07-01T00:00:00.000Z&quot;,&quot;participants&quot;:[{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_MANAGER&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]},{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_PARTICIPANT&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}],&quot;coordinatingInstitution&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}
+
+08:27:51.236 response time in milliseconds: 229.11
+1 &lt; 502
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 36
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:48 GMT
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f4-0b2b63ca1d75722a67d76b28
+1 &lt; x-amz-apigw-id: XvL-JFOyjoEF5kw=
+1 &lt; x-amzn-ErrorType: InternalServerErrorException
+1 &lt; x-amzn-RequestId: acbefc00-2b71-4ca2-b399-ebf4045785c9
+{&quot;message&quot;: &quot;Internal server error&quot;}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 502</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">004ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-43">
+    
+<div class="brief passed">
+  <span class="keyword indention">Background</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-43" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-44">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-44" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-45">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-45" class="collapse collapsable-details">
+        <pre>08:27:51.243 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def existingProject = '435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def payload = read('../test_files/project_post_body.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def getResponse = read('../test_files/project_get_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set getResponse.id = 'https://' + path + '/v1/projects/435486'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def postResponse = read('../test_files/project_post_result.json')</span>
+  
+  <span class="lead-duration duration">001ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">copy patchPayload = payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">url 'https://' + path + '/v1/projects'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">configure headers =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-46">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-46" class="collapse collapsable-details">
+        <pre>{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                      
+<div class="element">
+  
+  
+<div class="tags indention">
+  </div>
+
+  
+  <span class="lead-duration duration">2s 098ms</span>
+
+
+    <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-47">
+    
+<div class="brief passed">
+  <span class="keyword indention">Scenario</span>
+  <span class="name">PATCH project</span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </span>
+  <div class="description indention"></div>
+
+  <div id="element-47" class="collapse collapsable-details ">
+    
+
+
+    
+<div class="steps inner-level">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-48">
+    
+<div class="brief passed">
+  <span class="keyword indention">Steps</span>
+  <span class="name"></span>
+  
+
+       <i class="chevron fa fa-fw"></i>
+  </div>
+
+  </div>
+
+  <div id="steps-48" class="inner-level collapse collapsable-details ">
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '/'</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">request payload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method post</span>
+  
+  <span class="lead-duration duration">544ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-49">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-49" class="collapse collapsable-details">
+        <pre>08:27:51.250 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 602
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{&quot;type&quot;:&quot;Project&quot;,&quot;title&quot;:{&quot;no&quot;:&quot;Testprosjekt NVA&quot;,&quot;en&quot;:&quot;Testproject NVA&quot;},&quot;startDate&quot;:&quot;2020-01-01T00:00:00.000Z&quot;,&quot;endDate&quot;:&quot;2020-07-01T00:00:00.000Z&quot;,&quot;participants&quot;:[{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_MANAGER&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]},{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_PARTICIPANT&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}],&quot;coordinatingInstitution&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}
+
+08:27:51.793 response time in milliseconds: 542.63
+1 &lt; 201
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 713
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:48 GMT
+1 &lt; Location: https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f4-7218d3c7511d3cd3695e3d6c
+1 &lt; x-amz-apigw-id: XvL-MEG4DoEFlnQ=
+1 &lt; x-amzn-RequestId: e0d06605-ca0f-457b-bcbe-28412a65c99d
+{&quot;id&quot;: &quot;https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887&quot;, &quot;type&quot;: &quot;Project&quot;, &quot;title&quot;: {&quot;no&quot;: &quot;Testprosjekt NVA&quot;, &quot;en&quot;: &quot;Testproject NVA&quot;}, &quot;startDate&quot;: &quot;2020-01-01T00:00:00.000Z&quot;, &quot;endDate&quot;: &quot;2020-07-01T00:00:00.000Z&quot;, &quot;participants&quot;: [{&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_MANAGER&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}], &quot;coordinatingInstitution&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">karate.set('id', response.id.split('/').pop())</span>
+  
+  <span class="lead-duration duration">020ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '/' + id</span>
+  
+  <span class="lead-duration duration">002ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method get</span>
+  
+  <span class="lead-duration duration">468ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-50">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-50" class="collapse collapsable-details">
+        <pre>08:27:51.818 request:
+2 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+2 &gt; Accept-Encoding: gzip,deflate
+2 &gt; Connection: Keep-Alive
+2 &gt; Content-type: application/json
+2 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+2 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+2 &gt; x-client-id: nvatest
+2 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:52.285 response time in milliseconds: 466.54
+2 &lt; 200
+2 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+2 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+2 &lt; Access-Control-Allow-Origin: *
+2 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+2 &lt; Access-Control-Max-Age: 3600
+2 &lt; Connection: keep-alive
+2 &lt; Content-Length: 713
+2 &lt; Content-Security-Policy: upgrade-insecure-requests
+2 &lt; Content-Type: application/json
+2 &lt; Date: Fri, 18 Dec 2020 07:27:49 GMT
+2 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+2 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f4-6cd52d31601646a26aca9aad
+2 &lt; x-amz-apigw-id: XvL-SFq2joEFfmw=
+2 &lt; x-amzn-RequestId: 521873b8-406c-43a2-afd3-c3618dac22cd
+{&quot;id&quot;: &quot;https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887&quot;, &quot;type&quot;: &quot;Project&quot;, &quot;title&quot;: {&quot;no&quot;: &quot;Testprosjekt NVA&quot;, &quot;en&quot;: &quot;Testproject NVA&quot;}, &quot;startDate&quot;: &quot;2020-01-01T00:00:00.000Z&quot;, &quot;endDate&quot;: &quot;2020-07-01T00:00:00.000Z&quot;, &quot;participants&quot;: [{&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_MANAGER&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}], &quot;coordinatingInstitution&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 200</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">def changedTitle =</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-51">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-51" class="collapse collapsable-details">
+        <pre>{
+  &quot;no&quot;: &quot;Testprosjekt NVA - endret&quot;,
+  &quot;en&quot;: &quot;Testproject NVA - changed&quot;
+}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">*</span>
+  <span class="name">set patchPayload.title = changedTitle</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '/' + id</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">request patchPayload</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method patch</span>
+  
+  <span class="lead-duration duration">571ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-52">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-52" class="collapse collapsable-details">
+        <pre>08:27:52.287 request:
+3 &gt; PATCH https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+3 &gt; Accept-Encoding: gzip,deflate
+3 &gt; Connection: Keep-Alive
+3 &gt; Content-Length: 621
+3 &gt; Content-Type: application/json; charset=UTF-8
+3 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+3 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+3 &gt; x-client-id: nvatest
+3 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{&quot;type&quot;:&quot;Project&quot;,&quot;title&quot;:{&quot;no&quot;:&quot;Testprosjekt NVA - endret&quot;,&quot;en&quot;:&quot;Testproject NVA - changed&quot;},&quot;startDate&quot;:&quot;2020-01-01T00:00:00.000Z&quot;,&quot;endDate&quot;:&quot;2020-07-01T00:00:00.000Z&quot;,&quot;participants&quot;:[{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_MANAGER&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]},{&quot;identity&quot;:&quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;,&quot;affiliations&quot;:[{&quot;type&quot;:&quot;PRO_PARTICIPANT&quot;,&quot;organization&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}],&quot;coordinatingInstitution&quot;:&quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}
+
+08:27:52.857 response time in milliseconds: 569.04
+3 &lt; 204
+3 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+3 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+3 &lt; Access-Control-Allow-Origin: *
+3 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+3 &lt; Access-Control-Max-Age: 3600
+3 &lt; Connection: keep-alive
+3 &lt; Content-Length: 0
+3 &lt; Content-Security-Policy: upgrade-insecure-requests
+3 &lt; Content-Type: application/json
+3 &lt; Date: Fri, 18 Dec 2020 07:27:49 GMT
+3 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+3 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f5-3381be441488f98f57b3eecf
+3 &lt; x-amz-apigw-id: XvL-WGbQjoEF6FQ=
+3 &lt; x-amzn-RequestId: 0d839fd3-e719-421b-aa5a-db96cfaededf</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 204</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Given</span>
+  <span class="name">path '/' + id</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">When</span>
+  <span class="name">method get</span>
+  
+  <span class="lead-duration duration">489ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+  <div class="inner-level">
+    <div class="docstring indention">
+            <div data-toggle="collapse" class="collapsable-control" data-target="#msg-53">
+          <a>Doc string</a>
+      </div>
+      <div id="msg-53" class="collapse collapsable-details">
+        <pre>08:27:52.859 request:
+4 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+4 &gt; Accept-Encoding: gzip,deflate
+4 &gt; Connection: Keep-Alive
+4 &gt; Content-type: application/json
+4 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+4 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+4 &gt; x-client-id: nvatest
+4 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:53.347 response time in milliseconds: 487.42
+4 &lt; 200
+4 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+4 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+4 &lt; Access-Control-Allow-Origin: *
+4 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+4 &lt; Access-Control-Max-Age: 3600
+4 &lt; Connection: keep-alive
+4 &lt; Content-Length: 732
+4 &lt; Content-Security-Policy: upgrade-insecure-requests
+4 &lt; Content-Type: application/json
+4 &lt; Date: Fri, 18 Dec 2020 07:27:50 GMT
+4 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+4 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f5-0f974bd360f1ef5072cca1d1
+4 &lt; x-amz-apigw-id: XvL-cEm4joEFsrA=
+4 &lt; x-amzn-RequestId: f10ce467-39ce-4a83-b01f-05893b1e6224
+{&quot;id&quot;: &quot;https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887&quot;, &quot;type&quot;: &quot;Project&quot;, &quot;title&quot;: {&quot;no&quot;: &quot;Testprosjekt NVA - endret&quot;, &quot;en&quot;: &quot;Testproject NVA - changed&quot;}, &quot;startDate&quot;: &quot;2020-01-01T00:00:00.000Z&quot;, &quot;endDate&quot;: &quot;2020-07-01T00:00:00.000Z&quot;, &quot;participants&quot;: [{&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/61027&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_MANAGER&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}, {&quot;identity&quot;: &quot;https://api.cristin-test.uio.no/v2/persons/329012&quot;, &quot;affiliations&quot;: [{&quot;type&quot;: &quot;PRO_PARTICIPANT&quot;, &quot;organization&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}]}], &quot;coordinatingInstitution&quot;: &quot;https://api.cristin-test.uio.no/v2/units/20202.0.0.0&quot;}</pre>
+      </div>
+    </div>
+  </div>
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">Then</span>
+  <span class="name">status 200</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+          <div class="step">
+        
+<div class="brief passed">
+  <span class="keyword indention">And</span>
+  <span class="name">match response.title == changedTitle</span>
+  
+  <span class="lead-duration duration">000ms</span>
+
+  </div>
+
+        
+
+
+        
+        
+
+        
+
+        
+  
+      </div>
+      </div>
+</div>
+
+
+    
+
+  </div>
+</div>
+
+                  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-10">
+      <i class="fa fa-chevron-circle-down fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('show')"></i>
+      <i class="fa fa-chevron-circle-up fa-2x collapsable-control"
+        onClick="javascript:$('#report .collapsable-details').collapse('hide')"></i>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>

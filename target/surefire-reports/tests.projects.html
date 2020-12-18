@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+      
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            
+        <meta charset="utf-8">
+            
+        <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+            
+        <link href="res/bootstrap.min.css" rel="stylesheet" type="text/css">
+            
+        <link href="res/karate-report.css" rel="stylesheet" type="text/css">
+            
+        <link href="favicon.ico" rel="shortcut icon">
+            <script src="res/jquery.min.js" type="text/javascript"></script>
+    <script src="res/jquery.tablesorter.min.js" type="text/javascript"></script>
+    <script src="res/bootstrap.min.js" type="text/javascript"></script>
+    <script src="res/karate-report.js" type="text/javascript"></script>
+    
+        <title>tests.projects</title>
+          
+    </head>
+      
+    <body>
+            
+        <div id="root-container">
+                  
+            <div id="leftnav">
+                        
+                <div class="nav-logo">
+                              <a href="karate-summary.html">
+            <img alt="Karate" src="res/karate-logo.svg">
+          </a>
+          
+                    <div class="nav-count">
+                                    
+                        <div class="bg-success" id="nav-pass">7</div>
+                                    
+                        <div class="bg-danger" id="nav-fail">0</div>
+                                  
+                    </div>
+                            
+                </div>
+                        
+                <div id="nav-type">Scenarios</div>
+                         
+        
+                <div id="nav-date">2020-12-18 08:27:53 AM</div>
+                        
+      
+                <div class="nav-container">
+                    <div class="nav-item passed">
+                        <a href="#[1:24]">[1:24] GET project success </a>
+                    </div>
+                    <div class="nav-item passed">
+                        <a href="#[2:30]">[2:30] GET project wrong id </a>
+                    </div>
+                    <div class="nav-item passed">
+                        <a href="#[3:38]">[3:38] GET project not authenticated </a>
+                    </div>
+                    <div class="nav-item passed">
+                        <a href="#[4:45]">[4:45] POST new project </a>
+                    </div>
+                    <div class="nav-item passed">
+                        <a href="#[5:52]">[5:52] POST project not authenticated </a>
+                    </div>
+                    <div class="nav-item passed">
+                        <a href="#[6:60]">[6:60] POST project missing field </a>
+                    </div>
+                    <div class="nav-item passed">
+                        <a href="#[7:68]">[7:68] PATCH project </a>
+                    </div>
+                </div>
+            </div>
+                  
+            <div id="content">
+                      
+                <div class="page-heading alert alert-primary">
+                    <a href="karate-summary.html">Summary</a><span class="feature-label">|</span><a href="karate-tags.html">Tags</a><span class="feature-label">|</span><span class="feature-label">Feature:</span><span class="feature-name">tests/projects.feature</span><span class="feature-description">Project API testing</span>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-heading" id="[1:24]">
+                        <div class="heading-container">
+                            <div class="scenario-tags"></div>
+                            <span class="scenario-keyword">Scenario: [1:24]</span><span class="scenario-name">GET project success </span>
+                        </div>
+                        <div class="scenario-time passed">ms: 969</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="[1:24]bg">
+                            <div class="step-ref bg-step">&gt;&gt;</div>
+                            <div class="step-cell passed">Background:</div>
+                        </div>
+                        <div class="time-cell passed"></div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="1">
+                            <div class="step-ref bg-step">1</div>
+                            <div class="step-cell passed">* def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</div>
+                        </div>
+                        <div class="time-cell passed">6</div>
+                    </div>
+                    <div class="preformatted" data-parent="1">08:27:48.312 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="2">
+                            <div class="step-ref bg-step">2</div>
+                            <div class="step-cell passed">* def existingProject = '435486'</div>
+                        </div>
+                        <div class="time-cell passed">4</div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="3">
+                            <div class="step-ref bg-step">3</div>
+                            <div class="step-cell passed">* def payload = read('../test_files/project_post_body.json')</div>
+                        </div>
+                        <div class="time-cell passed">44</div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="4">
+                            <div class="step-ref bg-step">4</div>
+                            <div class="step-cell passed">* def getResponse = read('../test_files/project_get_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">6</div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="5">
+                            <div class="step-ref bg-step">5</div>
+                            <div class="step-cell passed">* set getResponse.id = 'https://' + path + '/v1/projects/435486'</div>
+                        </div>
+                        <div class="time-cell passed">5</div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="6">
+                            <div class="step-ref bg-step">6</div>
+                            <div class="step-cell passed">* def postResponse = read('../test_files/project_post_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">5</div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="7">
+                            <div class="step-ref bg-step">7</div>
+                            <div class="step-cell passed">* copy patchPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="8">
+                            <div class="step-ref bg-step">8</div>
+                            <div class="step-cell passed">Given url 'https://' + path + '/v1/projects'</div>
+                        </div>
+                        <div class="time-cell passed">4</div>
+                    </div>
+                    <div class="step-row" data-parent="[1:24]bg">
+                        <div class="step-container" id="9">
+                            <div class="step-ref bg-step">9</div>
+                            <div class="step-cell passed">* configure headers =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="9">{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="10">
+                            <div class="step-ref passed">10</div>
+                            <div class="step-cell passed">Given path existingProject</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="11">
+                            <div class="step-ref passed">11</div>
+                            <div class="step-cell passed">When method get</div>
+                        </div>
+                        <div class="time-cell passed">893</div>
+                    </div>
+                    <div class="preformatted" data-parent="11">08:27:48.596 request:
+1 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/435486
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-type: application/json
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:49.292 response time in milliseconds: 693.08
+1 &lt; 200
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 1717
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:46 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f1-0abdb41758842079437b3eb8
+1 &lt; x-amz-apigw-id: XvL9zG0EDoEFZIg=
+1 &lt; x-amzn-RequestId: b06394a6-cd9c-4c5d-80b6-061d15137004
+{"id": "https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/435486", "type": "Project", "title": {"no": "Digital tekstkompetanse og bruk av l\u00e6ringsressurser i ny grunnskolel\u00e6rerutdanning (DigiGLU)", "en": null}, "startDate": "2013-01-01T00:00:00.000Z", "endDate": "2016-05-01T00:00:00.000Z", "participants": [{"identity": "https://api.cristin-test.uio.no/v2/persons/61027", "affiliations": [{"type": "PRO_MANAGER", "organization": "https://api.cristin-test.uio.no/v2/units/201.14.2.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/329012", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/201.14.2.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/329219", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/201.14.2.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/329878", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/201.14.2.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/49064", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/201.0.0.0"}, {"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/201.14.2.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/35870", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/201.0.0.0"}, {"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/201.14.2.0"}]}], "coordinatingInstitution": "https://api.cristin-test.uio.no/v2/units/201.14.2.0"}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="12">
+                            <div class="step-ref passed">12</div>
+                            <div class="step-cell passed">Then status 200</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="13">
+                            <div class="step-ref passed">13</div>
+                            <div class="step-cell passed">And match response == getResponse</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-heading" id="[2:30]">
+                        <div class="heading-container">
+                            <div class="scenario-tags"></div>
+                            <span class="scenario-keyword">Scenario: [2:30]</span><span class="scenario-name">GET project wrong id </span>
+                        </div>
+                        <div class="scenario-time passed">ms: 573</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="[2:30]bg">
+                            <div class="step-ref bg-step">&gt;&gt;</div>
+                            <div class="step-cell passed">Background:</div>
+                        </div>
+                        <div class="time-cell passed"></div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="14">
+                            <div class="step-ref bg-step">14</div>
+                            <div class="step-cell passed">* def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="14">08:27:49.299 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="15">
+                            <div class="step-ref bg-step">15</div>
+                            <div class="step-cell passed">* def existingProject = '435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="16">
+                            <div class="step-ref bg-step">16</div>
+                            <div class="step-cell passed">* def payload = read('../test_files/project_post_body.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="17">
+                            <div class="step-ref bg-step">17</div>
+                            <div class="step-cell passed">* def getResponse = read('../test_files/project_get_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="18">
+                            <div class="step-ref bg-step">18</div>
+                            <div class="step-cell passed">* set getResponse.id = 'https://' + path + '/v1/projects/435486'</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="19">
+                            <div class="step-ref bg-step">19</div>
+                            <div class="step-cell passed">* def postResponse = read('../test_files/project_post_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="20">
+                            <div class="step-ref bg-step">20</div>
+                            <div class="step-cell passed">* copy patchPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="21">
+                            <div class="step-ref bg-step">21</div>
+                            <div class="step-cell passed">Given url 'https://' + path + '/v1/projects'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[2:30]bg">
+                        <div class="step-container" id="22">
+                            <div class="step-ref bg-step">22</div>
+                            <div class="step-cell passed">* configure headers =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="22">{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="23">
+                            <div class="step-ref passed">23</div>
+                            <div class="step-cell passed">Given path '1234567890'</div>
+                        </div>
+                        <div class="time-cell passed">3</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="24">
+                            <div class="step-ref passed">24</div>
+                            <div class="step-cell passed">When method get</div>
+                        </div>
+                        <div class="time-cell passed">555</div>
+                    </div>
+                    <div class="preformatted" data-parent="24">08:27:49.311 request:
+1 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/1234567890
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-type: application/json
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:49.865 response time in milliseconds: 553.09
+1 &lt; 400
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 80
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:46 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f2-3121a3d47a9ce16676e36d7b
+1 &lt; x-amz-apigw-id: XvL95FloDoEF79Q=
+1 &lt; x-amzn-RequestId: 679e7f9e-7986-4316-bcd2-6e7c6245965b
+{"status": 400, "trace": "9cb3d8e0-6a7c-4889-9e61-fad2b78d2de4", "messages": []}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="25">
+                            <div class="step-ref passed">25</div>
+                            <div class="step-cell passed">Then status 400</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="26">
+                            <div class="step-ref passed">26</div>
+                            <div class="step-cell passed">And match response.trace == '#uuid'</div>
+                        </div>
+                        <div class="time-cell passed">3</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="27">
+                            <div class="step-ref passed">27</div>
+                            <div class="step-cell passed">And match response.messages == '#present'</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="28">
+                            <div class="step-ref passed">28</div>
+                            <div class="step-cell passed">And match response.status == 400</div>
+                        </div>
+                        <div class="time-cell passed">3</div>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-heading" id="[3:38]">
+                        <div class="heading-container">
+                            <div class="scenario-tags"></div>
+                            <span class="scenario-keyword">Scenario: [3:38]</span><span class="scenario-name">GET project not authenticated </span>
+                        </div>
+                        <div class="scenario-time passed">ms: 274</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="[3:38]bg">
+                            <div class="step-ref bg-step">&gt;&gt;</div>
+                            <div class="step-cell passed">Background:</div>
+                        </div>
+                        <div class="time-cell passed"></div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="29">
+                            <div class="step-ref bg-step">29</div>
+                            <div class="step-cell passed">* def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="29">08:27:49.879 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="30">
+                            <div class="step-ref bg-step">30</div>
+                            <div class="step-cell passed">* def existingProject = '435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="31">
+                            <div class="step-ref bg-step">31</div>
+                            <div class="step-cell passed">* def payload = read('../test_files/project_post_body.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="32">
+                            <div class="step-ref bg-step">32</div>
+                            <div class="step-cell passed">* def getResponse = read('../test_files/project_get_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="33">
+                            <div class="step-ref bg-step">33</div>
+                            <div class="step-cell passed">* set getResponse.id = 'https://' + path + '/v1/projects/435486'</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="34">
+                            <div class="step-ref bg-step">34</div>
+                            <div class="step-cell passed">* def postResponse = read('../test_files/project_post_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="35">
+                            <div class="step-ref bg-step">35</div>
+                            <div class="step-cell passed">* copy patchPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="36">
+                            <div class="step-ref bg-step">36</div>
+                            <div class="step-cell passed">Given url 'https://' + path + '/v1/projects'</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[3:38]bg">
+                        <div class="step-container" id="37">
+                            <div class="step-ref bg-step">37</div>
+                            <div class="step-cell passed">* configure headers =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="37">{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="38">
+                            <div class="step-ref passed">38</div>
+                            <div class="step-cell passed">* configure headers = { 'Content-type': 'application/json' }</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="39">
+                            <div class="step-ref passed">39</div>
+                            <div class="step-cell passed">Given path existingProject</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="40">
+                            <div class="step-ref passed">40</div>
+                            <div class="step-cell passed">When method get</div>
+                        </div>
+                        <div class="time-cell passed">242</div>
+                    </div>
+                    <div class="preformatted" data-parent="40">08:27:49.890 request:
+1 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/435486
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-type: application/json
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+
+08:27:50.130 response time in milliseconds: 239.25
+1 &lt; 401
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 80
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:47 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f2-68da73e1223feacb0380abf4
+1 &lt; x-amz-apigw-id: XvL9-EWODoEFtiw=
+1 &lt; x-amzn-RequestId: 545505d5-fb4c-44ba-83e8-f362d78b6ae3
+{"status": 401, "trace": "32302c6d-70d8-4b9f-ae25-f902096a697f", "messages": []}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="41">
+                            <div class="step-ref passed">41</div>
+                            <div class="step-cell passed">Then status 401</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="42">
+                            <div class="step-ref passed">42</div>
+                            <div class="step-cell passed">And response.trace == '#uuid'</div>
+                        </div>
+                        <div class="time-cell passed">24</div>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-heading" id="[4:45]">
+                        <div class="heading-container">
+                            <div class="scenario-tags"></div>
+                            <span class="scenario-keyword">Scenario: [4:45]</span><span class="scenario-name">POST new project </span>
+                        </div>
+                        <div class="scenario-time passed">ms: 596</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="[4:45]bg">
+                            <div class="step-ref bg-step">&gt;&gt;</div>
+                            <div class="step-cell passed">Background:</div>
+                        </div>
+                        <div class="time-cell passed"></div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="43">
+                            <div class="step-ref bg-step">43</div>
+                            <div class="step-cell passed">* def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="preformatted" data-parent="43">08:27:50.159 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="44">
+                            <div class="step-ref bg-step">44</div>
+                            <div class="step-cell passed">* def existingProject = '435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="45">
+                            <div class="step-ref bg-step">45</div>
+                            <div class="step-cell passed">* def payload = read('../test_files/project_post_body.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="46">
+                            <div class="step-ref bg-step">46</div>
+                            <div class="step-cell passed">* def getResponse = read('../test_files/project_get_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="47">
+                            <div class="step-ref bg-step">47</div>
+                            <div class="step-cell passed">* set getResponse.id = 'https://' + path + '/v1/projects/435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="48">
+                            <div class="step-ref bg-step">48</div>
+                            <div class="step-cell passed">* def postResponse = read('../test_files/project_post_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="49">
+                            <div class="step-ref bg-step">49</div>
+                            <div class="step-cell passed">* copy patchPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="50">
+                            <div class="step-ref bg-step">50</div>
+                            <div class="step-cell passed">Given url 'https://' + path + '/v1/projects'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[4:45]bg">
+                        <div class="step-container" id="51">
+                            <div class="step-ref bg-step">51</div>
+                            <div class="step-cell passed">* configure headers =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="51">{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="52">
+                            <div class="step-ref passed">52</div>
+                            <div class="step-cell passed">Given path '/'</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="53">
+                            <div class="step-ref passed">53</div>
+                            <div class="step-cell passed">And request payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="54">
+                            <div class="step-ref passed">54</div>
+                            <div class="step-cell passed">When method post</div>
+                        </div>
+                        <div class="time-cell passed">587</div>
+                    </div>
+                    <div class="preformatted" data-parent="54">08:27:50.173 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 602
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{"type":"Project","title":{"no":"Testprosjekt NVA","en":"Testproject NVA"},"startDate":"2020-01-01T00:00:00.000Z","endDate":"2020-07-01T00:00:00.000Z","participants":[{"identity":"https://api.cristin-test.uio.no/v2/persons/61027","affiliations":[{"type":"PRO_MANAGER","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]},{"identity":"https://api.cristin-test.uio.no/v2/persons/329012","affiliations":[{"type":"PRO_PARTICIPANT","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}],"coordinatingInstitution":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}
+
+08:27:50.756 response time in milliseconds: 582.18
+1 &lt; 201
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 713
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:47 GMT
+1 &lt; Location: https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039886
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f3-725062ac331990555933dbac
+1 &lt; x-amz-apigw-id: XvL-BHodjoEF_0g=
+1 &lt; x-amzn-RequestId: 2734a80b-c8c1-4313-b727-b21f57b510ec
+{"id": "https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039886", "type": "Project", "title": {"no": "Testprosjekt NVA", "en": "Testproject NVA"}, "startDate": "2020-01-01T00:00:00.000Z", "endDate": "2020-07-01T00:00:00.000Z", "participants": [{"identity": "https://api.cristin-test.uio.no/v2/persons/61027", "affiliations": [{"type": "PRO_MANAGER", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/329012", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}], "coordinatingInstitution": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="55">
+                            <div class="step-ref passed">55</div>
+                            <div class="step-cell passed">Then status 201</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="56">
+                            <div class="step-ref passed">56</div>
+                            <div class="step-cell passed">And match response == postResponse</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-heading" id="[5:52]">
+                        <div class="heading-container">
+                            <div class="scenario-tags"></div>
+                            <span class="scenario-keyword">Scenario: [5:52]</span><span class="scenario-name">POST project not authenticated </span>
+                        </div>
+                        <div class="scenario-time passed">ms: 231</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="[5:52]bg">
+                            <div class="step-ref bg-step">&gt;&gt;</div>
+                            <div class="step-cell passed">Background:</div>
+                        </div>
+                        <div class="time-cell passed"></div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="57">
+                            <div class="step-ref bg-step">57</div>
+                            <div class="step-cell passed">* def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="57">08:27:50.761 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="58">
+                            <div class="step-ref bg-step">58</div>
+                            <div class="step-cell passed">* def existingProject = '435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="59">
+                            <div class="step-ref bg-step">59</div>
+                            <div class="step-cell passed">* def payload = read('../test_files/project_post_body.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="60">
+                            <div class="step-ref bg-step">60</div>
+                            <div class="step-cell passed">* def getResponse = read('../test_files/project_get_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="61">
+                            <div class="step-ref bg-step">61</div>
+                            <div class="step-cell passed">* set getResponse.id = 'https://' + path + '/v1/projects/435486'</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="62">
+                            <div class="step-ref bg-step">62</div>
+                            <div class="step-cell passed">* def postResponse = read('../test_files/project_post_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="63">
+                            <div class="step-ref bg-step">63</div>
+                            <div class="step-cell passed">* copy patchPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="64">
+                            <div class="step-ref bg-step">64</div>
+                            <div class="step-cell passed">Given url 'https://' + path + '/v1/projects'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[5:52]bg">
+                        <div class="step-container" id="65">
+                            <div class="step-ref bg-step">65</div>
+                            <div class="step-cell passed">* configure headers =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="65">{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="66">
+                            <div class="step-ref passed">66</div>
+                            <div class="step-cell passed">* configure headers = { 'Content-type': 'application/json' }</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="67">
+                            <div class="step-ref passed">67</div>
+                            <div class="step-cell passed">Given path '/'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="68">
+                            <div class="step-ref passed">68</div>
+                            <div class="step-cell passed">And request payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="69">
+                            <div class="step-ref passed">69</div>
+                            <div class="step-cell passed">When method post</div>
+                        </div>
+                        <div class="time-cell passed">224</div>
+                    </div>
+                    <div class="preformatted" data-parent="69">08:27:50.769 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 602
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+{"type":"Project","title":{"no":"Testprosjekt NVA","en":"Testproject NVA"},"startDate":"2020-01-01T00:00:00.000Z","endDate":"2020-07-01T00:00:00.000Z","participants":[{"identity":"https://api.cristin-test.uio.no/v2/persons/61027","affiliations":[{"type":"PRO_MANAGER","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]},{"identity":"https://api.cristin-test.uio.no/v2/persons/329012","affiliations":[{"type":"PRO_PARTICIPANT","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}],"coordinatingInstitution":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}
+
+08:27:50.992 response time in milliseconds: 221.48
+1 &lt; 401
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 80
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:47 GMT
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f3-63ab009826a96cc21028d54e
+1 &lt; x-amz-apigw-id: XvL-HHEbDoEFXhQ=
+1 &lt; x-amzn-RequestId: e3598628-0546-4a50-9c56-7219f0bf5aca
+{"status": 401, "trace": "d6ac1919-f13e-45d8-9c46-e65ab47e19dc", "messages": []}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="70">
+                            <div class="step-ref passed">70</div>
+                            <div class="step-cell passed">Then status 401</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="71">
+                            <div class="step-ref passed">71</div>
+                            <div class="step-cell passed">And response.trace == '#uuid'</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-heading" id="[6:60]">
+                        <div class="heading-container">
+                            <div class="scenario-tags"></div>
+                            <span class="scenario-keyword">Scenario: [6:60]</span><span class="scenario-name">POST project missing field </span>
+                        </div>
+                        <div class="scenario-time passed">ms: 237</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="[6:60]bg">
+                            <div class="step-ref bg-step">&gt;&gt;</div>
+                            <div class="step-cell passed">Background:</div>
+                        </div>
+                        <div class="time-cell passed"></div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="72">
+                            <div class="step-ref bg-step">72</div>
+                            <div class="step-cell passed">* def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="72">08:27:50.998 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="73">
+                            <div class="step-ref bg-step">73</div>
+                            <div class="step-cell passed">* def existingProject = '435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="74">
+                            <div class="step-ref bg-step">74</div>
+                            <div class="step-cell passed">* def payload = read('../test_files/project_post_body.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="75">
+                            <div class="step-ref bg-step">75</div>
+                            <div class="step-cell passed">* def getResponse = read('../test_files/project_get_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="76">
+                            <div class="step-ref bg-step">76</div>
+                            <div class="step-cell passed">* set getResponse.id = 'https://' + path + '/v1/projects/435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="77">
+                            <div class="step-ref bg-step">77</div>
+                            <div class="step-cell passed">* def postResponse = read('../test_files/project_post_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="78">
+                            <div class="step-ref bg-step">78</div>
+                            <div class="step-cell passed">* copy patchPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="79">
+                            <div class="step-ref bg-step">79</div>
+                            <div class="step-cell passed">Given url 'https://' + path + '/v1/projects'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[6:60]bg">
+                        <div class="step-container" id="80">
+                            <div class="step-ref bg-step">80</div>
+                            <div class="step-cell passed">* configure headers =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="80">{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="81">
+                            <div class="step-ref passed">81</div>
+                            <div class="step-cell passed">* copy invalidPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="82">
+                            <div class="step-ref passed">82</div>
+                            <div class="step-cell passed">* remove invalidPayload.title</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="83">
+                            <div class="step-ref passed">83</div>
+                            <div class="step-cell passed">Given path '/'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="84">
+                            <div class="step-ref passed">84</div>
+                            <div class="step-cell passed">And request invalidPayload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="85">
+                            <div class="step-ref passed">85</div>
+                            <div class="step-cell passed">When method post</div>
+                        </div>
+                        <div class="time-cell passed">232</div>
+                    </div>
+                    <div class="preformatted" data-parent="85">08:27:51.007 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 545
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{"type":"Project","startDate":"2020-01-01T00:00:00.000Z","endDate":"2020-07-01T00:00:00.000Z","participants":[{"identity":"https://api.cristin-test.uio.no/v2/persons/61027","affiliations":[{"type":"PRO_MANAGER","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]},{"identity":"https://api.cristin-test.uio.no/v2/persons/329012","affiliations":[{"type":"PRO_PARTICIPANT","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}],"coordinatingInstitution":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}
+
+08:27:51.236 response time in milliseconds: 229.11
+1 &lt; 502
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 36
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:48 GMT
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f4-0b2b63ca1d75722a67d76b28
+1 &lt; x-amz-apigw-id: XvL-JFOyjoEF5kw=
+1 &lt; x-amzn-ErrorType: InternalServerErrorException
+1 &lt; x-amzn-RequestId: acbefc00-2b71-4ca2-b399-ebf4045785c9
+{"message": "Internal server error"}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="86">
+                            <div class="step-ref passed">86</div>
+                            <div class="step-cell passed">Then status 502</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                </div>
+                <div class="scenario">
+                    <div class="scenario-heading" id="[7:68]">
+                        <div class="heading-container">
+                            <div class="scenario-tags"></div>
+                            <span class="scenario-keyword">Scenario: [7:68]</span><span class="scenario-name">PATCH project </span>
+                        </div>
+                        <div class="scenario-time passed">ms: 2103</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="[7:68]bg">
+                            <div class="step-ref bg-step">&gt;&gt;</div>
+                            <div class="step-cell passed">Background:</div>
+                        </div>
+                        <div class="time-cell passed"></div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="87">
+                            <div class="step-ref bg-step">87</div>
+                            <div class="step-cell passed">* def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="87">08:27:51.243 skipping bootstrap configuration: could not find or read file: classpath:karate-config.js</div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="88">
+                            <div class="step-ref bg-step">88</div>
+                            <div class="step-cell passed">* def existingProject = '435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="89">
+                            <div class="step-ref bg-step">89</div>
+                            <div class="step-cell passed">* def payload = read('../test_files/project_post_body.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="90">
+                            <div class="step-ref bg-step">90</div>
+                            <div class="step-cell passed">* def getResponse = read('../test_files/project_get_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="91">
+                            <div class="step-ref bg-step">91</div>
+                            <div class="step-cell passed">* set getResponse.id = 'https://' + path + '/v1/projects/435486'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="92">
+                            <div class="step-ref bg-step">92</div>
+                            <div class="step-cell passed">* def postResponse = read('../test_files/project_post_result.json')</div>
+                        </div>
+                        <div class="time-cell passed">1</div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="93">
+                            <div class="step-ref bg-step">93</div>
+                            <div class="step-cell passed">* copy patchPayload = payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="94">
+                            <div class="step-ref bg-step">94</div>
+                            <div class="step-cell passed">Given url 'https://' + path + '/v1/projects'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row" data-parent="[7:68]bg">
+                        <div class="step-container" id="95">
+                            <div class="step-ref bg-step">95</div>
+                            <div class="step-cell passed">* configure headers =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="95">{ 
+  'Content-type': 'application/json', 
+  'x-client-id': 'nvatest', 
+  'x-client-token': 'zl5yxb-cke502-164uqh-84n023m' 
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="96">
+                            <div class="step-ref passed">96</div>
+                            <div class="step-cell passed">Given path '/'</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="97">
+                            <div class="step-ref passed">97</div>
+                            <div class="step-cell passed">And request payload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="98">
+                            <div class="step-ref passed">98</div>
+                            <div class="step-cell passed">When method post</div>
+                        </div>
+                        <div class="time-cell passed">545</div>
+                    </div>
+                    <div class="preformatted" data-parent="98">08:27:51.250 request:
+1 &gt; POST https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/
+1 &gt; Accept-Encoding: gzip,deflate
+1 &gt; Connection: Keep-Alive
+1 &gt; Content-Length: 602
+1 &gt; Content-Type: application/json; charset=UTF-8
+1 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+1 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+1 &gt; x-client-id: nvatest
+1 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{"type":"Project","title":{"no":"Testprosjekt NVA","en":"Testproject NVA"},"startDate":"2020-01-01T00:00:00.000Z","endDate":"2020-07-01T00:00:00.000Z","participants":[{"identity":"https://api.cristin-test.uio.no/v2/persons/61027","affiliations":[{"type":"PRO_MANAGER","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]},{"identity":"https://api.cristin-test.uio.no/v2/persons/329012","affiliations":[{"type":"PRO_PARTICIPANT","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}],"coordinatingInstitution":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}
+
+08:27:51.793 response time in milliseconds: 542.63
+1 &lt; 201
+1 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+1 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+1 &lt; Access-Control-Allow-Origin: *
+1 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+1 &lt; Access-Control-Max-Age: 3600
+1 &lt; Connection: keep-alive
+1 &lt; Content-Length: 713
+1 &lt; Content-Security-Policy: upgrade-insecure-requests
+1 &lt; Content-Type: application/json
+1 &lt; Date: Fri, 18 Dec 2020 07:27:48 GMT
+1 &lt; Location: https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+1 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+1 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f4-7218d3c7511d3cd3695e3d6c
+1 &lt; x-amz-apigw-id: XvL-MEG4DoEFlnQ=
+1 &lt; x-amzn-RequestId: e0d06605-ca0f-457b-bcbe-28412a65c99d
+{"id": "https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887", "type": "Project", "title": {"no": "Testprosjekt NVA", "en": "Testproject NVA"}, "startDate": "2020-01-01T00:00:00.000Z", "endDate": "2020-07-01T00:00:00.000Z", "participants": [{"identity": "https://api.cristin-test.uio.no/v2/persons/61027", "affiliations": [{"type": "PRO_MANAGER", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/329012", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}], "coordinatingInstitution": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="99">
+                            <div class="step-ref passed">99</div>
+                            <div class="step-cell passed">* karate.set('id', response.id.split('/').pop())</div>
+                        </div>
+                        <div class="time-cell passed">21</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="100">
+                            <div class="step-ref passed">100</div>
+                            <div class="step-cell passed">Given path '/' + id</div>
+                        </div>
+                        <div class="time-cell passed">2</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="101">
+                            <div class="step-ref passed">101</div>
+                            <div class="step-cell passed">When method get</div>
+                        </div>
+                        <div class="time-cell passed">469</div>
+                    </div>
+                    <div class="preformatted" data-parent="101">08:27:51.818 request:
+2 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+2 &gt; Accept-Encoding: gzip,deflate
+2 &gt; Connection: Keep-Alive
+2 &gt; Content-type: application/json
+2 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+2 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+2 &gt; x-client-id: nvatest
+2 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:52.285 response time in milliseconds: 466.54
+2 &lt; 200
+2 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+2 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+2 &lt; Access-Control-Allow-Origin: *
+2 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+2 &lt; Access-Control-Max-Age: 3600
+2 &lt; Connection: keep-alive
+2 &lt; Content-Length: 713
+2 &lt; Content-Security-Policy: upgrade-insecure-requests
+2 &lt; Content-Type: application/json
+2 &lt; Date: Fri, 18 Dec 2020 07:27:49 GMT
+2 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+2 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f4-6cd52d31601646a26aca9aad
+2 &lt; x-amz-apigw-id: XvL-SFq2joEFfmw=
+2 &lt; x-amzn-RequestId: 521873b8-406c-43a2-afd3-c3618dac22cd
+{"id": "https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887", "type": "Project", "title": {"no": "Testprosjekt NVA", "en": "Testproject NVA"}, "startDate": "2020-01-01T00:00:00.000Z", "endDate": "2020-07-01T00:00:00.000Z", "participants": [{"identity": "https://api.cristin-test.uio.no/v2/persons/61027", "affiliations": [{"type": "PRO_MANAGER", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/329012", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}], "coordinatingInstitution": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="102">
+                            <div class="step-ref passed">102</div>
+                            <div class="step-cell passed">Then status 200</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="103">
+                            <div class="step-ref passed">103</div>
+                            <div class="step-cell passed">* def changedTitle =</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="preformatted" data-parent="103">{
+  "no": "Testprosjekt NVA - endret",
+  "en": "Testproject NVA - changed"
+}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="104">
+                            <div class="step-ref passed">104</div>
+                            <div class="step-cell passed">* set patchPayload.title = changedTitle</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="105">
+                            <div class="step-ref passed">105</div>
+                            <div class="step-cell passed">Given path '/' + id</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="106">
+                            <div class="step-ref passed">106</div>
+                            <div class="step-cell passed">And request patchPayload</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="107">
+                            <div class="step-ref passed">107</div>
+                            <div class="step-cell passed">When method patch</div>
+                        </div>
+                        <div class="time-cell passed">571</div>
+                    </div>
+                    <div class="preformatted" data-parent="107">08:27:52.287 request:
+3 &gt; PATCH https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+3 &gt; Accept-Encoding: gzip,deflate
+3 &gt; Connection: Keep-Alive
+3 &gt; Content-Length: 621
+3 &gt; Content-Type: application/json; charset=UTF-8
+3 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+3 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+3 &gt; x-client-id: nvatest
+3 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+{"type":"Project","title":{"no":"Testprosjekt NVA - endret","en":"Testproject NVA - changed"},"startDate":"2020-01-01T00:00:00.000Z","endDate":"2020-07-01T00:00:00.000Z","participants":[{"identity":"https://api.cristin-test.uio.no/v2/persons/61027","affiliations":[{"type":"PRO_MANAGER","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]},{"identity":"https://api.cristin-test.uio.no/v2/persons/329012","affiliations":[{"type":"PRO_PARTICIPANT","organization":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}],"coordinatingInstitution":"https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}
+
+08:27:52.857 response time in milliseconds: 569.04
+3 &lt; 204
+3 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+3 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+3 &lt; Access-Control-Allow-Origin: *
+3 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+3 &lt; Access-Control-Max-Age: 3600
+3 &lt; Connection: keep-alive
+3 &lt; Content-Length: 0
+3 &lt; Content-Security-Policy: upgrade-insecure-requests
+3 &lt; Content-Type: application/json
+3 &lt; Date: Fri, 18 Dec 2020 07:27:49 GMT
+3 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+3 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f5-3381be441488f98f57b3eecf
+3 &lt; x-amz-apigw-id: XvL-WGbQjoEF6FQ=
+3 &lt; x-amzn-RequestId: 0d839fd3-e719-421b-aa5a-db96cfaededf</div>
+                    <div class="step-row">
+                        <div class="step-container" id="108">
+                            <div class="step-ref passed">108</div>
+                            <div class="step-cell passed">Then status 204</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="109">
+                            <div class="step-ref passed">109</div>
+                            <div class="step-cell passed">Given path '/' + id</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="110">
+                            <div class="step-ref passed">110</div>
+                            <div class="step-cell passed">When method get</div>
+                        </div>
+                        <div class="time-cell passed">490</div>
+                    </div>
+                    <div class="preformatted" data-parent="110">08:27:52.859 request:
+4 &gt; GET https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887
+4 &gt; Accept-Encoding: gzip,deflate
+4 &gt; Connection: Keep-Alive
+4 &gt; Content-type: application/json
+4 &gt; Host: pg58r9n6ff.execute-api.eu-west-1.amazonaws.com
+4 &gt; User-Agent: Apache-HttpClient/4.5.12 (Java/11.0.9.1)
+4 &gt; x-client-id: nvatest
+4 &gt; x-client-token: zl5yxb-cke502-164uqh-84n023m
+
+08:27:53.347 response time in milliseconds: 487.42
+4 &lt; 200
+4 &lt; Access-Control-Allow-Headers: x-requested-with, Authorization
+4 &lt; Access-Control-Allow-Methods: GET, OPTIONS, POST, PUT, PATCH
+4 &lt; Access-Control-Allow-Origin: *
+4 &lt; Access-Control-Expose-Headers: X-Total-Count, Link
+4 &lt; Access-Control-Max-Age: 3600
+4 &lt; Connection: keep-alive
+4 &lt; Content-Length: 732
+4 &lt; Content-Security-Policy: upgrade-insecure-requests
+4 &lt; Content-Type: application/json
+4 &lt; Date: Fri, 18 Dec 2020 07:27:50 GMT
+4 &lt; Strict-Transport-Security: max-age=31536000; includeSubDomains
+4 &lt; X-Amzn-Trace-Id: Root=1-5fdc59f5-0f974bd360f1ef5072cca1d1
+4 &lt; x-amz-apigw-id: XvL-cEm4joEFsrA=
+4 &lt; x-amzn-RequestId: f10ce467-39ce-4a83-b01f-05893b1e6224
+{"id": "https://pg58r9n6ff.execute-api.eu-west-1.amazonaws.com/v1/projects/7039887", "type": "Project", "title": {"no": "Testprosjekt NVA - endret", "en": "Testproject NVA - changed"}, "startDate": "2020-01-01T00:00:00.000Z", "endDate": "2020-07-01T00:00:00.000Z", "participants": [{"identity": "https://api.cristin-test.uio.no/v2/persons/61027", "affiliations": [{"type": "PRO_MANAGER", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}, {"identity": "https://api.cristin-test.uio.no/v2/persons/329012", "affiliations": [{"type": "PRO_PARTICIPANT", "organization": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}]}], "coordinatingInstitution": "https://api.cristin-test.uio.no/v2/units/20202.0.0.0"}</div>
+                    <div class="step-row">
+                        <div class="step-container" id="111">
+                            <div class="step-ref passed">111</div>
+                            <div class="step-cell passed">Then status 200</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                    <div class="step-row">
+                        <div class="step-container" id="112">
+                            <div class="step-ref passed">112</div>
+                            <div class="step-cell passed">And match response.title == changedTitle</div>
+                        </div>
+                        <div class="time-cell passed">0</div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+           
+  
+    </body>
+    
+</html>
