@@ -6,7 +6,7 @@
 
 ### AWS
 
-CloudFormation template in `/templates`
+CloudFormation template in [/templates](https://github.com/BIBSYSDEV/NVA-api-testing/blob/develop/templates/api_test_deploy.yml)
 
 ### Run tests locally:
 
