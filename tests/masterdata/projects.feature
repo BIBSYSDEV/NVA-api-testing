@@ -3,10 +3,10 @@ Feature: Project API testing
   Background:
     * def path = 'pg58r9n6ff.execute-api.eu-west-1.amazonaws.com'
     * def existingProject = '435486'
-    * def payload = read('../../test_files/project_post_body.json')
-    * def getResponse = read('../../test_files/project_get_result.json')
+    * def payload = read('../../test_files/masterdata/project_post_body.json')
+    * def getResponse = read('../../test_files/masterdata/project_get_result.json')
     * set getResponse.id = 'https://' + path + '/v1/projects/435486'
-    * def postResponse = read('../../test_files/project_post_result.json')
+    * def postResponse = read('../../test_files/masterdata/project_post_result.json')
     * copy patchPayload = payload
 
 
