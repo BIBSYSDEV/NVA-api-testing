@@ -10,18 +10,21 @@ Feature: Project API testing
     * def searchResponse = read('../../test_files/nva/project_search_get_result.json').replace('__CURRENT_ENVIRONMENT__', currentEnvironment)
     * def projectResponse = read('../../test_files/nva/project_get_result.json')
     * def nonExistingProject = 'not-a-real-project'
-    * def unauthenticatedProblem = read('../../test_files/nva/unauthenticated_problem.json').replace('__RESOURCE_URI__', nonExistingProject)
+    * def PROBLEM_JSON_MEDIA_TYPE = 'application/problem+json'
+    * def JSON_LD_MEDIA_TYPE = 'application/ld+json'
+    * def JSON_MEDIA_TYPE = 'application/json'
 
   Scenario: Query and receive CORS preflight response
     * configure headers = {'Origin': 'http://localhost:3000', 'Accept': '*/*', 'Referer': 'Not sure what the value should be yet', 'Origin': 'https://' + currentEnvironment + '/registration/aUuid', 'Connection', 'keep-alive', 'Accept-Encoding: gzip, deflate, br', 'Access-Control-Request-Method': 'GET', Access-Control-Request-Headers: authorization}
+    * contentType = responseHeaders['Content-Type'][0]
     Given url searchPath + 'test'
     When method OPTIONS
     Then status 200
-    And match responseHeaders['Content-Type'][0] == 'application/json'
-    And match responseHeaders['Access-Control-Allow-Origin'] == '*'
-    And match responseHeaders['Access-Control-Allow-Methods'] == 'GET,OPTIONS'
-    And match responseHeaders['Access-Control-Allow-Headers'] == 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
-    And match responseHeaders['Vary'] == 'Origin'
+    And match contentType == JSON_MEDIA_TYPE
+    And match responseHeaders['Access-Control-Allow-Origin'][0] == '*'
+    And match responseHeaders['Access-Control-Allow-Methods'][0] == 'GET,OPTIONS'
+    And match responseHeaders['Access-Control-Allow-Headers'][0] == 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
+    And match responseHeaders['Vary'][0] == 'Origin'
 
   Scenario Outline: Unauthenticated search request is rejected
     * configure headers = { 'Content-type': <CONTENT_TYPE> }
@@ -29,13 +32,17 @@ Feature: Project API testing
     Given path <VALID_URL>
     When method get
     Then status 401
-    And match contentType == 'application/problem+json'
-    And match response == unauthenticatedProblem
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title == 'Unauthorized'
+    And match response.status == 401
+    And match response.detail == 'You are not authorized to access the resource ' + <VALID_URL>
+    And match response.instance == <VALID_URL>
+    And match response.requestId == '#notnull'
 
     Examples:
-      | VALID_URL                 | CONTENT_TYPE          |
-      | searchPath + 'irrelevant' | 'application/ld+json' |
-      | existingProject           | 'application/json'    |
+      | VALID_URL                 | CONTENT_TYPE       |
+      | searchPath + 'irrelevant' | JSON_LD_MEDIA_TYPE |
+      | existingProject           | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Requesting non-existing resource returns not found error
     * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -43,15 +50,19 @@ Feature: Project API testing
     Given url <NON_EXISTING_RESOURCE_URL>
     When method get
     Then status 404
-    And match contentType == 'application/problem+json'
-    And match response == '{"title": "Not found", "status": 404, "detail": "The requested resource "' + basePath + nonExistingProject + " does not exist"'}
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title == 'Not found'
+    And match response.status == 404
+    And match response.detail == 'The requested resource ' + basePath + nonExistingProject + ' does not exist'
+    And match response.instance == <NON_EXISTING_RESOURCE_URL>
+    And match response.requestId == '#notnull'
 
     Examples:
-      | NON_EXISTING_RESOURCE_URL    | CONTENT_TYPE          |
-      | basePath + nonExistingProject | 'application/ld+json' |
-      | basePath + nonExistingProject | 'application/json'    |
-      | basePath + 'anythingElse'     | 'application/ld+json' |
-      | basePath + 'anythingElse'     | 'application/json'    |
+      | NON_EXISTING_RESOURCE_URL     | CONTENT_TYPE       |
+      | basePath + nonExistingProject | JSON_LD_MEDIA_TYPE |
+      | basePath + nonExistingProject | JSON_MEDIA_TYPE    |
+      | basePath + 'anythingElse'     | JSON_LD_MEDIA_TYPE |
+      | basePath + 'anythingElse'     | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Query proxy error gives Bad Gateway problem response
     * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -60,15 +71,19 @@ Feature: Project API testing
     And the Cristin API is down
     When method get
     Then status 502
-    And match contentType == 'application/problem+json'
-    And match response == '{"title": "Bad Gateway", "status": 502, "detail": "Your request cannot be processed at this time due to an upstream error'}
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title 'Bad Gateway'
+    And match response.status == 502
+    And match response.detail == 'Your request cannot be processed at this time due to an upstream error'
+    And match response.instance == <VALID_URL>
+    And match response.requestId == '#notnull'
 
     Examples:
-      | VALID_URL                 | CONTENT_TYPE          |
-      | searchPath + 'pancreatic' | 'application/ld+json' |
-      | searchPath + 'pancreatic' | 'application/json'    |
-      | existingResource          | 'application/ld+json' |
-      | existingResource          | 'application/json'    |
+      | VALID_URL                 | CONTENT_TYPE       |
+      | searchPath + 'pancreatic' | JSON_LD_MEDIA_TYPE |
+      | searchPath + 'pancreatic' | JSON_MEDIA_TYPE    |
+      | existingResource          | JSON_LD_MEDIA_TYPE |
+      | existingResource          | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Slow upstream gives Gateway Timeout problem response
     * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -77,15 +92,19 @@ Feature: Project API testing
     And the Cristin API response takes longer than 2 seconds
     When method get
     Then status 504
-    And match contentType == 'application/problem+json'
-    And match response == '{"title": "Gateway Timeout", "status": 504, "detail": "Your request cannot be processed at this time because the upstream server response took too long'}
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title == 'Gateway Timeout'
+    And match response.status == 504
+    And match response.detail == 'Your request cannot be processed at this time because the upstream server response took too long'
+    And match response.instance == <VALID_URL>
+    And match response.requestId == '#notnull'
 
     Examples:
-      | VALID_URL                 | CONTENT_TYPE          |
-      | searchPath + 'pancreatic' | 'application/ld+json' |
-      | searchPath + 'pancreatic' | 'application/json'    |
-      | existingResource          | 'application/ld+json' |
-      | existingResource          | 'application/json'    |
+      | VALID_URL                 | CONTENT_TYPE       |
+      | searchPath + 'pancreatic' | JSON_LD_MEDIA_TYPE |
+      | searchPath + 'pancreatic' | JSON_MEDIA_TYPE    |
+      | existingResource          | JSON_LD_MEDIA_TYPE |
+      | existingResource          | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Unexpected error returns Internal Server Error problem response
     * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -94,15 +113,19 @@ Feature: Project API testing
     When method get
     And the project API application experiences an unexpected error
     Then status 500
-    And match contentType == 'application/problem+json'
-    And match response == '{"title": "Gateway Timeout", "status": 500, "detail": "Your request cannot be processed at this time because of an internal server error'}
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title == 'Gateway Timeout'
+    And match response.status == 500
+    And match response.detail == 'Your request cannot be processed at this time because of an internal server error'
+    And match response.instance == <VALID_URL>
+    And match response.requestId == '#notnull'
 
     Examples:
-      | VALID_URL                 | CONTENT_TYPE          |
-      | searchPath + 'pancreatic' | 'application/ld+json' |
-      | searchPath + 'pancreatic' | 'application/json'    |
-      | existingResource          | 'application/ld+json' |
-      | existingResource          | 'application/json'    |
+      | VALID_URL                 | CONTENT_TYPE        |
+      | searchPath + 'pancreatic' | JSON_LD_MEDIA_TYPE' |
+      | searchPath + 'pancreatic' | JSON_MEDIA_TYPE     |
+      | existingResource          | JSON_LD_MEDIA_TYPE  |
+      | existingResource          | JSON_MEDIA_TYPE     |
 
   Scenario Outline: Query with unacceptable method returns Not acceptable error
     * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -110,23 +133,27 @@ Feature: Project API testing
     Given path existingProject
     When method <METHOD>
     Then status 506
-    And match contentType == 'application/problem+json'
-    And match response == '{"title": "Not acceptable", "status": 506, "detail": "Your request cannot be processed because the HTTP method "' + <METHOD> + '" is not supported'}
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title == 'Not acceptable'
+    And match response.status == 506
+    And match response.detail == 'Your request cannot be processed because the HTTP method ' + <METHOD> + ' is not supported'
+    And match response.instance == existingProject
+    And match response.requestId == '#notnull'
 
     Examples:
-      | METHOD  | CONTENT_TYPE          |
-      | DELETE  | 'application/ld+json' |
-      | DELETE  | 'application/json'    |
-      | PATCH   | 'application/ld+json' |
-      | PATCH   | 'application/json'    |
-      | POST    | 'application/ld+json' |
-      | POST    | 'application/json'    |
-      | PUT     | 'application/ld+json' |
-      | PUT     | 'application/json'    |
-      | CONNECT | 'application/ld+json' |
-      | CONNECT | 'application/json'    |
-      | TRACE   | 'application/ld+json' |
-      | TRACE   | 'application/json'    |
+      | METHOD  | CONTENT_TYPE       |
+      | DELETE  | JSON_LD_MEDIA_TYPE |
+      | DELETE  | JSON_MEDIA_TYPE    |
+      | PATCH   | JSON_LD_MEDIA_TYPE |
+      | PATCH   | JSON_MEDIA_TYPE    |
+      | POST    | JSON_LD_MEDIA_TYPE |
+      | POST    | JSON_MEDIA_TYPE    |
+      | PUT     | JSON_LD_MEDIA_TYPE |
+      | PUT     | JSON_MEDIA_TYPE    |
+      | CONNECT | JSON_LD_MEDIA_TYPE |
+      | CONNECT | JSON_MEDIA_TYPE    |
+      | TRACE   | JSON_LD_MEDIA_TYPE |
+      | TRACE   | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Query with bad parameters returns Bad Request
     * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -134,13 +161,17 @@ Feature: Project API testing
     Given url <BAD_REQUEST_PARAMETER_URL>
     When method get
     Then status 400
-    And match contentType == 'application/problem+json'
-    And match response == '{"title": "Bad Request", "status": 400, "detail": "Your request cannot be processed because the supplied parameter(s) "not" cannot be understood'}
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title == 'Bad Request'
+    And match response.status == 400
+    And match response.detail == 'Your request cannot be processed because the supplied parameter(s) "not" cannot be understood'
+    And match response.instance == <BAD_REQUEST_PARAMETER_URL>
+    And match response.requestId == '#notnull'
 
     Examples:
-      | BAD_REQUEST_PARAMETER_URL   | CONTENT_TYPE          |
-      | basePath + 'search?not=pog' | 'application/ld+json' |
-      | basePath + 'search?not=pog' | 'application/json'    |
+      | BAD_REQUEST_PARAMETER_URL   | CONTENT_TYPE       |
+      | basePath + 'search?not=pog' | JSON_LD_MEDIA_TYPE |
+      | basePath + 'search?not=pog' | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Request with bad content type returns Not Acceptable
     * configure headers = { 'Accept': <UNACCEPTABLE_CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -148,8 +179,13 @@ Feature: Project API testing
     Given url <VALID_URL>
     When method get
     Then status 406
-    And match contentType == 'application/problem+json'
-    And match response == '{"title": "Not Acceptable", "status": 406, "detail": "Your request cannot be processed because the supplied content-type ' + <UNACCEPTABLE_CONTENT_TYPE> + ' cannot be understood'}
+    And match contentType == PROBLEM_JSON_MEDIA_TYPE
+    And match response.title == 'Not Acceptable'
+    And match response.status == 406
+    And match response.detail == 'Your request cannot be processed because the supplied content-type ' + <UNACCEPTABLE_CONTENT_TYPE> + ' cannot be understood'
+    And match response.instance == <VALID_URL>
+    And match response.requestId == '#notnull'
+
 
     Examples:
       | VALID_URL                 | UNACCEPTABLE_CONTENT_TYPE |
@@ -171,9 +207,9 @@ Feature: Project API testing
     And match response == searchResponse.replace('__PROCESSING_TIME__', response.processingTime)
 
     Examples:
-      | CONTENT_TYPE          |
-      | 'application/ld+json' |
-      | 'application/json'    |
+      | CONTENT_TYPE       |
+      | JSON_LD_MEDIA_TYPE |
+      | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Search returns no more than ten results
     * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -185,9 +221,9 @@ Feature: Project API testing
     And match response.hits.length < 11
 
     Examples:
-      | CONTENT_TYPE          |
-      | 'application/ld+json' |
-      | 'application/json'    |
+      | CONTENT_TYPE       |
+      | JSON_LD_MEDIA_TYPE |
+      | JSON_MEDIA_TYPE    |
 
 
   Scenario Outline: Search returns next ten results
@@ -201,9 +237,9 @@ Feature: Project API testing
     And match response.firstRecord == 11
 
     Examples:
-      | CONTENT_TYPE          |
-      | 'application/ld+json' |
-      | 'application/json'    |
+      | CONTENT_TYPE       |
+      | JSON_LD_MEDIA_TYPE |
+      | JSON_MEDIA_TYPE    |
 
   Scenario Outline: Request with content negotiation returns expected response
     * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
@@ -215,7 +251,6 @@ Feature: Project API testing
     And match response == projectResponse
 
     Examples:
-      | CONTENT_TYPE          |
-      | 'application/ld+json' |
-      | 'application/json'    |
-
+      | CONTENT_TYPE       |
+      | JSON_LD_MEDIA_TYPE |
+      | JSON_MEDIA_TYPE    |
