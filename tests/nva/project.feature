@@ -17,7 +17,7 @@ Feature: Project API testing
     Given url searchPath + 'test'
     When method OPTIONS
     Then status 200
-    And match responseHeaders['Content-Type'] == 'application/json'
+    And match responseHeaders['Content-Type'][0] == 'application/json'
     And match responseHeaders['Access-Control-Allow-Origin'] == '*'
     And match responseHeaders['Access-Control-Allow-Methods'] == 'GET,OPTIONS'
     And match responseHeaders['Access-Control-Allow-Headers'] == 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
@@ -25,10 +25,11 @@ Feature: Project API testing
 
   Scenario Outline: Unauthenticated search request is rejected
     * configure headers = { 'Content-type': <Content-type> }
+    * contentType = responseHeaders['Content-Type'][0]
     Given path <URL>
     When method get
     Then status 401
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == unauthenticatedProblem
 
     Examples:
@@ -42,7 +43,7 @@ Feature: Project API testing
     Given url <URL>
     When method get
     Then status 404
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == '{"title": "Not found", "status": 404, "detail": "The requested resource "' + basePath + nonExistingProject + " does not exist"'}
 
     Examples:
@@ -59,7 +60,7 @@ Feature: Project API testing
     And the Cristin API is down
     When method get
     Then status 502
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == '{"title": "Bad Gateway", "status": 502, "detail": "Your request cannot be processed at this time due to an upstream error'}
 
     Examples:
@@ -76,7 +77,7 @@ Feature: Project API testing
     And the Cristin API response takes longer than 2 seconds
     When method get
     Then status 504
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == '{"title": "Gateway Timeout", "status": 504, "detail": "Your request cannot be processed at this time because the upstream server response took too long'}
 
     Examples:
@@ -93,7 +94,7 @@ Feature: Project API testing
     And the Cristin API response takes longer than 2 seconds
     When method get
     Then status 500
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == '{"title": "Gateway Timeout", "status": 500, "detail": "Your request cannot be processed at this time because of an internal server error'}
 
     Examples:
@@ -110,7 +111,7 @@ Feature: Project API testing
     And the Cristin API response takes longer than 2 seconds
     When method <METHOD>
     Then status 504
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == '{"title": "Gateway Timeout", "status": 504, "detail": "Your request cannot be processed at this time because the upstream server response took too long'}
 
     Examples:
@@ -134,7 +135,7 @@ Feature: Project API testing
     Given url <URL>
     When method get
     Then status 400
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == '{"title": "Bad Request", "status": 400, "detail": "Your request cannot be processed because the supplied parameter(s) "not" cannot be understood'}
 
     Examples:
@@ -148,7 +149,7 @@ Feature: Project API testing
     Given url <URL>
     When method get
     Then status 406
-    And match responseHeaders['Content-type'] == 'application/problem+json'
+    And match contentType == 'application/problem+json'
     And match response == '{"title": "Not Acceptable", "status": 406, "detail": "Your request cannot be processed because the supplied content-type <Content-type> cannot be understood'}
 
     Examples:
@@ -167,7 +168,7 @@ Feature: Project API testing
     Given url searchPath + 'pancreatic'
     When method get
     Then status 200
-    And contentType = <Content-type>
+    And match contentType == <Content-type>
     And match response == searchResponse.replace('__PROCESSING_TIME__', response.processingTime)
 
     Examples:
@@ -181,7 +182,7 @@ Feature: Project API testing
     Given url searchPath + 'and'
     When method get
     Then status 200
-    And contentType = <Content-type>
+    And match contentType == <Content-type>
     And match response.hits.length < 11
 
     Examples:
@@ -196,7 +197,7 @@ Feature: Project API testing
     Given url searchPath + 'and&start=11'
     When method get
     Then status 200
-    And contentType = <Content-type>
+    And match contentType == <Content-type>
     And match response.hits.length < 11
     And match response.firstRecord == 11
 
@@ -211,7 +212,7 @@ Feature: Project API testing
     Given url <URL>
     When method get
     Then status 200
-    And contentType = <Content-type>
+    And match contentType == <Content-type>
     And match response == projectResponse
 
     Examples:
