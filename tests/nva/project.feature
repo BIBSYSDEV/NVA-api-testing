@@ -114,7 +114,7 @@ Feature: Project API testing
     And the project API application experiences an unexpected error
     Then status 500
     And match contentType == PROBLEM_JSON_MEDIA_TYPE
-    And match response.title == 'Gateway Timeout'
+    And match response.title == 'Internal Server Error'
     And match response.status == 500
     And match response.detail == 'Your request cannot be processed at this time because of an internal server error'
     And match response.instance == <VALID_URL>
