@@ -11,7 +11,7 @@ Feature: Users internal API
         * def putSuccessPayload = read('../../test_files/nva_users_internal/put_success_payload.json')
         * def getUser = 'user-internal-get@test.no'
         * def putUser = 'user-internal-put@test.no'
-        * def notExistingUser = 'not-existing-user'
+        * def nonExistingUser = 'non-existing-user'
 
     Given url 'https://api.dev.nva.aws.unit.no/users-roles-internal/service/users/'
 
@@ -22,9 +22,10 @@ Feature: Users internal API
         And match response == getResponse
 
     Scenario: GET user not found
-        Given path notExistingUser
+        Given path nonExistingUser
         When method get
         Then status 404
+        And match response.status == 404
         And match response.title == 'Not Found'
         And match response.detail == 'Could not find user with username: ' + notExistingUser
 
@@ -35,11 +36,12 @@ Feature: Users internal API
         Then status 200
         And match response == postResponse
 
-    Scenario: POST user allready exist
+    Scenario: POST user already exist
         Given path '/'
         And request existingUserPayload
         When method post
         Then status 409
+        And match response.status == 409
         And match response.title == 'Conflict'
         And match response.detail == 'User already exists: ' + getUser
 
@@ -48,6 +50,7 @@ Feature: Users internal API
         And request missingTypePayload
         When method POST
         Then status 400
+        And match response.status == 400
         And match response.title == 'Bad Request'
         And match response.detail == 'JSON object is missing a type attribute'
     
@@ -56,6 +59,7 @@ Feature: Users internal API
         And request wrongTypePayload
         When method POST
         Then status 400
+        And match response.status == 400
         And match response.title == 'Bad Request'
         And match response.detail == 'JSON object is missing a type attribute'
     
@@ -64,22 +68,23 @@ Feature: Users internal API
         And request wrongRoleTypePayload
         When method POST
         Then status 400
+        And match response.status == 400
         And match response.title == 'Bad Request'
         And match response.detail == 'JSON object is missing a type attribute'
     
     Scenario: PUT success
         Given path putUser
-        And method GET
+        When method GET
         Then status 200
         And match response.givenName == 'User internal PUT'
 
-        Given path putUser
+        When path putUser
         And request putSuccessPayload
         And method PUT
         Then status 202
 
-        Given path putUser
-        And method GET
-        Then status 200
+        When path putUser
+        Then method GET
+        And status 200
         And match response.givenName == 'User internal PUT Changed'
 
