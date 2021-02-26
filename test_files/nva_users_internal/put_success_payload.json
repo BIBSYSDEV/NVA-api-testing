@@ -1,0 +1,12 @@
+{
+    "type": "User",
+    "roles": [
+        {
+            "type": "Role",
+            "rolename": "Creator"
+        }
+    ],
+    "username": "user-internal-put@test.no",
+    "givenName": "User internal PUT Changed",
+    "familyName": "TestUser"
+}
