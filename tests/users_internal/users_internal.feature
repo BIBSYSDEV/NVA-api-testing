@@ -84,7 +84,7 @@ Feature: Users internal API
         Then status 202
 
         When path putUser
-        Then method GET
-        And status 200
+        And method GET
+        Then status 200
         And match response.givenName == 'User internal PUT Changed'
 
