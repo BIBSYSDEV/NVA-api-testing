@@ -15,13 +15,13 @@ Feature: Users internal API
 
     Given url 'https://api.dev.nva.aws.unit.no/users-roles-internal/service/users/'
 
-    Scenario: GET user success
+    Scenario: GET returns User details and status OK when requesting existing User
         Given path getUser
         When method get
         Then status 200
         And match response == getResponse
 
-    Scenario: GET user not found
+    Scenario: GET returns status Not Found when requesting non-existing user
         Given path nonExistingUser
         When method get
         Then status 404
@@ -29,14 +29,14 @@ Feature: Users internal API
         And match response.title == 'Not Found'
         And match response.detail == 'Could not find user with username: ' + notExistingUser
 
-    Scenario: POST user success
+    Scenario: POST returns User details and status OK when posting correct User payload
         Given path '/'
         And request postSuccessPayload
         When method post
         Then status 200
         And match response == postResponse
 
-    Scenario: POST user already exist
+    Scenario: POST returns status User already exists when posting User with already existing username 
         Given path '/'
         And request existingUserPayload
         When method post
@@ -45,7 +45,7 @@ Feature: Users internal API
         And match response.title == 'Conflict'
         And match response.detail == 'User already exists: ' + getUser
 
-    Scenario: POST missing type attribute
+    Scenario: POST returns status JSON object is missing a type attribute when User payload is missing Type attribute
         Given path '/'
         And request missingTypePayload
         When method POST
@@ -54,7 +54,7 @@ Feature: Users internal API
         And match response.title == 'Bad Request'
         And match response.detail == 'JSON object is missing a type attribute'
     
-    Scenario: POST wrong type attribute
+    Scenario: POST returns status JSON object is missing a type attribute when User payload has an invalid Type attribute
         Given path '/'
         And request wrongTypePayload
         When method POST
@@ -63,7 +63,7 @@ Feature: Users internal API
         And match response.title == 'Bad Request'
         And match response.detail == 'JSON object is missing a type attribute'
     
-    Scenario: POST wrong role type attribute
+    Scenario: POST returns status JSON object is missing a type attribute when User payload has an invalid Role Type attribute
         Given path '/'
         And request wrongRoleTypePayload
         When method POST
@@ -72,7 +72,7 @@ Feature: Users internal API
         And match response.title == 'Bad Request'
         And match response.detail == 'JSON object is missing a type attribute'
     
-    Scenario: PUT success
+    Scenario: PUT returns status Success when updating an existing User with correct payload
         Given path putUser
         When method GET
         Then status 200
