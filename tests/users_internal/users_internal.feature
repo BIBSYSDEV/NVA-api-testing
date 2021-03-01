@@ -27,7 +27,7 @@ Feature: Users internal API
         Then status 404
         And match response.status == 404
         And match response.title == 'Not Found'
-        And match response.detail == 'Could not find user with username: ' + notExistingUser
+        And match response.detail == 'Could not find user with username: ' + nonExistingUser
 
     Scenario: POST returns User details and status OK when posting correct User payload
         Given path '/'
