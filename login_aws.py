@@ -1,12 +1,14 @@
 import boto3
 import os
 import uuid
+import json
 
 ssm = boto3.client('ssm')
 USER_POOL_ID = ssm.get_parameter(Name='/test/AWS_USER_POOL_ID',
                                  WithDecryption=False)['Parameter']['Value']
 CLIENT_ID = ssm.get_parameter(Name='/test/AWS_USER_POOL_WEB_CLIENT_ID',
                               WithDecryption=False)['Parameter']['Value']
+TEST_USER_EMAIL = 'api-test-user@test.no'
 client = boto3.client('cognito-idp')
 
 
@@ -40,10 +42,11 @@ def find_user(email):
 
 
 def run():
-    username = find_user(email='api-test-user@test.no')
+    username = find_user(email=TEST_USER_EMAIL)
     if username != '':
         bearer_token = login(username=username)
-        print(bearer_token)
+        with open('auth.json', 'w') as outfile:
+            json.dump({'BEARER_TOKEN': bearer_token}, outfile, indent=4)
 
 
 if __name__ == '__main__':
