@@ -13,7 +13,7 @@ client = boto3.client('cognito-idp')
 
 
 def login(username):
-    password = 'P%-' + str(uuid.uuid4())
+    password = 'P%' + str(uuid.uuid4())
     response = client.admin_set_user_password(
         Password=password,
         UserPoolId=USER_POOL_ID,
