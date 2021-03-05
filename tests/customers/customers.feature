@@ -71,7 +71,7 @@ Feature: Tests for NVA customers API
     Given path '/' + customerId
     When method GET
     Then status 200
-     And match response contains getCustomerIdSuccessResponse
+    And match response contains getCustomerIdSuccessResponse
 
     Scenario: Get by non-existing Customer id returns status Not Found
     * def nonExistingCustomerId = java.util.UUID.randomUUID()
