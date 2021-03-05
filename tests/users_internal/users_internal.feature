@@ -72,7 +72,7 @@ Feature: Users internal API
         And match response.title == 'Bad Request'
         And match response.detail == 'JSON object is missing a type attribute'
     
-    Scenario: PUT returns status Success when updating an existing User with correct payload
+    Scenario: PUT returns status Accepted when updating an existing User with correct payload
         Given path putUser
         When method GET
         Then status 200
