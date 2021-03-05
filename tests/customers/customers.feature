@@ -55,6 +55,15 @@ Feature: Tests for NVA customers API
     And match header Content-Type == 'application/json'
     And match response.identifier == '#uuid'
 
+  Scenario: POST with malformed json returns status Bad Request
+    * def malformedJson = '{"bad json", "some": "data"}'
+    Given path '/'
+    And request malformedJson
+    When method POST
+    Then status 400
+    And match header.status == 400
+    And match header.details == 'Bad Request'
+
     Scenario: GET by Customer id returns status OK and Customer details
     * path '/'
     * method GET
@@ -62,10 +71,7 @@ Feature: Tests for NVA customers API
     Given path '/' + customerId
     When method GET
     Then status 200
-    # TODO regex for id
-    # TODO regex for date
-    # TODO regex for date
-    And match response contains getCustomerIdSuccessResponse
+     And match response contains getCustomerIdSuccessResponse
 
     Scenario: Get by non-existing Customer id returns status Not Found
     * def nonExistingCustomerId = java.util.UUID.randomUUID()
