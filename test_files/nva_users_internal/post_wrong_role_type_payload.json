@@ -1,0 +1,12 @@
+{
+    "type": "User",
+    "roles": [
+        {
+            "type": "Wrong Type",
+            "rolename": "Creator"
+        }
+    ],
+    "username": "user-internal-wrong-role-type@test.no",
+    "givenName": "User internal Missing Type",
+    "familyName": "TestUser"
+}

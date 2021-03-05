@@ -1,0 +1,87 @@
+{
+  "@context": "https://example.org/search-api-context.json",
+  "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/660212",
+  "identifier": [
+    {
+      "type": "CristinIdentifier",
+      "value": "660212"
+    }
+  ],
+  "title": "Sei meg, atterljom, kva originaltittelen er utan å vekkje åtgaum",
+  "language": "https://lexvo.org/id/iso639-3/nno",
+  "alternativeTitles": [
+    {
+      "en": "Tell me, echo, what the original title is without drawing attention"
+    }
+  ],
+  "startDate": "2021-01-22",
+  "endDate": "2021-01-23",
+  "funding": [
+    {
+      "id": "https://example.org/funding/4312267",
+      "title": "Green-field approaches to peri-temporal ablation in psychosocial contexts",
+      "grantId": "4312267",
+      "funder": {
+        "id": "https://example.org/funder/0912112221",
+        "name": "EU-trading-blok's Social Nadir 2023",
+        "validated": true
+      }
+    }
+  ],
+  "coordinatingInstitution": {
+    "id": "https://example.org/institution/1121112",
+    "name": {
+      "en": "Kyrksæterøra centre for advanced psychosocial study"
+    }
+  },
+  "contributors": [
+    {
+      "role": "ProjectManager",
+      "startDate": "2021-01-22",
+      "endDate": "2021-01-23",
+      "identity": {
+        "id": "https://example.org/person/76122421",
+        "firstName": "Ota",
+        "lastName": "Sengati"
+      },
+      "affiliation": {
+        "id": "https://example.org/institution/1121112",
+        "name": {
+          "en": "Kyrksæterøra centre for advanced psychosocial study"
+        }
+      }
+    },
+    {
+      "role": "ProjectParticipant",
+      "startDate": "2021-01-22",
+      "endDate": "2021-01-23",
+      "identity": {
+        "id": "https://example.org/person/76122421",
+        "firstName": "Ota",
+        "lastName": "Sengati"
+      },
+      "affiliation": {
+        "id": "https://example.org/institution/1121112",
+        "name": {
+          "en": "Kyrksæterøra centre for advanced psychosocial study"
+        }
+      }
+    },
+    {
+      "role": "ProjectParticipant",
+      "startDate": "2021-01-22",
+      "endDate": "2021-01-23",
+      "identity": {
+        "id": "https://example.org/person/76551121",
+        "firstName": "Maha",
+        "lastName": "Busal"
+      },
+      "affiliation": {
+        "id": "https://example.org/institution/1121112",
+        "name": {
+          "en": "Kyrksæterøra centre for advanced psychosocial study"
+        }
+      }
+    }
+  ]
+}
