@@ -13,8 +13,14 @@ Feature: Registration API tests
       Given url 'https://api.dev.nva.aws.unit.no/users-roles-internal/publication'
 
     Scenario: GET '/' with pagesize set returns list of Registrations up to pagesize and status Ok when requesting existing Registration
+        * configure headers =
+        """
+          {
+            Accept: 'application/json'
+          }
+        """
         Given path '/'
-        And param pagesize = 100
+        And param pagesize=100
         When method GET
         Then status 200
 
