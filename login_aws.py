@@ -30,12 +30,11 @@ def login(username):
         })
     return response['AuthenticationResult']['IdToken']
 
-def search_user_in_user_list(user_list):
+def search_user_in_user_list(user_list, email):
     for cognito_user in user_list:
         for attribute in cognito_user['Attributes']:
             if attribute['Name'] == 'email' and attribute['Value'] == email:
                 return email
-    print('User with email {} not found'.format(email))
     return ''
 
 def find_user(email):
@@ -51,6 +50,9 @@ def run():
     if username != '':
         bearer_token = login(username=username)
         write_bearer_token_to_file(bearer_token)
+    else:
+        print('User with email {} not found'.format(email))
+
 
 
 if __name__ == '__main__':
