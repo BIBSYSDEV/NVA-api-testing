@@ -30,23 +30,27 @@ def login(username):
         })
     return response['AuthenticationResult']['IdToken']
 
-
-def find_user(email):
-    response = client.list_users(UserPoolId=USER_POOL_ID)
-    for cognito_user in response['Users']:
+def search_user_in_user_list(user_list):
+    for cognito_user in user_list:
         for attribute in cognito_user['Attributes']:
             if attribute['Name'] == 'email' and attribute['Value'] == email:
                 return email
     print('User with email {} not found'.format(email))
     return ''
 
+def find_user(email):
+    response = client.list_users(UserPoolId=USER_POOL_ID)
+    return search_user_in_user_list(user_list=response['items'])
+
+def write_bearer_token_to_file(bearer_token)
+    with open('auth.json', 'w') as outfile:
+        json.dump({'BEARER_TOKEN': bearer_token}, outfile, indent=4)
 
 def run():
     username = find_user(email=TEST_USER_EMAIL)
     if username != '':
         bearer_token = login(username=username)
-        with open('auth.json', 'w') as outfile:
-            json.dump({'BEARER_TOKEN': bearer_token}, outfile, indent=4)
+        write_bearer_token_to_file(bearer_token)
 
 
 if __name__ == '__main__':
