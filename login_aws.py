@@ -39,7 +39,7 @@ def search_user_in_user_list(user_list, email):
 
 def find_user(email):
     response = client.list_users(UserPoolId=USER_POOL_ID)
-    return search_user_in_user_list(user_list=response['Users'])
+    return search_user_in_user_list(user_list=response['Users'], email=email)
 
 def write_bearer_token_to_file(bearer_token):
     with open('auth.json', 'w') as outfile:
