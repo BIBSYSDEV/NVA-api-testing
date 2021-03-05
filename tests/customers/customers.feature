@@ -113,5 +113,4 @@ Feature: Tests for NVA customers API
     Then status 200
     * set putSuccessResponse.identifier = customerId
     * set putSuccessResponse.id = 'https://api.dev.nva.aws.unit.no/customer/' + customerId
-    * karate.log(putSuccessResponse)
     And match response contains putSuccessResponse
