@@ -20,6 +20,7 @@
   "funding": [
     {
       "id": "https://example.org/funding/4312267",
+      "type": "Funding",
       "title": "Green-field approaches to peri-temporal ablation in psychosocial contexts",
       "grantId": "4312267",
       "funder": {
