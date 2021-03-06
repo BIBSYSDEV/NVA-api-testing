@@ -59,6 +59,7 @@
           },
           "affiliation": {
             "id": "https://example.org/institution/1121112",
+            "type": "Organization",
             "name": {
               "en": "Kyrksæterøra centre for advanced psychosocial study"
             }
@@ -76,6 +77,7 @@
           },
           "affiliation": {
             "id": "https://example.org/institution/1121112",
+            "type": "Organization",
             "name": {
               "en": "Kyrksæterøra centre for advanced psychosocial study"
             }
@@ -93,6 +95,7 @@
           },
           "affiliation": {
             "id": "https://example.org/institution/1121112",
+            "type": "Organization",
             "name": {
               "en": "Kyrksæterøra centre for advanced psychosocial study"
             }
