@@ -1,6 +1,7 @@
 {
   "@context": "https://example.org/search-api-context.json",
   "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/660212",
+  "type": "Project",
   "identifier": [
     {
       "type": "CristinIdentifier",
