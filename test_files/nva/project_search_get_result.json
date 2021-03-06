@@ -1,11 +1,11 @@
 {
   "@context": "https://example.org/search-api-context.json",
-  "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/search?=__query_text__",
-  "numberOfResults": 1,
-  "query": "projects?title=__query_text__",
+  "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/search?=__query_text__&page=1&results=5",
+  "size": 1,
+  "searchString": "title=__query_text__",
   "processingTime": __PROCESSING_TIME__,
   "firstRecord": 1,
-  "totalRecords": 2,
+  "nextResults": null,
   "hits": [
     {
       "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/660212",
