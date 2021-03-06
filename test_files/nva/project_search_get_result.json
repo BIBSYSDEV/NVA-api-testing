@@ -1,7 +1,7 @@
 {
   "@context": "https://example.org/search-api-context.json",
   "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/search?=__query_text__",
-  "numberOfResults": 2,
+  "numberOfResults": 1,
   "query": "projects?title=__query_text__",
   "processingTime": __PROCESSING_TIME__,
   "firstRecord": 1,
