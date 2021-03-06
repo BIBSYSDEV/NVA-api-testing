@@ -25,10 +25,10 @@
       ],
       "startDate": "2021-01-22",
       "endDate": "2021-01-23",
-      "funding": [
+      "fundingStream": [
         {
           "id": "https://example.org/funding/4312267",
-          "type": "Funding",
+          "type": "FundingStream",
           "title": "Green-field approaches to peri-temporal ablation in psychosocial contexts",
           "grantId": "4312267",
           "funder": {
