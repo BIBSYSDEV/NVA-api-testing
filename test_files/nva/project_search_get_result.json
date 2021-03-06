@@ -48,7 +48,7 @@
       },
       "contributors": [
         {
-          "role": "ProjectManager",
+          "type": "ProjectManagement",
           "startDate": "2021-01-22",
           "endDate": "2021-01-23",
           "identity": {
@@ -64,7 +64,7 @@
           }
         },
         {
-          "role": "ProjectParticipant",
+          "type": "ProjectParticipation",
           "startDate": "2021-01-22",
           "endDate": "2021-01-23",
           "identity": {
@@ -80,7 +80,7 @@
           }
         },
         {
-          "role": "ProjectParticipant",
+          "type": "ProjectParticipation",
           "startDate": "2021-01-22",
           "endDate": "2021-01-23",
           "identity": {
