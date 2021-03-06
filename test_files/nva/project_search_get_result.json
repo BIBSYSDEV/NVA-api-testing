@@ -33,6 +33,7 @@
           "grantId": "4312267",
           "funder": {
             "id": "https://example.org/funder/0912112221",
+            "type": "Funder",
             "name": "EU-trading-blok's Social Nadir 2023",
             "validated": true
           }
