@@ -53,6 +53,7 @@
           "endDate": "2021-01-23",
           "identity": {
             "id": "https://example.org/person/76122421",
+            "type": "Person",
             "firstName": "Ota",
             "lastName": "Sengati"
           },
@@ -69,6 +70,7 @@
           "endDate": "2021-01-23",
           "identity": {
             "id": "https://example.org/person/76122421",
+            "type": "Person",
             "firstName": "Ota",
             "lastName": "Sengati"
           },
@@ -85,6 +87,7 @@
           "endDate": "2021-01-23",
           "identity": {
             "id": "https://example.org/person/76551121",
+            "type": "Person",
             "firstName": "Maha",
             "lastName": "Busal"
           },
