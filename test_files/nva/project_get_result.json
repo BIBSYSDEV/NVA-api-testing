@@ -17,17 +17,20 @@
   ],
   "startDate": "2021-01-22",
   "endDate": "2021-01-23",
-  "fundingStream": [
+  "grant": [
     {
       "id": "https://example.org/funding/4312267",
-      "type": "FundingStream",
-      "title": "Green-field approaches to peri-temporal ablation in psychosocial contexts",
+      "type": "Grant",
       "grantId": "4312267",
-      "funder": {
-        "id": "https://example.org/funder/0912112221",
-        "type": "Funder",
-        "name": "EU-trading-blok's Social Nadir 2023",
-        "validated": true
+      "metadataSource": "https://wherever-the-metadata.was/sourced-possibly-nfr-url",
+      "fundingStream": {
+        "type": "FundingStream",
+        "title": "Framework -6",
+        "funder": {
+          "id": "https://example.org/funder/0912112221",
+          "type": "Funder",
+          "name": "EU-trading-blok's Social Nadir 2023"
+        }
       }
     }
   ],
@@ -40,7 +43,7 @@
   },
   "contributors": [
     {
-      "role": "ProjectManager",
+      "type": "ProjectManager",
       "startDate": "2021-01-22",
       "endDate": "2021-01-23",
       "identity": {
@@ -58,7 +61,7 @@
       }
     },
     {
-      "role": "ProjectParticipant",
+      "type": "ProjectParticipant",
       "startDate": "2021-01-22",
       "endDate": "2021-01-23",
       "identity": {
@@ -76,7 +79,7 @@
       }
     },
     {
-      "role": "ProjectParticipant",
+      "type": "ProjectParticipant",
       "startDate": "2021-01-22",
       "endDate": "2021-01-23",
       "identity": {
