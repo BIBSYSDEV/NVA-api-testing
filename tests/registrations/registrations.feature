@@ -9,6 +9,14 @@ Feature: Registration API tests
           Accept: 'application/json'
         }
       """
+      * def correctMessage = 
+      """
+      {
+        "messageType": "DoiRequest",
+        "publicationIdentifier": "2881840c-b101-4871-920f-d40010689e5a",
+        "message": "Test message"
+      }
+      """
 
       Given url 'https://api.dev.nva.aws.unit.no/publication'
 
@@ -36,9 +44,18 @@ Feature: Registration API tests
 
     Scenario: (Post update doirequest)
 
-    Scenario: (Get messages by role)
+    Scenario Outline: GET messages by role returns status Ok
+    Given path '/messages'
+    And param role = '<Role>'
+    When method GET
+    Then status 200
+    Examples:
+    | Role    |
+    | Creator |
+    | Curator |
 
-    Scenario: (Post messages)
+    Scenario: POST message returns status Created
       Given path '/messages'
-      And 
-    Scenario: (Post messages)
+      And request correctMessage
+      When method POST
+      Then status 201
