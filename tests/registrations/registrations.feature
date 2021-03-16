@@ -10,30 +10,35 @@ Feature: Registration API tests
         }
       """
 
-      Given url 'https://api.dev.nva.aws.unit.no/temp-publication'
-
-    Scenario: GET '/' with pagesize set returns list of Registrations up to pagesize and status Ok when requesting existing Registration
-      * configure headers =
-      """
-        {
-          Accept: 'application/json'
-        }
-      """
-      Given path '/'
-      And param pagesize = '100'
-      When method GET
-      Then status 200
-
+      Given url 'https://api.dev.nva.aws.unit.no/publication'
 
     Scenario: GET returns Registration and status Ok when requesting existing Registration
-      * path '/'
-      * param pagesize = '10'
+      * path '/by-owner'
       * method GET
-      * def identifier = response[0]['identifier'] 
+      * def identifier = response[0]['identifier']
       Given path '/' + identifier
       When method GET
       Then status 200
 
+    Scenario: (Post resource)
+
+    Scenario: (Put resource)
+
+    Scenario: (Delete resource)
+
+    Scenario: (Put publish resource)
+
     Scenario: GET returns status Not Found when requesting non-existing Registration
 
-    Scenario: 
+    Scenario: (Get by-owner)
+
+    Scenario: (Get doirequest by role)
+
+    Scenario: (Post update doirequest)
+
+    Scenario: (Get messages by role)
+
+    Scenario: (Post messages)
+      Given path '/messages'
+      And 
+    Scenario: (Post messages)
