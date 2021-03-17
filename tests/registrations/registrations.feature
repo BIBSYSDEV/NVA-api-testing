@@ -9,53 +9,156 @@ Feature: Registration API tests
           Accept: 'application/json'
         }
       """
-      * def correctMessage = 
+      * def correctMessage = read('../../test_files/nva_registrations/correct_message_payload.json')
+      * def correctDoirequestPayload = read('../../test_files/nva_registrations/correct_doirequest_payload.json')
+      * def correctResourcePayload = read('../../test_files/nva_registrations/correct_resource_payload.json')
+      * def correctResourceUpdatePayload = read('../../test_files/nva_registrations/update_resource_payload.json')
+      * def updateStatusPayload = read('../../test_files/nva_registrations/update_resource_status_payload.json')
+      * def misformedJson = '{"wrong", "payload"}'
+      * def nonExistingResourceId = 'b0e6425c-41ef-48af-a771-03b0b474cbd1'
+      * def invalidUuid = 'invalid-uuid'
+      * def mainTitleUpdate = 'Update Registration test'
+      * def updatedMainTitle = 'Update Registration test updated'
+      * def updateStatusMainTitle = 'Update Registration status test'
+
+      * def findIdentifier = 
       """
-      {
-        "messageType": "DoiRequest",
-        "publicationIdentifier": "2881840c-b101-4871-920f-d40010689e5a",
-        "message": "Test message"
-      }
+        function(registrationList, title) {
+          if (!title) {
+            return registrationList[0].identifier;
+          }
+          var registrationId = 'not found'
+          registrationList.forEach(function(registration) {
+            if(registration['mainTitle'] === title) {
+              registrationId = registration['identifier'];
+            }
+          });
+          return registrationId
+        }
       """
 
       Given url 'https://api.dev.nva.aws.unit.no/publication'
 
+    Scenario: POST returns status Created and Resource detials
+      Given path '/'
+      And request correctResourcePayload
+      When method POST
+      Then status 201
+
     Scenario: GET returns Registration and status Ok when requesting existing Registration
       * path '/by-owner'
       * method GET
-      * def identifier = response[0]['identifier']
+      * def identifier = response.publications[0].identifier
       Given path '/' + identifier
       When method GET
       Then status 200
 
-    Scenario: (Post resource)
+    Scenario: POST return status Bad Request with misformed json object
+      Given path '/'
+      And request misformedJson
+      When method POST
+      Then status 400 
+      And match response.title == 'Bad Request'
+      And match response.status == 400
 
-    Scenario: (Put resource)
+    Scenario: PUT returns status Ok
+      * path '/'
+      * request correctResourceUpdatePayload
+      * method POST
+      * path '/by-owner'
+      * method GET
+      * def identifier = findIdentifier(response.publications, mainTitleUpdate)
+      * set correctResourceUpdatePayload.identifier = identifier
+      * set correctResourceUpdatePayload.mainTitle = updatedMainTitle
+      Given path '/' + identifier
+      And request correctResourceUpdatePayload
+      When method PUT
+      Then status 200
+      And response.mainTitle = updatedMainTitle
 
-    Scenario: (Delete resource)
+    Scenario: DELETE resource returns status Ok
+      * path '/by-owner'
+      * method GET
+      * def identifier = findIdentifier(response.publications, '')
+      Given path '/' + identifier
+      When method DELETE
+      Then status 202
 
-    Scenario: (Put publish resource)
+    Scenario: PUT publish returns status Accepted
+      * path '/'
+      * request updateStatusPayload
+      * method POST
+      * path '/by-owner'
+      * method GET
+      * def identifier = findIdentifier(response.publications, updateStatusMainTitle)
+      Given path '/publish/' + identifier
+      And request correctResourceUpdatePayload
+      When method PUT
+      Then status 202
+      And response.message = 'Publication is being published. This may take a while.'
+      And response.status = 202
 
     Scenario: GET returns status Not Found when requesting non-existing Registration
+      Given path '/' + nonExistingResourceId
+      When method GET
+      Then status 404
+      And match response.title == 'Not Found'
+      And match response.status == 404
+      And match response.detail == 'Publication not found: ' + nonExistingResourceId
 
-    Scenario: (Get by-owner)
+    Scenario: GET returns status Bad Request when requesting with invalid Uuid
+      Given path '/' + invalidUuid
+      When method GET
+      Then status 400
+      And match response.title == 'Bad Request'
+      And match response.status == 400
+      And match response.detail == 'Identifier is not a valid UUID: ' + invalidUuid
 
-    Scenario: (Get doirequest by role)
+    Scenario: GET resource by owner returns status Ok
+      Given path '/by-owner'
+      When method GET
+      Then status 200
+      And response.publications == '#array'
 
-    Scenario: (Post update doirequest)
+    Scenario: Post create doirequest returns status Created
+      * path '/by-owner'
+      * method GET
+      * def identifier = findIdentifier(response.publications, updateStatusMainTitle)
+      * set correctDoirequestPayload.identifier = identifier
+      Given path '/doirequest'
+      And request correctDoirequestPayload
+      When method POST
+      Then status 201
 
-    Scenario Outline: GET messages by role returns status Ok
-    Given path '/messages'
-    And param role = '<Role>'
-    When method GET
-    Then status 200
-    Examples:
-    | Role    |
-    | Creator |
-    | Curator |
+    Scenario Outline: GET doirequest by role returns status Ok
+      Given path '/doirequest'
+      And param role = '<Role>'
+      When method GET
+      Then status 200
+      Examples:
+        | Role    |
+        | Creator |
+        | Curator |
 
     Scenario: POST message returns status Created
+      * path '/by-owner'
+      * method GET
+      * def identifier = findIdentifier(response.publications, updateStatusMainTitle)
+      * set correctMessage.publicationIdentifier = identifier
       Given path '/messages'
       And request correctMessage
       When method POST
       Then status 201
+
+    Scenario Outline: GET messages by role returns status Ok
+      * path '/messages'
+      * request correctMessage
+      * method POST
+      Given path '/messages'
+      And param role = '<Role>'
+      When method GET
+      Then status 200
+      Examples:
+        | Role    |
+        | Creator |
+        | Curator |
