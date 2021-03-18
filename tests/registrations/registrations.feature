@@ -53,7 +53,6 @@ Feature: Registration API tests
       * path '/by-owner'
       * method GET
       * def identifier = findIdentifier(response.publications, mainTitleGet)
-      * karate.log(identifier)
       Given path '/' + identifier
       When method GET
       Then status 200
