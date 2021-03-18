@@ -1,0 +1,62 @@
+{
+  "@context": "https://example.org/search-api-context.json",
+  "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/1234",
+  "cristin_person_id" : "1234",
+  "first_name" : "Kjetil Elias",
+  "surname" : "Telle",
+  "tel" : "22334455",
+  "identified_cristin_person" : true,
+  "affiliations" : [ {
+    "institution" : {
+      "cristin_institution_id" : "185",
+      "url" : "https://api.cristin.no/v2/institutions/185"
+    },
+    "unit" : {
+      "cristin_unit_id" : "185.17.0.0",
+      "url" : "https://api.cristin.no/v2/units/185.17.0.0"
+    },
+    "active" : false,
+    "position" : {
+      "en" : "Guest"
+    }
+  }, {
+    "institution" : {
+      "cristin_institution_id" : "217",
+      "url" : "https://api.cristin.no/v2/institutions/217"
+    },
+    "unit" : {
+      "cristin_unit_id" : "217.14.0.0",
+      "url" : "https://api.cristin.no/v2/units/217.14.0.0"
+    },
+    "active" : false,
+    "position" : {
+      "en" : "Professor"
+    }
+  }, {
+    "institution" : {
+      "cristin_institution_id" : "5932",
+      "url" : "https://api.cristin.no/v2/institutions/5932"
+    },
+    "unit" : {
+      "cristin_unit_id" : "5932.5.3.0",
+      "url" : "https://api.cristin.no/v2/units/5932.5.3.0"
+    },
+    "active" : true,
+    "position" : {
+      "en" : "Researcher"
+    }
+  }, {
+    "institution" : {
+      "cristin_institution_id" : "7502",
+      "url" : "https://api.cristin.no/v2/institutions/7502"
+    },
+    "unit" : {
+      "cristin_unit_id" : "7502.9.0.0",
+      "url" : "https://api.cristin.no/v2/units/7502.9.0.0"
+    },
+    "active" : true,
+    "position" : {
+      "en" : "Scientific director"
+    }
+  } ]
+}

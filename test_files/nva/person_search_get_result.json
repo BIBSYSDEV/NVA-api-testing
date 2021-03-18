@@ -1,0 +1,71 @@
+{
+  "@context": "https://example.org/search-api-context.json",
+  "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/search?=__query_text__",
+  "numberOfResults": 2,
+  "query": "projects?title=__query_text__",
+  "processingTime": __PROCESSING_TIME__,
+  "firstRecord": 1,
+  "totalRecords": 2,
+  "hits": [
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/404508",
+      "first_name": "Mattias",
+      "surname": "Solbakken",
+      "cristin_person_id": "404508"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/1230690",
+      "first_name": "Mattias",
+      "surname": "Müller",
+      "cristin_person_id": "1230690"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/709498",
+      "first_name": "Mattias",
+      "surname": "Thuve",
+      "cristin_person_id": "709498"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/8738",
+      "first_name": "Mattias",
+      "surname": "Sandberg",
+      "cristin_person_id": "8738"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/1100619",
+      "first_name": "Mattias",
+      "surname": "Berntsen",
+      "cristin_person_id": "1100619"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/1103492",
+      "first_name": "Mattias",
+      "surname": "Müller",
+      "cristin_person_id": "1103492"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/8207",
+      "first_name": "Mattias",
+      "surname": "Sandberg",
+      "cristin_person_id": "8207"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/326252",
+      "first_name": "Mattias",
+      "surname": "Hamberg",
+      "cristin_person_id": "326252"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/645044",
+      "first_name": "Mattias",
+      "surname": "Undlien",
+      "cristin_person_id": "645044"
+    },
+    {
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/324205",
+      "first_name": "Mattias",
+      "surname": "Ekman",
+      "cristin_person_id": "324205"
+    }
+  ]
+}
