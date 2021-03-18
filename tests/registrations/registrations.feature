@@ -14,7 +14,6 @@ Feature: Registration API tests
       * def correctResourcePayload = read('../../test_files/nva_registrations/correct_resource_payload.json')
       * def correctResourceUpdatePayload = read('../../test_files/nva_registrations/update_resource_payload.json')
       * def updateStatusPayload = read('../../test_files/nva_registrations/update_resource_status_payload.json')
-      * def misformedJson = '{"wrong", "payload"}'
       * def nonExistingResourceId = 'b0e6425c-41ef-48af-a771-03b0b474cbd1'
       * def invalidUuid = 'invalid-uuid'
       * def mainTitleGet = 'API test registration GET'
