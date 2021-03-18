@@ -17,9 +17,13 @@ Feature: Registration API tests
       * def misformedJson = '{"wrong", "payload"}'
       * def nonExistingResourceId = 'b0e6425c-41ef-48af-a771-03b0b474cbd1'
       * def invalidUuid = 'invalid-uuid'
-      * def mainTitleUpdate = 'Update Registration test'
-      * def updatedMainTitle = 'Update Registration test updated'
-      * def updateStatusMainTitle = 'Update Registration status test'
+      * def mainTitleGet = 'API test registration GET'
+      * def mainTitleUpdate = 'API test registration PUT'
+      * def updatedMainTitle = 'API test registration PUT updated'
+      * def mainTitleDelete = 'API test registration DELETE'
+      * def mainTitlePublish = 'API test registration PUT publish'
+      * def mainTitleDoiRequestCreate = 'API test registration DoiRequest'
+      * def mainTitleMessageCreate = 'API test registration Message'
 
       * def findIdentifier = 
       """
@@ -48,23 +52,13 @@ Feature: Registration API tests
     Scenario: GET returns Registration and status Ok when requesting existing Registration
       * path '/by-owner'
       * method GET
-      * def identifier = response.publications[0].identifier
+      * def identifier = findIdentifier(response.publications, mainTitleGet)
+      * karate.log(identifier)
       Given path '/' + identifier
       When method GET
       Then status 200
 
-    Scenario: POST return status Bad Request with misformed json object
-      Given path '/'
-      And request misformedJson
-      When method POST
-      Then status 400 
-      And match response.title == 'Bad Request'
-      And match response.status == 400
-
     Scenario: PUT returns status Ok
-      * path '/'
-      * request correctResourceUpdatePayload
-      * method POST
       * path '/by-owner'
       * method GET
       * def identifier = findIdentifier(response.publications, mainTitleUpdate)
@@ -79,20 +73,17 @@ Feature: Registration API tests
     Scenario: DELETE resource returns status Ok
       * path '/by-owner'
       * method GET
-      * def identifier = findIdentifier(response.publications, '')
+      * def identifier = findIdentifier(response.publications, mainTitleDelete)
       Given path '/' + identifier
       When method DELETE
       Then status 202
 
     Scenario: PUT publish returns status Accepted
-      * path '/'
-      * request updateStatusPayload
-      * method POST
       * path '/by-owner'
       * method GET
-      * def identifier = findIdentifier(response.publications, updateStatusMainTitle)
-      Given path '/publish/' + identifier
-      And request correctResourceUpdatePayload
+      * def identifier = findIdentifier(response.publications, mainTitlePublish)
+      Given path '/' + identifier + '/publish'
+      And request '{}'
       When method PUT
       Then status 202
       And response.message = 'Publication is being published. This may take a while.'
@@ -123,7 +114,7 @@ Feature: Registration API tests
     Scenario: Post create doirequest returns status Created
       * path '/by-owner'
       * method GET
-      * def identifier = findIdentifier(response.publications, updateStatusMainTitle)
+      * def identifier = findIdentifier(response.publications, mainTitleDoiRequestCreate)
       * set correctDoirequestPayload.identifier = identifier
       Given path '/doirequest'
       And request correctDoirequestPayload
@@ -143,7 +134,7 @@ Feature: Registration API tests
     Scenario: POST message returns status Created
       * path '/by-owner'
       * method GET
-      * def identifier = findIdentifier(response.publications, updateStatusMainTitle)
+      * def identifier = findIdentifier(response.publications, mainTitleMessageCreate)
       * set correctMessage.publicationIdentifier = identifier
       Given path '/messages'
       And request correctMessage
