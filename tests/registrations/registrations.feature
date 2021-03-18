@@ -9,13 +9,19 @@ Feature: Registration API tests
           Accept: 'application/json'
         }
       """
+      * def randomIdentifier = 
+      """
+        function() {
+          return '' + Number(new Date().getTime()).toString(16) + '-' + java.util.UUID.randomUUID();
+        }
+      """
       * def correctMessage = read('../../test_files/nva_registrations/correct_message_payload.json')
       * def correctDoirequestPayload = read('../../test_files/nva_registrations/correct_doirequest_payload.json')
       * def correctResourcePayload = read('../../test_files/nva_registrations/correct_resource_payload.json')
       * def correctResourceUpdatePayload = read('../../test_files/nva_registrations/update_resource_payload.json')
       * def updateStatusPayload = read('../../test_files/nva_registrations/update_resource_status_payload.json')
-      * def nonExistingResourceId = 'b0e6425c-41ef-48af-a771-03b0b474cbd1'
-      * def invalidUuid = 'invalid-uuid'
+      * def nonExistingResourceId = randomIdentifier()
+      * def invalidIdentifier = 'invalid-identifier'
       * def mainTitleGet = 'API test registration GET'
       * def mainTitleUpdate = 'API test registration PUT'
       * def updatedMainTitle = 'API test registration PUT updated'
@@ -42,11 +48,23 @@ Feature: Registration API tests
 
       Given url 'https://api.dev.nva.aws.unit.no/publication'
 
-    Scenario: POST returns status Created and Resource detials
+    Scenario: POST returns status Created, Resource detials and Location header
       Given path '/'
       And request correctResourcePayload
       When method POST
       Then status 201
+      And match response.identifier == '#present'
+      And match header Location == '#present'
+
+    Scenario: POST returns status Unauthorized when unauthorized user
+      Given path '/'
+      * configure headers = {Authorization: 'unauthorized' }
+      And request correctResourcePayload
+      When method POST
+      Then status 401
+      And match response.status == 401
+      And match header.title == 'Unauthorized'
+      And match header.details == 'Unauthorized access'
 
     Scenario: GET returns Registration and status Ok when requesting existing Registration
       * path '/by-owner'
@@ -88,6 +106,7 @@ Feature: Registration API tests
       And response.status = 202
 
     Scenario: GET returns status Not Found when requesting non-existing Registration
+      * karate.log(nonExistingResourceId)
       Given path '/' + nonExistingResourceId
       When method GET
       Then status 404
@@ -95,13 +114,13 @@ Feature: Registration API tests
       And match response.status == 404
       And match response.detail == 'Publication not found: ' + nonExistingResourceId
 
-    Scenario: GET returns status Bad Request when requesting with invalid Uuid
-      Given path '/' + invalidUuid
+    Scenario: GET returns status Bad Request when requesting with invalid identifier
+      Given path '/' + invalidIdentifier
       When method GET
       Then status 400
       And match response.title == 'Bad Request'
       And match response.status == 400
-      And match response.detail == 'Identifier is not a valid UUID: ' + invalidUuid
+      And match response.detail == 'The request identifier is invalid: ' + invalidUuid
 
     Scenario: GET resource by owner returns status Ok
       Given path '/by-owner'
