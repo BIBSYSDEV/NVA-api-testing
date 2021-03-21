@@ -3,6 +3,7 @@
     "@vocab": "https://unit.no/person-ontology#",
     "@base": "https://example.org/person/37285"
   },
+  "type": "Person",
   "id": "https://api.dev.nva.aws.unit.no/person/37285",
   "identifier": [
     {
