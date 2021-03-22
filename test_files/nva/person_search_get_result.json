@@ -8,29 +8,101 @@
   "nextResults": null,
   "hits": [
     {
+      "type": "Person",
       "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/404508",
+      "identifier": [
+        {
+          "type": "CristinIdentifier",
+          "value": "404508"
+        }
+      ],
       "name": "Solbakken, Mattias",
-      "cristin_person_id": "404508"
+      "orcid": "https://orcid.org/0000-0002-8617-3281",
+      "affiliation": [
+        {
+          "id": "https://api.cristin.no/v2/units/191.10.0.0"
+        },
+        {
+          "id": "https://api.cristin.no/v2/units/185.50.1.2",
+          "role": "Adviser"
+        }
+      ],
+      "imageUrl": "https://api.cristin.no/v2/persons/404508/picture",
+      "verified": true
     },
     {
+      "type": "Person",
       "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/1230690",
+      "identifier": [
+        {
+          "type": "CristinIdentifier",
+          "value": "1230690"
+        }
+      ],
       "name": "Müller, Mattias",
-      "cristin_person_id": "1230690"
+      "orcid": "https://orcid.org/0000-0001-1234-5678",
+      "affiliation": [
+        {
+          "id": "https://api.cristin.no/v2/units/190.0.0.0",
+          "role": "External"
+        }
+      ],
+      "verified": true
     },
     {
+      "type": "Person",
       "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/709498",
+      "identifier": [
+        {
+          "type": "CristinIdentifier",
+          "value": "709498"
+        }
+      ],
       "name": "Thuve, Mattias",
-      "cristin_person_id": "709498"
+      "orcid": "https://orcid.org/0000-0001-1234-5678",
+      "affiliation": [
+        {
+          "id": "https://api.cristin.no/v2/units/191.10.0.0",
+          "role": "U.pers.u/godkj.utd"
+        }
+      ],
+      "verified": true
     },
     {
+      "type": "Person",
       "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/8738",
+      "identifier": [
+        {
+          "type": "CristinIdentifier",
+          "value": "8738"
+        }
+      ],
       "name": "Sandberg, Mattias",
-      "cristin_person_id": "8738"
+      "affiliation": [
+        {
+          "id": "https://api.cristin.no/v2/units/185.15.26.0",
+          "role": "Guest"
+        }
+      ],
+      "verified": true
     },
     {
+      "type": "Person",
       "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/person/1100619",
+      "identifier": [
+        {
+          "type": "CristinIdentifier",
+          "value": "1100619"
+        }
+      ],
       "name": "Berntsen, Mattias",
-      "cristin_person_id": "1100619"
+      "affiliation": [
+        {
+          "id": "https://api.cristin.no/v2/units/186.45.0.0",
+          "role": "Guest"
+        }
+      ],
+      "verified": true
     }
   ]
 }
