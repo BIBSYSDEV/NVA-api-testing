@@ -2,6 +2,6 @@
     "accessRights": [
         "READ_DOI_REQUEST"
     ],
-    "rolename": "TestExistingRole",
+    "rolename": "TestCreateRole",
     "type": "Role"
 }

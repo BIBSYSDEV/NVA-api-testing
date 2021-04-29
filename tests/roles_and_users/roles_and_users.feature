@@ -25,20 +25,21 @@ Feature: Roles and users API tests
       * url 'http://api.dev.nva.aws.unit.no/customer'
       * path '/'
       * method GET
-      * def customerId = 'https://api.dev.nva.aws.unit.no/customer/' + findCustomer('UNIT', response.customers)
+      * def customerId = findCustomer('UNIT', response.customers)
+      * def customer = 'https://api.dev.nva.aws.unit.no/customer/' + customerId
 
       * def createRolePayload = read('../../test_files/users_and_roles/create_role_payload.json')
       * def existingRolePayload = read('../../test_files/users_and_roles/existing_role_payload.json')
       * def createUserPayload = read('../../test_files/users_and_roles/create_user_payload.json')
-      * set createUserPayload['institution'] = customerId
+      * set createUserPayload['institution'] = customer
       * def createUserResponse = read('../../test_files/users_and_roles/create_user_response.json')
-      * set createUserResponse['institution'] = customerId
+      * set createUserResponse['institution'] = customer
       * def existingUserPayload = read('../../test_files/users_and_roles/existing_user_payload.json')
-      * set existingUserPayload['institution'] = customerId
+      * set existingUserPayload['institution'] = customer
       * def createUpdateUserPayload = read('../../test_files/users_and_roles/create_update_user_payload.json')
-      * set createUpdateUserPayload['institution'] = customerId
+      * set createUpdateUserPayload['institution'] = customer
       * def updateUserPayload = read('../../test_files/users_and_roles/update_user_payload.json')
-      * set updateUserPayload['institution'] = customerId
+      * set updateUserPayload['institution'] = customer
 
       Given url 'https://api.dev.nva.aws.unit.no/users-roles'
 
@@ -57,7 +58,7 @@ Feature: Roles and users API tests
       """
       * url 'https://api.dev.nva.aws.unit.no/users-roles'
       Given path '/institutions/users'
-      And param institution = customerId
+      And param institution = customer
       When method GET
       Then status 200
       And match response =='#array' 
@@ -77,14 +78,14 @@ Feature: Roles and users API tests
       Then status 409
       And match response.status == 409
       And match response.title == 'Conflict'
-      And match response.detail == 'Role already exists: ' + createRolePayload.rolename
+      And match response.detail == 'Role already exists: ' + existingRolePayload.rolename
 
     Scenario: GET Role by role name returns Role
       * def roleName = 'TestExistingRole'
       Given path '/roles/' + roleName
       When method GET
       Then status 200
-      And match response == createRolePayload
+      And match response == existingRolePayload
 
     Scenario: GET Role by non-existing role name returns Not Found
       * def nonExistingRoleName = 'TestNonExistingRole'
@@ -109,7 +110,7 @@ Feature: Roles and users API tests
       Then status 409
       And match response.status == 409
       And match response.title == 'Conflict'
-      And match response.detail == 'User already exists: ' + createUserPayload.username
+      And match response.detail == 'User already exists: ' + existingUserPayload.username
 
     Scenario: GET existing User by username returns User
       * def username = 'test-user-api-create-user@test.no'
