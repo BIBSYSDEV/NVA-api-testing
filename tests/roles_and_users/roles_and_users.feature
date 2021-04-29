@@ -21,98 +21,43 @@ Feature: Roles and users API tests
           return customerId
         }
       """
-      * def createRolePayload = 
-      """
-          {
-              accessRights: [
-                  "READ_DOI_REQUEST"
-              ],
-              rolename: "TestCreateRole",
-              type: "Role"
-          }
-      """
-      * def createUserPayload = 
-      """
-          {
-            "institution": "https://api.dev.nva.aws.unit.no/customer/9c1c941f-c713-4900-8482-f7d2684fc630",
-            "roles": [
-                {
-                "rolename": "Creator",
-                "type": "Role"
-                }
-            ],
-            "familyName": "TestUser",
-            "givenName": "API Create User",
-            "type": "User",
-            "username": "test-user-api-create-user@test.no"
-          }
-      """
-      * def createUserResponse = 
-      """
-          {
-            "institution": "https://api.dev.nva.aws.unit.no/customer/9c1c941f-c713-4900-8482-f7d2684fc630",
-            "accessRights": [
-                "READ_DOI_REQUEST"
-            ],                
-            "roles": [
-              {
-                "accessRights": [
-                  "READ_DOI_REQUEST"
-                ],                
-                "rolename": "Creator",
-                "type": "Role"
-              }
-            ],
-            "familyName": "TestUser",
-            "givenName": "API Create User",
-            "type": "User",
-            "username": "test-user-api-create-user@test.no"
-          }
-      """
-      * def createUpdateUserPayload = 
-      """
-          {
-            "institution": "https://api.dev.nva.aws.unit.no/customer/9c1c941f-c713-4900-8482-f7d2684fc630",
-            "roles": [
-                {
-                "rolename": "Creator",
-                "type": "Role"
-                }
-            ],
-            "familyName": "TestUser",
-            "givenName": "API User To Be Updated",
-            "type": "User",
-            "username": "test-user-api-update-user@test.no"
-          }
-      """
-      * def updateUserPayload = 
-      """
-          {
-            "institution": "https://api.dev.nva.aws.unit.no/customer/9c1c941f-c713-4900-8482-f7d2684fc630",
-            "roles": [
-                {
-                "rolename": "Creator",
-                "type": "Role"
-                }
-            ],
-            "familyName": "TestUser",
-            "givenName": "API Updated User",
-            "type": "User",
-            "username": "test-user-api-update-user@test.no"
-          }
-      """
+
+      * url 'http://api.dev.nva.aws.unit.no/customer'
+      * path '/'
+      * method GET
+      * def customerId = 'https://api.dev.nva.aws.unit.no/customer/' + findCustomer('UNIT', response.customers)
+
+      * def createRolePayload = read('../../test_files/users_and_roles/create_role_payload.json')
+      * def existingRolePayload = read('../../test_files/users_and_roles/existing_role_payload.json')
+      * def createUserPayload = read('../../test_files/users_and_roles/create_user_payload.json')
+      * set createUserPayload['institution'] = customerId
+      * def createUserResponse = read('../../test_files/users_and_roles/create_user_response.json')
+      * set createUserResponse['institution'] = customerId
+      * def existingUserPayload = read('../../test_files/users_and_roles/existing_user_payload.json')
+      * set existingUserPayload['institution'] = customerId
+      * def createUpdateUserPayload = read('../../test_files/users_and_roles/create_update_user_payload.json')
+      * set createUpdateUserPayload['institution'] = customerId
+      * def updateUserPayload = read('../../test_files/users_and_roles/update_user_payload.json')
+      * set updateUserPayload['institution'] = customerId
 
       Given url 'https://api.dev.nva.aws.unit.no/users-roles'
 
     Scenario: GET user for institution returns list of Users
-      * url 'http://api.dev.nva.aws.unit.no/customer'
-      * path '/'
-      * method GET
-      * def customerId = findCustomer('UNIT', response.customers)
-      * def user = { type: 'User', roles: '#array', username: '#string', institution: '#string', givenName: '#string', familyName: '#string', accessRights: '#array' }
+      * def user = 
+      """
+        { 
+          type: 'User', 
+          roles: '#array', 
+          username: '#string', 
+          institution: '#string', 
+          givenName: '#string', 
+          familyName: '#string', 
+          accessRights: '#array' 
+        }
+      """
       * url 'https://api.dev.nva.aws.unit.no/users-roles'
       Given path '/institutions/users'
-      And param institution = 'https://api.dev.nva.aws.unit.no/customer/' + customerId
+      And param institution = customerId
       When method GET
       Then status 200
       And match response =='#array' 
@@ -127,7 +72,7 @@ Feature: Roles and users API tests
 
     Scenario: POST roles with existing Role returns Conflict
       Given path '/roles'
-      And request createRolePayload
+      And request existingRolePayload
       When method POST
       Then status 409
       And match response.status == 409
@@ -135,14 +80,14 @@ Feature: Roles and users API tests
       And match response.detail == 'Role already exists: ' + createRolePayload.rolename
 
     Scenario: GET Role by role name returns Role
-      * def roleName = 'TestCreateRole'
+      * def roleName = 'TestExistingRole'
       Given path '/roles/' + roleName
       When method GET
       Then status 200
       And match response == createRolePayload
 
     Scenario: GET Role by non-existing role name returns Not Found
-      * def nonExistingRoleName = 'NonExistingRole'
+      * def nonExistingRoleName = 'TestNonExistingRole'
       Given path '/roles/' + nonExistingRoleName
       When method GET
       Then status 404
@@ -159,7 +104,7 @@ Feature: Roles and users API tests
 
     Scenario: Post User with existing User returns Conflict
       Given path '/users'
-      And request createUserPayload
+      And request existingUserPayload
       When method POST
       Then status 409
       And match response.status == 409
