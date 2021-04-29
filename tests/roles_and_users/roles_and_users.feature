@@ -32,8 +32,8 @@ Feature: Roles and users API tests
       * def existingRolePayload = read('../../test_files/users_and_roles/existing_role_payload.json')
       * def createUserPayload = read('../../test_files/users_and_roles/create_user_payload.json')
       * set createUserPayload['institution'] = customer
-      * def createUserResponse = read('../../test_files/users_and_roles/create_user_response.json')
-      * set createUserResponse['institution'] = customer
+      * def responseBodyUser = read('../../test_files/users_and_roles/create_user_response.json')
+      * set responseBodyUser['institution'] = customer
       * def existingUserPayload = read('../../test_files/users_and_roles/existing_user_payload.json')
       * set existingUserPayload['institution'] = customer
       * def createUpdateUserPayload = read('../../test_files/users_and_roles/create_update_user_payload.json')
@@ -43,7 +43,7 @@ Feature: Roles and users API tests
 
       Given url 'https://api.dev.nva.aws.unit.no/users-roles'
 
-    Scenario: GET user for institution returns list of Users
+    Scenario: GET Users for institution returns list of Users
       * def user = 
       """
         { 
@@ -101,7 +101,7 @@ Feature: Roles and users API tests
       And request createUserPayload
       When method POST
       Then status 200
-      And match response == createUserResponse
+      And match response == responseBodyUser
 
     Scenario: Post User with existing User returns Conflict
       Given path '/users'
