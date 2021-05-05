@@ -9,24 +9,8 @@ Feature: Roles and users API tests
           Accept: 'application/json'
         }
       """
-      * def findCustomer = 
-      """
-        function(shortName, customerList) {
-          var customerId = 'not found'
-          customerList.forEach(function(customer) {
-            if(customer['shortName'] === shortName) {
-              customerId = customer['identifier'];
-            }
-          });
-          return customerId
-        }
-      """
-
-      * url 'http://api.dev.nva.aws.unit.no/customer'
-      * path '/'
-      * method GET
-      * def customerId = findCustomer('UNIT', response.customers)
-      * def customer = 'https://api.dev.nva.aws.unit.no/customer/' + customerId
+      * def customerResponse = call read('../common.feature@name=findCustomer'){shortName: 'UNIT' }
+      * def customer = 'https://api.dev.nva.aws.unit.no/customer/' + customerResponse.customerId
 
       * def createRolePayload = read('../../test_files/users_and_roles/create_role_payload.json')
       * def existingRolePayload = read('../../test_files/users_and_roles/existing_role_payload.json')
@@ -62,7 +46,7 @@ Feature: Roles and users API tests
       When method GET
       Then status 200
       And match response =='#array' 
-      And match response == '#(^*user)'
+      And match response contains any user
 
     Scenario: POST Roles returns posted Role
       Given path '/roles'
