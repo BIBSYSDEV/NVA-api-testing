@@ -7,8 +7,8 @@ Feature: Person API testing
     * def searchPath = basePath + 'search?q='
     * def token = karate.properties['PERSON_API_KEY']
     * def currentEnvironment = karate.properties['CURRENT_ENVIRONMENT']
-    * def searchResponse = read('../../test_files/nva/person_search_get_result.json').replace('__CURRENT_ENVIRONMENT__', currentEnvironment)
-    * def personResponse = read('../../test_files/nva/person_get_result.json')
+    * def searchResponse = read('classpath:test_files/nva/person_search_get_result.json').replace('__CURRENT_ENVIRONMENT__', currentEnvironment)
+    * def personResponse = read('classpath:test_files/nva/person_get_result.json')
     * def nonExistingPerson = 'not-a-real-person'
     * def PROBLEM_JSON_MEDIA_TYPE = 'application/problem+json'
     * def JSON_LD_MEDIA_TYPE = 'application/ld+json'
