@@ -13,12 +13,12 @@ Feature: Tests for NVA customers API
         Accept: 'application/json'
       }
     """
-    * def postSuccessPayload = read('../../test_files/nva_customers/post_success_payload.json')
-    * def getCustomerIdSuccessResponse = read('../../test_files/nva_customers/get_customer_id_success_response.json')
-    * def getOrgNrSuccessResponse = read('../../test_files/nva_customers/get_org_nr_success_response.json')
-    * def getCristinIdSuccessResponse = read('../../test_files/nva_customers/get_cristin_id_success_response.json')
-    * def putSuccessPayload = read('../../test_files/nva_customers/put_success_payload.json')
-    * def putSuccessResponse = read('../../test_files/nva_customers/put_success_response.json')
+    * def postSuccessPayload = read('classpath:test_files/nva_customers/post_success_payload.json')
+    * def getCustomerIdSuccessResponse = read('classpath:test_files/nva_customers/get_customer_id_success_response.json')
+    * def getOrgNrSuccessResponse = read('classpath:test_files/nva_customers/get_org_nr_success_response.json')
+    * def getCristinIdSuccessResponse = read('classpath:test_files/nva_customers/get_cristin_id_success_response.json')
+    * def putSuccessPayload = read('classpath:test_files/nva_customers/put_success_payload.json')
+    * def putSuccessResponse = read('classpath:test_files/nva_customers/put_success_response.json')
     * def findCustomer = 
     """
       function(shortName, customerList) {

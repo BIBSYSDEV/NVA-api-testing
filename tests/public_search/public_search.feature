@@ -1,91 +1,61 @@
-Feature: Public search API tests
+Feature: API tests for public search
 
   Background:
-
-    * def searchResult =
-    """
-        {
-  "owner": "#string",
-  "publicationType": "#string",
-  "description": "#string",
-  "abstract": "#string",
-  "title": "#string",
-  "tags": '#array',
-  "reference": {
-    "publicationInstance": {
-      "volume": "#string",
-      "pages": {
-        "illustrated": true,
-        "pages": "#string",
-        "end": "#string",
-        "type": "#string",
-        "begin": "#string"
-      },
-      "issue": "#string",
-      "articleNumber": "#string",
-      "textbookContent": true,
-      "peerReviewed": true,
-      "type": "#string"
-    },
-    "type": "#string",
-    "publicationContext": {
-      "level": "#string",
-      "openAccess": true,
-      "peerReviewed": true,
-      "publisher": "#string",
-      "linkedContext": "#string",
-      "title": "#string",
-      "onlineIssn": "#string",
-      "type": "#string",
-      "printIssn": "#string",
-      "url": "#string",
-      "seriesTitle": "#string"
-    },
-    "doi": "#string"
-  },
-  "modifiedDate": "#string",
-  "publisher": {
-    "name": "#string",
-    "id": "#string"
-  },
-  "contributors": '#array',
-  "publishedDate": "#string",
-  "id": "#string",
-  "publicationDate": {
-    "month": "#string",
-    "year": "#string",
-    "type": "#string",
-    "day": "#string"
-  },
-  "alternativeTitles": '#array',
-  "doi": "#string"
-}
-    """
+    * def testTitleSearchTerm = 'API_test_public_search'
 
     Given url 'https://api.dev.nva.aws.unit.no/search'
 
-    Scenario: GET returns list of search results
+    Scenario: GET resources returns list of search results
       Given path '/resources'
       When method GET
       Then status 200
-      And match response['@context'] == '#present'
-      And match response.took == '#number'
+      And match response.hits == '#array'
       And match response.total == '#number'
-      And match response.hits == '#array'
 
-    Scenario: GET returns list of 5 results when called with query param 'results=5'
+    Scenario: GET resources with query returns list of search results
       Given path '/resources'
-      And param results = 5
+      And param query = testTitleSearchTerm
       When method GET
       Then status 200
-      And match response.hits == '#array'
+      And match response.hits == '#[6]' // hits array length == 6
+      And match response.total == 6
 
-    Scenario: GET returns list of search results when called with query param 'query="API public search"'
+    Scenario: GET resources with query returns list of 3 resources when 'results=3'
       Given path '/resources'
-      And param query = 'API AND public'
+      And param query = testTitleSearchTerm
+      And param results = 3
       When method GET
       Then status 200
-      And match response.hits == '#array'
-      And match response.hits == '#[5]'
+      And match response.hits == '#[3]' // hits array length == 3
+      And match response.total == 6
 
-      
+    Scenario: GET resources with query returns list of 2 resources when 'from=4'
+      Given path '/resources'
+      And param query = testTitleSearchTerm
+      And param from = 4
+      When method GET
+      Then status 200
+      And match response.hits == '#[2]' // hits array length == 2
+      And match response.total == 6
+
+    Scenario: GET resources with query returns list of 2 resources when 'from=4' and 'results=3'
+      Given path '/resources'
+      And param query = testTitleSearchTerm
+      And param from = 4
+      And param results = 3
+      When method GET
+      Then status 200
+      And match response.hits == '#[2]' // hits array length == 2
+      And match response.total == 6
+
+    Scenario: GET resources with query returns list of 3 resources when 'from=2' and 'results=3'
+      Given path '/resources'
+      And param query = testTitleSearchTerm
+      And param from = 2
+      And param results = 3
+      When method GET
+      Then status 200
+      And match response.hits == '#[3]' // hits array length == 3
+      And match response.total == 6
+
+    Scenario: GET resources with query returns list sorted on 

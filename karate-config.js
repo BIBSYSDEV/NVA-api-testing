@@ -1,5 +1,5 @@
 function setup() {
-  var auth = karate.read('../../auth.json');
+  var auth = karate.read('classpath:auth.json');
   var config = {
     BEARER_TOKEN: auth.BEARER_TOKEN,
   };

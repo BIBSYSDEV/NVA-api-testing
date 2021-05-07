@@ -12,17 +12,17 @@ Feature: Roles and users API tests
       * def customerResponse = call read('../common.feature@name=findCustomer'){shortName: 'UNIT' }
       * def customer = 'https://api.dev.nva.aws.unit.no/customer/' + customerResponse.customerId
 
-      * def createRolePayload = read('../../test_files/users_and_roles/create_role_payload.json')
-      * def existingRolePayload = read('../../test_files/users_and_roles/existing_role_payload.json')
-      * def createUserPayload = read('../../test_files/users_and_roles/create_user_payload.json')
+      * def createRolePayload = read('classpath:test_files/users_and_roles/create_role_payload.json')
+      * def existingRolePayload = read('classpath:test_files/users_and_roles/existing_role_payload.json')
+      * def createUserPayload = read('classpath:test_files/users_and_roles/create_user_payload.json')
       * set createUserPayload['institution'] = customer
-      * def responseBodyUser = read('../../test_files/users_and_roles/create_user_response.json')
+      * def responseBodyUser = read('classpath:test_files/users_and_roles/create_user_response.json')
       * set responseBodyUser['institution'] = customer
-      * def existingUserPayload = read('../../test_files/users_and_roles/existing_user_payload.json')
+      * def existingUserPayload = read('classpath:test_files/users_and_roles/existing_user_payload.json')
       * set existingUserPayload['institution'] = customer
-      * def createUpdateUserPayload = read('../../test_files/users_and_roles/create_update_user_payload.json')
+      * def createUpdateUserPayload = read('classpath:test_files/users_and_roles/create_update_user_payload.json')
       * set createUpdateUserPayload['institution'] = customer
-      * def updateUserPayload = read('../../test_files/users_and_roles/update_user_payload.json')
+      * def updateUserPayload = read('classpath:test_files/users_and_roles/update_user_payload.json')
       * set updateUserPayload['institution'] = customer
 
       Given url 'https://api.dev.nva.aws.unit.no/users-roles'

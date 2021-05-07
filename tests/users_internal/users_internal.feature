@@ -1,14 +1,14 @@
 Feature: Users internal API
 
     Background:
-        * def getResponse = read('../../test_files/nva_users_internal/get_success.json')
-        * def postSuccessPayload = read('../../test_files/nva_users_internal/post_success_payload.json')
-        * def postResponse = read('../../test_files/nva_users_internal/post_response.json')
-        * def existingUserPayload = read('../../test_files/nva_users_internal/post_existing_user_payload.json')
-        * def missingTypePayload = read('../../test_files/nva_users_internal/post_missing_type_payload.json')
-        * def wrongTypePayload = read('../../test_files/nva_users_internal/post_wrong_type_payload.json')
-        * def wrongRoleTypePayload = read('../../test_files/nva_users_internal/post_wrong_role_type_payload.json')
-        * def putSuccessPayload = read('../../test_files/nva_users_internal/put_success_payload.json')
+        * def getResponse = read('classpath:test_files/nva_users_internal/get_success.json')
+        * def postSuccessPayload = read('classpath:test_files/nva_users_internal/post_success_payload.json')
+        * def postResponse = read('classpath:test_files/nva_users_internal/post_response.json')
+        * def existingUserPayload = read('classpath:test_files/nva_users_internal/post_existing_user_payload.json')
+        * def missingTypePayload = read('classpath:test_files/nva_users_internal/post_missing_type_payload.json')
+        * def wrongTypePayload = read('classpath:test_files/nva_users_internal/post_wrong_type_payload.json')
+        * def wrongRoleTypePayload = read('classpath:test_files/nva_users_internal/post_wrong_role_type_payload.json')
+        * def putSuccessPayload = read('classpath:test_files/nva_users_internal/put_success_payload.json')
         * def getUser = 'user-internal-get@test.no'
         * def putUser = 'user-internal-put@test.no'
         * def nonExistingUser = 'non-existing-user'
