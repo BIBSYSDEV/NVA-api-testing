@@ -7,8 +7,8 @@ Feature: Project API testing
     * def searchPath = basePath + 'search?q='
     * def token = karate.properties['PROJECT_API_KEY']
     * def currentEnvironment = karate.properties['CURRENT_ENVIRONMENT']
-    * def searchResponse = read('../../test_files/nva/project_search_get_result.json').replace('__CURRENT_ENVIRONMENT__', currentEnvironment)
-    * def projectResponse = read('../../test_files/nva/project_get_result.json')
+    * def searchResponse = read('classpath:test_files/nva/project_search_get_result.json').replace('__CURRENT_ENVIRONMENT__', currentEnvironment)
+    * def projectResponse = read('classpath:test_files/nva/project_get_result.json')
     * def nonExistingProject = 'not-a-real-project'
     * def PROBLEM_JSON_MEDIA_TYPE = 'application/problem+json'
     * def JSON_LD_MEDIA_TYPE = 'application/ld+json'

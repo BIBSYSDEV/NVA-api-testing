@@ -9,36 +9,20 @@ Feature: Roles and users API tests
           Accept: 'application/json'
         }
       """
-      * def findCustomer = 
-      """
-        function(shortName, customerList) {
-          var customerId = 'not found'
-          customerList.forEach(function(customer) {
-            if(customer['shortName'] === shortName) {
-              customerId = customer['identifier'];
-            }
-          });
-          return customerId
-        }
-      """
+      * def customerResponse = call read('../common.feature@name=findCustomer'){shortName: 'UNIT' }
+      * def customer = 'https://api.dev.nva.aws.unit.no/customer/' + customerResponse.customerId
 
-      * url 'http://api.dev.nva.aws.unit.no/customer'
-      * path '/'
-      * method GET
-      * def customerId = findCustomer('UNIT', response.customers)
-      * def customer = 'https://api.dev.nva.aws.unit.no/customer/' + customerId
-
-      * def createRolePayload = read('../../test_files/users_and_roles/create_role_payload.json')
-      * def existingRolePayload = read('../../test_files/users_and_roles/existing_role_payload.json')
-      * def createUserPayload = read('../../test_files/users_and_roles/create_user_payload.json')
+      * def createRolePayload = read('classpath:test_files/users_and_roles/create_role_payload.json')
+      * def existingRolePayload = read('classpath:test_files/users_and_roles/existing_role_payload.json')
+      * def createUserPayload = read('classpath:test_files/users_and_roles/create_user_payload.json')
       * set createUserPayload['institution'] = customer
-      * def responseBodyUser = read('../../test_files/users_and_roles/create_user_response.json')
+      * def responseBodyUser = read('classpath:test_files/users_and_roles/create_user_response.json')
       * set responseBodyUser['institution'] = customer
-      * def existingUserPayload = read('../../test_files/users_and_roles/existing_user_payload.json')
+      * def existingUserPayload = read('classpath:test_files/users_and_roles/existing_user_payload.json')
       * set existingUserPayload['institution'] = customer
-      * def createUpdateUserPayload = read('../../test_files/users_and_roles/create_update_user_payload.json')
+      * def createUpdateUserPayload = read('classpath:test_files/users_and_roles/create_update_user_payload.json')
       * set createUpdateUserPayload['institution'] = customer
-      * def updateUserPayload = read('../../test_files/users_and_roles/update_user_payload.json')
+      * def updateUserPayload = read('classpath:test_files/users_and_roles/update_user_payload.json')
       * set updateUserPayload['institution'] = customer
 
       Given url 'https://api.dev.nva.aws.unit.no/users-roles'
@@ -62,7 +46,7 @@ Feature: Roles and users API tests
       When method GET
       Then status 200
       And match response =='#array' 
-      And match response == '#(^*user)'
+      And match response contains any user
 
     Scenario: POST Roles returns posted Role
       Given path '/roles'

@@ -15,11 +15,11 @@ Feature: Registration API tests
           return '' + Number(new Date().getTime()).toString(16) + '-' + java.util.UUID.randomUUID();
         }
       """
-      * def correctMessage = read('../../test_files/nva_registrations/correct_message_payload.json')
-      * def correctDoirequestPayload = read('../../test_files/nva_registrations/correct_doirequest_payload.json')
-      * def correctResourcePayload = read('../../test_files/nva_registrations/correct_resource_payload.json')
-      * def correctResourceUpdatePayload = read('../../test_files/nva_registrations/update_resource_payload.json')
-      * def updateStatusPayload = read('../../test_files/nva_registrations/update_resource_status_payload.json')
+      * def correctMessage = read('classpath:test_files/nva_registrations/correct_message_payload.json')
+      * def correctDoirequestPayload = read('classpath:test_files/nva_registrations/correct_doirequest_payload.json')
+      * def correctResourcePayload = read('classpath:test_files/nva_registrations/correct_resource_payload.json')
+      * def correctResourceUpdatePayload = read('classpath:test_files/nva_registrations/update_resource_payload.json')
+      * def updateStatusPayload = read('classpath:test_files/nva_registrations/update_resource_status_payload.json')
       * def nonExistingResourceId = randomIdentifier()
       * def invalidIdentifier = 'invalid-identifier'
       * def mainTitleGet = 'API test registration GET'

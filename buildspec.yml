@@ -10,10 +10,10 @@ phases:
       - echo "pre_build step"
   build:
     commands:
-      - java -jar karate.jar tests
+      - java -cp karate.jar:. com.intuit.karate.Main tests
   post_build:
     commands:
       - echo "post_build step"
 artifacts:
   files:
-    - "**/*"
+    - '**/*'
