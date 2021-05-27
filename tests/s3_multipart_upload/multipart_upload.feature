@@ -6,31 +6,19 @@ Feature: API test for multipart upload to S3
     """
     { 
         Authorization: '#(auth_token)',
-        Accept: 'application/json'
+        Accept: 'application/pdf'
     }
     """
-    * def uploadFile = read('classpath:test_files/multipart_upload/test_file.json')
-    * bytes uploadFileAsBytes = read('classpath:test_files/multipart_upload/test_file.json')
+    * def uploadFile = read('classpath:test_files/multipart_upload/test_file2.pdf')
+    * bytes uploadFileAsBytes = read('classpath:test_files/multipart_upload/test_file2.pdf')
     * def filesize = uploadFileAsBytes.length
-    * def md5hash = 
-    """
-        function (bytes) {
-            const MessageDigest = Java.type('java.security.MessageDigest')
-            const Base64 = Java.type('java.util.Base64')
-            const md = MessageDigest.getInstance('MD5')
-            const hash = Base64.getEncoder().encodeToString(md.digest(bytes))
-            return hash
-        }
-    """
-    * def fileMd5Hash = md5hash(uploadFileAsBytes)
     * def createPayload =
     """
         {
-            filename: "test_file.json",
-            size: 975944,
-            lastmodified: "2010-01-01",
-            mimetype: "application/json",
-            md5hash: #(fileMd5Hash)
+            filename: "test_file2.pdf",
+            size: #(filesize),
+            lastmodified: 1353189358000,
+            mimetype: "application/pdf"
         }
     """
     * def preparePayload = 
@@ -49,7 +37,7 @@ Feature: API test for multipart upload to S3
             "parts": [
                 {
                     "partNumber": 1,
-                    "ETag": #(fileMd5Hash)
+                    "ETag": "ea1b21fd07d4e0f84b6bb94701e9c552"
                 }
             ],
             "key": "key"
@@ -58,90 +46,65 @@ Feature: API test for multipart upload to S3
 
     Given url 'https://api.dev.nva.aws.unit.no/upload'
 
-  Scenario: md5hash
-    * print fileMd5Hash
-
   Scenario: POST create with file information returns uploadId and key and status Created
+    * call read('common.feature@abort') { uploadId: #(response.uploadId), key: #(response.key) }
     Given path 'create'
     And request createPayload
     When method POST
     Then status 201
     And match response.uploadId == '#present'
     And match response.key == '#present'
-    * def abortPayload =
-    """
-        {
-            uploadId: #(response.uploadId),
-            key: #(response.key)
-        }
-    """
-    * path 'abort'
-    * request abortPayload
-    * method POST
+    * call read('common.feature@abort') { uploadId: #(response.uploadId), key: #(response.key) }
 
   Scenario: POST prepare with file payload returns url and status Ok
-    * path 'create'
-    * request createPayload
-    * method POST
-    * def uploadId = response.uploadId
-    * def key = response.key
-    * copy preparePayloadCopy = preparePayload
-    * set preparePayloadCopy.uploadId = uploadId
-    * set preparePayloadCopy.key = key
+    * def create = call read('common.feature@create') createPayload
+    * set preparePayload.uploadId = create.uploadId
+    * set preparePayload.key = create.key
     Given path 'prepare'
-    And request preparePayloadCopy
+    And request preparePayload
     When method POST
     Then status 200
     And match response.url == '#present'
-    * def abortPayload =
-    """
-        {
-            uploadId: #(uploadId),
-            key: #(key)
-        }
-    """
-    * path 'abort'
-    * request abortPayload
-    * method POST
+    * call read('common.feature@abort') { uploadId: #(create.uploadId), key: #(create.key) }
 
   Scenario: POST complete returns status Ok
-    * path 'create'
-    * request createPayload
-    * method POST
-    * def uploadId = response.uploadId
-    * def key = response.key
-    * copy preparePayloadCopy = preparePayload
-    * set preparePayloadCopy.uploadId = uploadId
-    * set preparePayloadCopy.key = key
-    * path 'prepare'
-    * request preparePayloadCopy
-    * method POST
-    * copy completePayloadCopy = completePayload
-    * set completePayloadCopy.uploadId = uploadId
-    * set completePayloadCopy.key = key
+    * def create = call read('common.feature@create') createPayload
+    * set preparePayload.uploadId = create.uploadId
+    * set preparePayload.key = create.key
+    * def prepare = call read('common.feature@prepare') preparePayload
+    * def presignedUrl = prepare.url
+    * def upload = call read('common.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
+    * set completePayload.uploadId = create.uploadId
+    * set completePayload.key = create.key
+    * set completePayload.parts[0].ETag = upload.ETag
+    * configure headers = 
+    """
+    { 
+        Authorization: '#(auth_token)',
+        Accept: 'application/pdf'
+    }
+    """
+    * url 'https://api.dev.nva.aws.unit.no/upload'
     Given path 'complete'
-    And request completePayloadCopy
-    When method POST
-    Then status 200
+    And request completePayload
+   When method POST
+   Then status 200
   
   Scenario: POST listparts returns status Ok and a list of uploaded parts
-    * path 'create'
-    * request createPayload
-    * method POST
-    * def uploadId = response.uploadId
-    * def key = response.key
-    * copy preparePayloadCopy = preparePayload
-    * set preparePayloadCopy.uploadId = uploadId
-    * set preparePayloadCopy.key = key
-    * path 'prepare'
-    * request preparePayloadCopy
-    * method POST
-    * copy completePayloadCopy = completePayload
-    * set completePayloadCopy.uploadId = uploadId
-    * set completePayloadCopy.key = key
-    * path 'complete'
-    * request completePayloadCopy
-    * method POST
+    * def create = call read('common.feature@create') createPayload
+    * set preparePayload.uploadId = create.uploadId
+    * set preparePayload.key = create.key
+    * def prepare = call read('common.feature@prepare') preparePayload
+    * def presignedUrl = prepare.presignedUrl
+    * def upload = call read('common.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
+    * configure headers = 
+    """
+    { 
+        Authorization: '#(auth_token)',
+        Accept: 'application/pdf'
+    }
+    """
+    * url 'https://api.dev.nva.aws.unit.no/upload'
     * def listpartsPayload = 
     """
         {
@@ -155,22 +118,15 @@ Feature: API test for multipart upload to S3
     Then status 200
   
   Scenario: POST abort returns status Ok and message 'Multipart Upload aborted'
-    * path 'create'
-    * request createPayload
-    * method POST
-    * def uploadId = response.uploadId
-    * def key = response.key
-    * copy preparePayloadCopy = preparePayload
-    * set preparePayloadCopy.uploadId = uploadId
-    * set preparePayloadCopy.key = key
-    * path 'prepare'
-    * request preparePayloadCopy
-    * method POST
+    * def create = call read('common.feature@create') createPayload
+    * set preparePayload.uploadId = create.uploadId
+    * set preparePayload.key = create.key
+    * def prepare = call read('common.feature@prepare') preparePayload
     * def abortPayload = 
     """
         {
-            uploadId: #(uploadId),
-            key: #(key)
+            uploadId: #(create.uploadId),
+            key: #(create.key)
         }
     """
     Given path 'abort'
@@ -178,3 +134,4 @@ Feature: API test for multipart upload to S3
     When method POST
     Then status 200
     And match response.message == 'Multipart Upload aborted'
+
