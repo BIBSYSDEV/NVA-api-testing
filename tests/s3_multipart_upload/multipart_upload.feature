@@ -9,13 +9,13 @@ Feature: API test for multipart upload to S3
         Accept: 'application/pdf'
     }
     """
-    * def uploadFile = read('classpath:test_files/multipart_upload/test_file2.pdf')
-    * bytes uploadFileAsBytes = read('classpath:test_files/multipart_upload/test_file2.pdf')
+    * def uploadFile = read('classpath:test_files/multipart_upload/test_file.pdf')
+    * bytes uploadFileAsBytes = read('classpath:test_files/multipart_upload/test_file.pdf')
     * def filesize = uploadFileAsBytes.length
     * def createPayload =
     """
         {
-            filename: "test_file2.pdf",
+            filename: "test_file.pdf",
             size: #(filesize),
             lastmodified: 1353189358000,
             mimetype: "application/pdf"
