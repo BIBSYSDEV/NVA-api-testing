@@ -97,8 +97,8 @@ Feature: API test for multipart upload to S3
     * def listpartsPayload = 
     """
         {
-            uploadId: #(uploadId),
-            key: #(key)
+            uploadId: #(create.uploadId),
+            key: #(create.key)
         }
     """
     Given path 'listparts'
