@@ -2,13 +2,14 @@ Feature: API test for multipart upload to S3
 
   Background:
     * def auth_token = 'Bearer ' + BEARER_TOKEN
-    * configure headers = 
+    * def BEARER_TOKEN_HEADERS = 
     """
     { 
         Authorization: '#(auth_token)',
         Accept: 'application/pdf'
     }
     """
+    * configure headers = BEARER_TOKEN_HEADERS
     * def uploadFile = read('classpath:test_files/multipart_upload/test_file.pdf')
     * bytes uploadFileAsBytes = read('classpath:test_files/multipart_upload/test_file.pdf')
     * def filesize = uploadFileAsBytes.length
@@ -77,13 +78,7 @@ Feature: API test for multipart upload to S3
     * set completePayload.uploadId = create.uploadId
     * set completePayload.key = create.key
     * set completePayload.parts[0].ETag = upload.ETag
-    * configure headers = 
-    """
-    { 
-        Authorization: '#(auth_token)',
-        Accept: 'application/pdf'
-    }
-    """
+    * configure headers = BEARER_TOKEN_HEADERS
     * url 'https://api.dev.nva.aws.unit.no/upload'
     Given path 'complete'
     And request completePayload
@@ -97,13 +92,7 @@ Feature: API test for multipart upload to S3
     * def prepare = call read('common.feature@prepare') preparePayload
     * def presignedUrl = prepare.presignedUrl
     * def upload = call read('common.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
-    * configure headers = 
-    """
-    { 
-        Authorization: '#(auth_token)',
-        Accept: 'application/pdf'
-    }
-    """
+    * configure headers = BEARER_TOKEN_HEADERS
     * url 'https://api.dev.nva.aws.unit.no/upload'
     * def listpartsPayload = 
     """
