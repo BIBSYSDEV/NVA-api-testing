@@ -1,4 +1,4 @@
-Feature: Common methods for mulitpart upload
+Feature: Common methods for multipart upload
 
 Background: 
 * def upload_endpoint = 'https://api.sandbox.nva.aws.unit.no/upload'
