@@ -1,15 +1,16 @@
 Feature: API test for multipart upload to S3
 
   Background:
+    * def upload_endpoint = 'https://api.sandbox.nva.aws.unit.no/upload'
     * def auth_token = 'Bearer ' + BEARER_TOKEN
-    * def BEARER_TOKEN_HEADERS = 
+    * def bearer_token_headers = 
     """
     { 
         Authorization: '#(auth_token)',
         Accept: 'application/pdf'
     }
     """
-    * configure headers = BEARER_TOKEN_HEADERS
+    * configure headers = bearer_token_headers
     * def uploadFile = read('classpath:test_files/multipart_upload/test_file.pdf')
     * bytes uploadFileAsBytes = read('classpath:test_files/multipart_upload/test_file.pdf')
     * def filesize = uploadFileAsBytes.length
@@ -45,7 +46,7 @@ Feature: API test for multipart upload to S3
         }
     """
 
-    Given url 'https://api.dev.nva.aws.unit.no/upload'
+    Given url upload_endpoint
 
   Scenario: POST create with file information returns uploadId and key and status Created
     * call read('common.feature@abort') { uploadId: #(response.uploadId), key: #(response.key) }
@@ -73,13 +74,13 @@ Feature: API test for multipart upload to S3
     * set preparePayload.uploadId = create.uploadId
     * set preparePayload.key = create.key
     * def prepare = call read('common.feature@prepare') preparePayload
-    * def presignedUrl = prepare.url
+    * def presignedUrl = prepare.presignedUrl
     * def upload = call read('common.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
     * set completePayload.uploadId = create.uploadId
     * set completePayload.key = create.key
-    * set completePayload.parts[0].ETag = upload.ETag
-    * configure headers = BEARER_TOKEN_HEADERS
-    * url 'https://api.dev.nva.aws.unit.no/upload'
+    * set completePayload.parts[0].ETag = upload.ETag[0]
+    * configure headers = bearer_token_headers
+    * url upload_endpoint 
     Given path 'complete'
     And request completePayload
    When method POST
@@ -92,8 +93,8 @@ Feature: API test for multipart upload to S3
     * def prepare = call read('common.feature@prepare') preparePayload
     * def presignedUrl = prepare.presignedUrl
     * def upload = call read('common.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
-    * configure headers = BEARER_TOKEN_HEADERS
-    * url 'https://api.dev.nva.aws.unit.no/upload'
+    * configure headers = bearer_token_headers
+    * url upload_endpoint
     * def listpartsPayload = 
     """
         {

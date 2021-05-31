@@ -1,11 +1,11 @@
 Feature: Common methods for mulitpart upload
 
 Background: 
-* def MULTIPART_UPLOAD_URL = 'https://api.dev.nva.aws.unit.no/upload'
+* def upload_endpoint = 'https://api.sandbox.nva.aws.unit.no/upload'
 
 @create
 Scenario: Create multipart upload
-  * url MULTIPART_UPLOAD_URL
+  * url upload_endpoint
   * path 'create'
   * request createPayload
   * method POST
@@ -14,7 +14,7 @@ Scenario: Create multipart upload
 
 @prepare
 Scenario: Prepare multipart upload
-  * url MULTIPART_UPLOAD_URL
+  * url upload_endpoint
   * path 'prepare'
   * request preparePayload
   * method POST
@@ -24,14 +24,15 @@ Scenario: Prepare multipart upload
 Scenario: Upload file to S3
   * url uploadUrl
   * configure headers = { Accept: 'application/pdf'}
+  * print filePayload
   * request filePayload
   * method put
-  * def ETag = response.ETag
-  * url #MULTIPART_UPLOAD_URL
+  * def ETag = responseHeaders['ETag']
+  * url upload_endpoint
 
 @abort
 Scenario: Abort multipart upload
-  * url MULTIPART_UPLOAD_URL
+  * url upload_endpoint
   * def abortPayload =
   """
     {
