@@ -24,7 +24,6 @@ Scenario: Prepare multipart upload
 Scenario: Upload file to S3
   * url uploadUrl
   * configure headers = { Accept: 'application/pdf'}
-  * print filePayload
   * request filePayload
   * method put
   * def ETag = responseHeaders['ETag']
