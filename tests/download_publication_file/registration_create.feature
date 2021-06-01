@@ -48,12 +48,14 @@ Feature: Create registration with uploaded file
   @upload_file
   Scenario: Upload file
   * url upload_endpoint
+  
   # create upload
   * path 'create'
   * request createPayload
   * method POST
   * def key = response.key
   * def uploadId = response.uploadId
+  
   # prepare upload
   * path 'prepare'
   * set preparePayload.key = key
@@ -61,6 +63,7 @@ Feature: Create registration with uploaded file
   * request preparePayload
   * method POST
   * def presignedUrl = response.url
+  
   # upload file
   * url presignedUrl
   * configure headers =
@@ -70,6 +73,7 @@ Feature: Create registration with uploaded file
   * request uploadFileAsBytes
   * method PUT
   * def ETag = responseHeaders['ETag']
+  
   # complete upload
   * url upload_endpoint
   * configure headers = 
@@ -92,11 +96,13 @@ Feature: Create registration with uploaded file
     # add file identifier to registration
     * set resourcePayload['fileSet']['files'][0].identifier = file_identifier
     * set resourcePayload['fileSet']['files'][0].size = filesize
+  
     # create registration
     * url create_registration_endpoint
     * path '/'
     * request resourcePayload
     * method POST
+
     # publish registration
     * def identifier = response.identifier
     * path (`${identifier}/publish`)
