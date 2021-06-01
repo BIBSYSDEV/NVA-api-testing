@@ -92,6 +92,7 @@
       ],
       "type": "FileSet"
     },
+    "identifier": "6dc6a12c-59b6-4af7-83a8-10f39750f22f",
     "modifiedDate": "2020-01-01T00:00:00.000000Z",
     "owner": "api-test-user@test.no",
     "publisher": {
