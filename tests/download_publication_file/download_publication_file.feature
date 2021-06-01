@@ -1,7 +1,6 @@
 Feature: Test for download publication file API
 
   Background:
-
     * def auth_token = 'Bearer ' + BEARER_TOKEN
     * configure headers = 
     """
@@ -10,6 +9,10 @@ Feature: Test for download publication file API
         Accept: 'application/json'
       }
     """
+    * def file_create_result = callonce read('registration_create.feature@upload_file')
+    * def registration_create_result = callonce read('registration_create.feature@create_registration') { file_identifier: #(file_create_result.location)} 
+    * print registration_create_result.identifier
+
     Given url 'https://api.sandbox.nva.aws.unit.no/download'
 
   Scenario: GET /public with identifier and fileIdentifier returns status OK and presignedDownloadUrl
