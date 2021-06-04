@@ -6,8 +6,8 @@ Background:
   * def bearer_token_headers =
   """
     {
-  Authorization: '#(auth_token)',
-  Accept: 'application/pdf'
+      Authorization: '#(auth_token)',
+      Accept: 'application/pdf'
     }
   """
   * configure headers = bearer_token_headers
@@ -114,10 +114,10 @@ Scenario: POST abort returns status Ok and message 'Multipart Upload aborted'
   * def prepare = call read('common.feature@prepare') preparePayload
   * def abortPayload =
   """
-  {
-    uploadId: #(create.uploadId),
-    key: #(create.key)
-  }
+    {
+      uploadId: #(create.uploadId),
+      key: #(create.key)
+    }
   """
   Given path 'abort'
   And request abortPayload

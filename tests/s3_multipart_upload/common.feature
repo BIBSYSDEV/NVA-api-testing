@@ -35,8 +35,8 @@ Scenario: Abort multipart upload
   * def abortPayload =
   """
     {
-        uploadId: #(uploadId),
-        key: #(key)
+      uploadId: #(uploadId),
+      key: #(key)
     }
   """
   * path 'abort'

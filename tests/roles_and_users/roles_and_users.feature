@@ -31,8 +31,8 @@ Scenario: GET Users for institution returns list of Users
       institution: '#string',
       givenName: '#string',
       familyName: '#string',
-  accessRights: '#array'
-        }
+      accessRights: '#array'
+    }
   """
   * url 'https://api.dev.nva.aws.unit.no/users-roles'
   Given path '/institutions/users'

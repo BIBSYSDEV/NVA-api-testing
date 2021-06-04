@@ -15,7 +15,19 @@ Background:
   * def JSON_MEDIA_TYPE = 'application/json'
 
 Scenario: Query and receive CORS preflight response
-  * configure headers = {'Origin': 'http://localhost:3000', 'Accept': '*/*', 'Referer': 'Not sure what the value should be yet', 'Origin': 'https://' + currentEnvironment + '/person/aPersonId', 'Connection', 'keep-alive', 'Accept-Encoding: gzip, deflate, br', 'Access-Control-Request-Method': 'GET', Access-Control-Request-Headers: authorization}
+  * configure headers =
+  """
+    {
+      'Origin': 'http://localhost:3000',
+      'Accept': '*/*',
+      'Referer': 'Not sure what the value should be yet',
+      'Origin': 'https://' + currentEnvironment + '/person/aPersonId',
+      'Connection': 'keep-alive',
+      'Accept-Encoding: gzip, deflate, br',
+      'Access-Control-Request-Method': 'GET',
+      Access-Control-Request-Headers: authorization
+    }
+  """
   * contentType = responseHeaders['Content-Type'][0]
   Given url searchPath + 'test'
   When method OPTIONS

@@ -16,34 +16,34 @@ Background:
   """
   * def createPayload =
   """
-      {
-          filename: "test_file.pdf",
-          size: #(filesize),
-          lastmodified: 1353189358000,
-          mimetype: "application/pdf"
-      }
+    {
+      filename: "test_file.pdf",
+      size: #(filesize),
+      lastmodified: 1353189358000,
+      mimetype: "application/pdf"
+    }
   """
   * def preparePayload =
   """
-      {
-          "number": 1,
-          "uploadId": "uploadId",
-          "body": #(uploadFile),
-          "key": "key"
-      }
+    {
+      "number": 1,
+      "uploadId": "uploadId",
+      "body": #(uploadFile),
+      "key": "key"
+    }
   """
   * def completePayload =
   """
-      {
-          "uploadId": "uploadId",
-          "parts": [
-              {
-                  "partNumber": 1,
-                  "ETag": "####################"
-              }
-          ],
-          "key": "key"
-      }
+    {
+      "uploadId": "uploadId",
+      "parts": [
+        {
+          "partNumber": 1,
+          "ETag": "####################"
+        }
+      ],
+      "key": "key"
+    }
   """
 
 @upload_file
@@ -69,7 +69,7 @@ Scenario: Upload file
   * url presignedUrl
   * configure headers =
   """
-      Accept: 'application/pdf'
+  Accept: 'application/pdf'
   """
   * request uploadFileAsBytes
   * method PUT
@@ -80,8 +80,8 @@ Scenario: Upload file
   * configure headers =
   """
     {
-        Authorization: '#(auth_token)',
-        Accept: 'application/pdf'
+      Authorization: '#(auth_token)',
+      Accept: 'application/pdf'
     }
   """
   * set completePayload.uploadId = uploadId

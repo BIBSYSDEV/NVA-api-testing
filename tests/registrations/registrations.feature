@@ -5,13 +5,13 @@ Background:
   * configure headers =
   """
     {
-  Authorization: '#(auth_token)',
-  Accept: 'application/json'
-        }
+      Authorization: '#(auth_token)',
+      Accept: 'application/json'
+    }
   """
   * def randomIdentifier =
   """
-    function() {
+    () => {
       return '' + Number(new Date().getTime()).toString(16) + '-' + java.util.UUID.randomUUID();
     }
   """
