@@ -69,7 +69,9 @@ Scenario: Upload file
   * url presignedUrl
   * configure headers =
   """
-  Accept: 'application/pdf'
+    {
+      Accept: 'application/pdf'
+    }
   """
   * request uploadFileAsBytes
   * method PUT
