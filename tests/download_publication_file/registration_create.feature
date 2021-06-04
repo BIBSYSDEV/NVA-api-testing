@@ -109,4 +109,4 @@ Scenario: Create registration
   # publish registration
   * def identifier = response.identifier
   * path (`${identifier}/publish`)
-  * method PUT 
+  * method PUT
