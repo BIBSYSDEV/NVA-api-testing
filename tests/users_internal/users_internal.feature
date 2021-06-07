@@ -14,7 +14,6 @@ Background:
   * def putUser = 'user-internal-put@test.no'
   * def nonExistingUser = 'non-existing-user'
 
-
 Scenario: GET returns User details and status OK when requesting existing User
   Given path getUser
   When method get
