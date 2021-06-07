@@ -7,7 +7,7 @@ Background:
   * def filesize = file_create_result.filesize
   * def registration_create_result = callonce read('registration_create.feature@create_registration') { file_identifier: #(file_identifier), filesize: #(filesize)}
   * def identifier = registration_create_result.identifier
-  
+
   * def headers = call read ('classpath:/tests/common.feature@header')
   * configure headers = headers.header
 

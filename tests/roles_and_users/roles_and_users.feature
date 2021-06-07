@@ -20,7 +20,6 @@ Background:
   * def updateUserPayload = read('classpath:test_files/users_and_roles/update_user_payload.json')
   * set updateUserPayload['institution'] = customer
 
-
 Scenario: GET Users for institution returns list of Users
   * def user =
   """
