@@ -1,7 +1,7 @@
 Feature: Common methods for multipart upload
 
-Background: 
-* def upload_endpoint = 'https://api.sandbox.nva.aws.unit.no/upload'
+Background:
+  * def upload_endpoint = 'https://api.sandbox.nva.aws.unit.no/upload'
 
 @create
 Scenario: Create multipart upload
@@ -35,11 +35,10 @@ Scenario: Abort multipart upload
   * def abortPayload =
   """
     {
-        uploadId: #(uploadId),
-        key: #(key)
+      uploadId: #(uploadId),
+      key: #(key)
     }
   """
   * path 'abort'
   * request abortPayload
   * method POST
-
