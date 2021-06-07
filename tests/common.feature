@@ -29,7 +29,7 @@ Scenario: header
 # Usage: * def customer = call read('classpath:tests/common.feature@findCustomer') {shortName: '<shortName>' }
 @findCustomer
 Scenario: Find customer by shortName
-  * url 'http://api.dev.nva.aws.unit.no/customer'
+  * url 'http://api.sandbox.nva.aws.unit.no/customer'
   * path '/'
   * method GET
   * def customerId = readCustomers(shortName, response.customers)
