@@ -1,6 +1,7 @@
 Feature: API tests for public search
 
 Background:
+  Given url SERVER_URL + 'search'
   * def testTitleSearchTerm = 'API_test_public_search'
   * def sortList =
   """
@@ -14,8 +15,6 @@ Background:
       return list
     }
   """
-
-  Given url 'https://api.dev.nva.aws.unit.no/search'
 
 Scenario: GET resources returns list of search results
   Given  path '/resources'

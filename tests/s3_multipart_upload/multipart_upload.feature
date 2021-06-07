@@ -1,16 +1,9 @@
 Feature: API test for multipart upload to S3
 
 Background:
-  * def upload_endpoint = 'https://api.sandbox.nva.aws.unit.no/upload'
-  * def auth_token = 'Bearer ' + BEARER_TOKEN
-  * def bearer_token_headers =
-  """
-    {
-      Authorization: '#(auth_token)',
-      Accept: 'application/pdf'
-    }
-  """
-  * configure headers = bearer_token_headers
+  * def upload_endpoint = SERVER_URL + 'upload'
+  * def headers = call read('classpath:tests/common.feature@header')
+  * configure headers = headers.header
   * def uploadFile = read('classpath:test_files/multipart_upload/test_file.pdf')
   * bytes uploadFileAsBytes = read('classpath:test_files/multipart_upload/test_file.pdf')
   * def filesize = uploadFileAsBytes.length
@@ -49,17 +42,16 @@ Background:
   Given url upload_endpoint
 
 Scenario: POST create with file information returns uploadId and key and status Created
-  * call read('common.feature@abort') { uploadId: #(response.uploadId), key: #(response.key) }
   Given path 'create'
   And request createPayload
   When method POST
   Then status 201
   And match response.uploadId == '#present'
   And match response.key == '#present'
-  * call read('common.feature@abort') { uploadId: #(response.uploadId), key: #(response.key) }
+  * call read('upload_functions.feature@abort') { uploadId: #(response.uploadId), key: #(response.key) }
 
 Scenario: POST prepare with file payload returns url and status Ok
-  * def create = call read('common.feature@create') createPayload
+  * def create = call read('upload_functions.feature@create') createPayload
   * set preparePayload.uploadId = create.uploadId
   * set preparePayload.key = create.key
   Given path 'prepare'
@@ -67,15 +59,15 @@ Scenario: POST prepare with file payload returns url and status Ok
   When method POST
   Then status 200
   And match response.url == '#present'
-  * call read('common.feature@abort') { uploadId: #(create.uploadId), key: #(create.key) }
+  * call read('upload_functions.feature@abort') { uploadId: #(create.uploadId), key: #(create.key) }
 
 Scenario: POST complete returns status Ok
-  * def create = call read('common.feature@create') createPayload
+  * def create = call read('upload_functions.feature@create') createPayload
   * set preparePayload.uploadId = create.uploadId
   * set preparePayload.key = create.key
-  * def prepare = call read('common.feature@prepare') preparePayload
+  * def prepare = call read('upload_functions.feature@prepare') preparePayload
   * def presignedUrl = prepare.presignedUrl
-  * def upload = call read('common.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
+  * def upload = call read('upload_functions.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
   * set completePayload.uploadId = create.uploadId
   * set completePayload.key = create.key
   * set completePayload.parts[0].ETag = upload.ETag[0]
@@ -87,12 +79,12 @@ Scenario: POST complete returns status Ok
   Then status 200
 
 Scenario: POST listparts returns status Ok and a list of uploaded parts
-  * def create = call read('common.feature@create') createPayload
+  * def create = call read('upload_functions.feature@create') createPayload
   * set preparePayload.uploadId = create.uploadId
   * set preparePayload.key = create.key
-  * def prepare = call read('common.feature@prepare') preparePayload
+  * def prepare = call read('upload_functions.feature@prepare') preparePayload
   * def presignedUrl = prepare.presignedUrl
-  * def upload = call read('common.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
+  * def upload = call read('upload_functions.feature@upload_file') { uploadUrl: #(presignedUrl), filePayload: #(uploadFileAsBytes) }
   * configure headers = bearer_token_headers
   * url upload_endpoint
   * def listpartsPayload =
@@ -108,10 +100,10 @@ Scenario: POST listparts returns status Ok and a list of uploaded parts
   Then status 200
 
 Scenario: POST abort returns status Ok and message 'Multipart Upload aborted'
-  * def create = call read('common.feature@create') createPayload
+  * def create = call read('upload_functions.feature@create') createPayload
   * set preparePayload.uploadId = create.uploadId
   * set preparePayload.key = create.key
-  * def prepare = call read('common.feature@prepare') preparePayload
+  * def prepare = call read('upload_functions.feature@prepare') preparePayload
   * def abortPayload =
   """
     {

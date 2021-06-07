@@ -1,14 +1,9 @@
 Feature: Registration API tests
 
 Background:
-  * def auth_token = 'Bearer ' + BEARER_TOKEN
-  * configure headers =
-  """
-    {
-      Authorization: '#(auth_token)',
-      Accept: 'application/json'
-    }
-  """
+  Given url SERVER_URL + 'publication'
+  * def headers = call read('classpath:tests/common.feature@header')
+  * configure headers = headers.header
   * def randomIdentifier =
   """
     () => {
@@ -45,8 +40,6 @@ Background:
       return registrationId
     }
   """
-
-  Given url 'https://api.dev.nva.aws.unit.no/publication'
 
 Scenario: POST returns status Created, Resource detials and Location header
   Given path '/'

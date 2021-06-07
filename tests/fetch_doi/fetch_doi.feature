@@ -1,14 +1,9 @@
 Feature: Fetch DOI API tests
 
 Background:
-  * def auth_token = 'Bearer ' + BEARER_TOKEN
-  * configure headers =
-  """
-    {
-      Accept: 'application/json',
-      Authorization: #(auth_token)
-    }
-  """
+  Given url SERVER_URL + 'doi-fetch'
+  * def headers = call read('classpath:tests/common.feature@header')
+  * configure headers = headers.header
   * def correct_doi_response =
   """
     {
@@ -23,7 +18,6 @@ Background:
     }
   """
   * def doi_url = 'https://doi.org/10.1103/physrevd.100.085005'
-  Given url 'https://api.sandbox.nva.aws.unit.no/doi-fetch'
 
 Scenario: POST with existing DOI returns Status OK
   Given path ''

@@ -1,10 +1,11 @@
 Feature: Roles and users API tests
 
 Background:
-  * def headerResponse = call read('classpath:tests/common.feature@header')
-  * configure headers = headerResponse.header
+  Given url SERVER_URL + 'users-roles'
+  * def headers = call read('classpath:tests/common.feature@header')
+  * configure headers = headers.header
   * def customerResponse = call read('classpath:tests/common.feature@findCustomer') {shortName: 'UNIT' }
-  * def customer = 'https://api.dev.nva.aws.unit.no/customer/' + customerResponse.customerId
+  * def customer = SERVER_URL + '/customer/' + customerResponse.customerId
 
   * def createRolePayload = read('classpath:test_files/users_and_roles/create_role_payload.json')
   * def existingRolePayload = read('classpath:test_files/users_and_roles/existing_role_payload.json')
@@ -19,7 +20,6 @@ Background:
   * def updateUserPayload = read('classpath:test_files/users_and_roles/update_user_payload.json')
   * set updateUserPayload['institution'] = customer
 
-  Given url 'https://api.dev.nva.aws.unit.no/users-roles'
 
 Scenario: GET Users for institution returns list of Users
   * def user =
