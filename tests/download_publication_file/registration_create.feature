@@ -1,19 +1,14 @@
 Feature: Create registration with uploaded file
 
 Background:
-  * def upload_endpoint = 'https://api.sandbox.nva.aws.unit.no/upload'
-  * def create_registration_endpoint = 'https://api.sandbox.nva.aws.unit.no/publication'
+  * def upload_endpoint = SERVER_URL + 'upload'
+  * def create_registration_endpoint = SERVER_URL + 'publication'
   * def resourcePayload = read('classpath:test_files/download_publication_file/correct_resource_payload.json')
   * def uploadFile = read('classpath:test_files/download_publication_file/test_file.pdf')
   * bytes uploadFileAsBytes = read('classpath:test_files/download_publication_file/test_file.pdf')
   * def filesize = uploadFileAsBytes.length
-  * configure headers =
-  """
-    {
-      Authorization: '#(auth_token)',
-      Accept: 'application/json'
-    }
-  """
+  * def headers = call read('classpath:tests/common.feature@header')
+  * configure headers = headers.header
   * def createPayload =
   """
     {

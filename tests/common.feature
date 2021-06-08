@@ -17,7 +17,7 @@ Background:
 # Usage: * def header = call read('classpath:tests/common.feature@header')
 @header
 Scenario: header
-  * def auth_token = 'Bearer ' + BEARER_TOKEN
+  * def auth_token = (`Bearer ${BEARER_TOKEN}`)
   * def header =
   """
     {
@@ -29,7 +29,7 @@ Scenario: header
 # Usage: * def customer = call read('classpath:tests/common.feature@findCustomer') {shortName: '<shortName>' }
 @findCustomer
 Scenario: Find customer by shortName
-  * url 'http://api.dev.nva.aws.unit.no/customer'
+  * url SERVER_URL + '/customer'
   * path '/'
   * method GET
   * def customerId = readCustomers(shortName, response.customers)

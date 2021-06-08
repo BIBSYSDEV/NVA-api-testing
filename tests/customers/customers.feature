@@ -1,36 +1,18 @@
 Feature: Tests for NVA customers API
 
 Background:
-  Given url 'https://api.dev.nva.aws.unit.no/customer'
-  * def auth_token = 'Bearer ' + BEARER_TOKEN
+  Given url SERVER_URL + 'customer'
   * def orgNumber = '1234567890'
   * def cristinId = 'https://api.cristin.no/v2/institutions/0987654321'
   * def badlyFormedCustomerId = '082414df-1130-4d7c-b744-bdc1a6242cad'
-  * configure headers =
-  """
-    {
-      Authorization: '#(auth_token)',
-      Accept: 'application/json'
-    }
-  """
+  * def headers = call read('classpath:tests/common.feature@header')
+  * configure headers = headers.header
   * def postSuccessPayload = read('classpath:test_files/nva_customers/post_success_payload.json')
   * def getCustomerIdSuccessResponse = read('classpath:test_files/nva_customers/get_customer_id_success_response.json')
   * def getOrgNrSuccessResponse = read('classpath:test_files/nva_customers/get_org_nr_success_response.json')
   * def getCristinIdSuccessResponse = read('classpath:test_files/nva_customers/get_cristin_id_success_response.json')
   * def putSuccessPayload = read('classpath:test_files/nva_customers/put_success_payload.json')
   * def putSuccessResponse = read('classpath:test_files/nva_customers/put_success_response.json')
-  * def findCustomer =
-  """
-    function(shortName, customerList) {
-      var customerId = 'not found'
-      customerList.forEach(function(customer) {
-        if(customer['shortName'] === shortName) {
-          customerId = customer['identifier'];
-        }
-      });
-      return customerId
-    }
-  """
 
 Scenario: GET returns status Ok and array of all Customers
   Given path '/'
@@ -41,6 +23,7 @@ Scenario: GET returns status Ok and array of all Customers
 
 Scenario: POST returns status Created and Customer details
   Given path '/'
+  * def auth_token = 'Bearer ' + BEARER_TOKEN
   * configure headers =
   """
     {
@@ -65,10 +48,8 @@ Scenario: POST with malformed json returns status Bad Request
   And match header.details == 'Bad Request'
 
 Scenario: GET by Customer id returns status OK and Customer details
-  * path '/'
-  * method GET
-  * def customerId = findCustomer('TEST_CUSTOMER_GET_BY_ID', response.customers)
-  Given path '/' + customerId
+  * def customer = call read('classpath:tests/common.feature@findCustomer') {shortName: 'TEST_CUSTOMER_GET_BY_ID'}
+  Given path '/' + customer.customerId
   When method GET
   Then status 200
   And match response contains getCustomerIdSuccessResponse

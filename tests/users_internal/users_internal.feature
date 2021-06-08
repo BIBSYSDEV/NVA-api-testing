@@ -1,6 +1,7 @@
 Feature: Users internal API
 
 Background:
+  Given url SERVER_URL + 'users-roles-internal/service/users/'
   * def getResponse = read('classpath:test_files/nva_users_internal/get_success.json')
   * def postSuccessPayload = read('classpath:test_files/nva_users_internal/post_success_payload.json')
   * def postResponse = read('classpath:test_files/nva_users_internal/post_response.json')
@@ -12,8 +13,6 @@ Background:
   * def getUser = 'user-internal-get@test.no'
   * def putUser = 'user-internal-put@test.no'
   * def nonExistingUser = 'non-existing-user'
-
-  Given url 'https://api.dev.nva.aws.unit.no/users-roles-internal/service/users/'
 
 Scenario: GET returns User details and status OK when requesting existing User
   Given path getUser
@@ -27,7 +26,7 @@ Scenario: GET returns status Not Found when requesting non-existing user
   Then status 404
   And match response.status == 404
   And match response.title == 'Not Found'
-  And match response.detail == 'Could not find user with username: ' + nonExistingUser
+  And match response.detail == (`Could not find user with username: ${nonExistingUser}`)
 
 Scenario: POST returns User details and status OK when posting correct User payload
   Given path '/'
@@ -43,7 +42,7 @@ Scenario: POST returns status User already exists when posting User with already
   Then status 409
   And match response.status == 409
   And match response.title == 'Conflict'
-  And match response.detail == 'User already exists: ' + getUser
+  And match response.detail == (´User already exists: ${getUser}`)
 
 Scenario: POST returns status JSON object is missing a type attribute when User payload is missing Type attribute
   Given path '/'
