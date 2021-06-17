@@ -1,10 +1,10 @@
 Feature: Project API testing
 
   Background:
-    * def host = ''
+    * def host = 'api.dev.nva.aws.unit.no'
     * def basePath = 'https://' + host + '/project/
     * def projectIdRegex = 'https:\/\/[^\/]+\/project\/[0-9]+'
-    * def searchPath = basePath + 'search?q='
+    * def searchPath = basePath + '?query='
     * def token = karate.properties['PROJECT_API_KEY']
     * def currentEnvironment = karate.properties['CURRENT_ENVIRONMENT']
     * def searchResponse = read('../../test_files/nva/project_search_get_result.json').replace('__CURRENT_ENVIRONMENT__', currentEnvironment)
