@@ -1,0 +1,13 @@
+{
+    "institution": "https://api.dev.nva.aws.unit.no/customer/9c1c941f-c713-4900-8482-f7d2684fc630",
+    "roles": [
+        {
+        "rolename": "Creator",
+        "type": "Role"
+        }
+    ],
+    "familyName": "TestUser",
+    "givenName": "API Updated User",
+    "type": "User",
+    "username": "test-user-api-update-user@test.no"
+  }
