@@ -5,7 +5,6 @@ Background:
   * def basePath = host + '/project/'
   * def projectIdRegex = 'https:\/\/[^\/]+\/project\/[0-9]+'
   * def searchPath = basePath + 'search?q='
-  * def token = PROJECT_API_KEY
   * def currentEnvironment = CURRENT_ENVIRONMENT
   * def searchResponse = read('classpath:test_files/nva/project_search_get_result.json')
   * def projectResponse = read('classpath:test_files/nva/project_get_result.json')
@@ -13,6 +12,8 @@ Background:
   * def PROBLEM_JSON_MEDIA_TYPE = 'application/problem+json'
   * def JSON_LD_MEDIA_TYPE = 'application/ld+json'
   * def JSON_MEDIA_TYPE = 'application/json'
+  * def existingProject = 'https://api.dev.nva.aws.unit.no/project/2057367'
+  * def existingResource = 'https://api.dev.nva.aws.unit.no/project/2057367'
 
 Scenario: Query and receive CORS preflight response
   * configure headers =
@@ -37,50 +38,13 @@ Scenario: Query and receive CORS preflight response
   And match responseHeaders['Access-Control-Allow-Headers'][0] == 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'
   And match responseHeaders['Vary'][0] == 'Origin'
 
-Scenario Outline: Unauthenticated search request is rejected
-  * configure headers = { 'Content-type': <CONTENT_TYPE> }
-  * contentType = responseHeaders['Content-Type'][0]
-  Given path <VALID_URL>
-  When method get
-  Then status 401
-  And match contentType == PROBLEM_JSON_MEDIA_TYPE
-  And match response.title == 'Unauthorized'
-  And match response.status == 401
-  And match response.detail == 'You are not authorized to access the resource ' + <VALID_URL>
-  And match response.instance == <VALID_URL>
-  And match response.requestId == '#notnull'
-
-Examples:
-  | VALID_URL                 | CONTENT_TYPE       |
-  | searchPath + 'irrelevant' | JSON_LD_MEDIA_TYPE |
-  | existingProject           | JSON_MEDIA_TYPE    |
-
-Scenario Outline: Requesting non-existing resource returns not found error
-  * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
-  Given url <NON_EXISTING_RESOURCE_URL>
-  When method get
-  Then status 404
-  And match contentType == PROBLEM_JSON_MEDIA_TYPE
-  And match response.title == 'Not found'
-  And match response.status == 404
-  And match response.detail == 'The requested resource ' + basePath + nonExistingProject + ' does not exist'
-  And match response.instance == <NON_EXISTING_RESOURCE_URL>
-  And match response.requestId == '#notnull'
-
-Examples:
-  | NON_EXISTING_RESOURCE_URL     | CONTENT_TYPE       |
-  | basePath + nonExistingProject | JSON_LD_MEDIA_TYPE |
-  | basePath + nonExistingProject | JSON_MEDIA_TYPE    |
-  | basePath + 'anythingElse'     | JSON_LD_MEDIA_TYPE |
-  | basePath + 'anythingElse'     | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Query proxy error gives Bad Gateway problem response
-  * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Content-type': <CONTENT_TYPE> }
   Given url <VALID_URL>
-  And the Cristin API is down
+  # And the Cristin API is down
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 502
   And match contentType == PROBLEM_JSON_MEDIA_TYPE
   And match response.title 'Bad Gateway'
@@ -97,11 +61,11 @@ Examples:
   | existingResource          | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Slow upstream gives Gateway Timeout problem response
-  * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Content-type': <CONTENT_TYPE> }
   Given url <VALID_URL>
-  And the Cristin API response takes longer than 2 seconds
+  # And the Cristin API response takes longer than 2 seconds
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 504
   And match contentType == PROBLEM_JSON_MEDIA_TYPE
   And match response.title == 'Gateway Timeout'
@@ -118,11 +82,11 @@ Examples:
   | existingResource          | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Unexpected error returns Internal Server Error problem response
-  * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Content-type': <CONTENT_TYPE> }
   Given url <VALID_URL>
   When method get
-  And the project API application experiences an unexpected error
+  * def contentType = responseHeaders['Content-Type'][0]
+  # And the project API application experiences an unexpected error
   Then status 500
   And match contentType == PROBLEM_JSON_MEDIA_TYPE
   And match response.title == 'Internal Server Error'
@@ -139,14 +103,16 @@ Examples:
   | existingResource          | JSON_MEDIA_TYPE     |
 
 Scenario Outline: Query with unacceptable method returns Not acceptable error
-  * configure headers = { 'Content-type': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
-  Given path existingProject
+  * configure headers = { 'Content-type': <CONTENT_TYPE>, Authentication: 'Bearer Whatever' }
+  * print 'existingProject'
+  * print existingProject
+  Given url existingProject
   When method <METHOD>
-  Then status 506
+  * def contentType = responseHeaders['Content-Type'][0]
+  Then status 406
   And match contentType == PROBLEM_JSON_MEDIA_TYPE
   And match response.title == 'Not acceptable'
-  And match response.status == 506
+  And match response.status == 406
   And match response.detail == 'Your request cannot be processed because the HTTP method ' + <METHOD> + ' is not supported'
   And match response.instance == existingProject
   And match response.requestId == '#notnull'
@@ -167,15 +133,15 @@ Examples:
   | TRACE   | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Query with bad parameters returns Bad Request
-  * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Accept': <CONTENT_TYPE> }
   Given url <BAD_REQUEST_PARAMETER_URL>
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 400
   And match contentType == PROBLEM_JSON_MEDIA_TYPE
   And match response.title == 'Bad Request'
   And match response.status == 400
-  And match response.detail == 'Your request cannot be processed because the supplied parameter(s) "not" cannot be understood'
+  And match response.detail == 'Invalid path parameter for id, needs to be a number'
   And match response.instance == <BAD_REQUEST_PARAMETER_URL>
   And match response.requestId == '#notnull'
 
@@ -185,10 +151,10 @@ Examples:
   | basePath + 'search?not=pog' | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Request with bad content type returns Not Acceptable
-  * configure headers = { 'Accept': <UNACCEPTABLE_CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Accept': <UNACCEPTABLE_CONTENT_TYPE> }
   Given url <VALID_URL>
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 406
   And match contentType == PROBLEM_JSON_MEDIA_TYPE
   And match response.title == 'Not Acceptable'
@@ -207,10 +173,10 @@ Examples:
   | existingResource          | 'application/rdf+xml'     |
 
 Scenario Outline: Search with content negotiation returns expected response
-  * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Accept': <CONTENT_TYPE> }
   Given url searchPath + 'pancreatic'
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 200
   And match contentType == <CONTENT_TYPE>
   And match response == searchResponse.replace('__PROCESSING_TIME__', response.processingTime)
@@ -221,10 +187,10 @@ Examples:
   | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Search returns no more than ten results
-  * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Accept': <CONTENT_TYPE> }
   Given url searchPath + 'and'
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 200
   And match contentType == <CONTENT_TYPE>
   And match response.hits.length < 11
@@ -235,10 +201,10 @@ Examples:
   | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Search returns next ten results
-  * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Accept': <CONTENT_TYPE> }
   Given url searchPath + 'and&start=11'
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 200
   And match contentType == <CONTENT_TYPE>
   And match response.hits.length < 11
@@ -250,10 +216,10 @@ Examples:
   | JSON_MEDIA_TYPE    |
 
 Scenario Outline: Request with content negotiation returns expected response
-  * configure headers = { 'Accept': <CONTENT_TYPE>, 'Authorization: Basic ' + token }
-  * contentType = responseHeaders['Content-Type'][0]
+  * configure headers = { 'Accept': <CONTENT_TYPE> }
   Given url existingResource
   When method get
+  * def contentType = responseHeaders['Content-Type'][0]
   Then status 200
   And match contentType == <CONTENT_TYPE>
   And match response == projectResponse
