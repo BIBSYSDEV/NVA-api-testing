@@ -1,5 +1,5 @@
 {
-  "@context": "https://example.org/search-api-context.json",
+  "@context": "https://example.org/project-context.json",
   "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/search?=__query_text__&page=1&results=5",
   "size": 1,
   "searchString": "title=__query_text__",
