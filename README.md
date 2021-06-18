@@ -12,10 +12,8 @@ CloudFormation template in [/templates](https://github.com/BIBSYSDEV/NVA-api-tes
 ### Run tests locally:
 
 linux:
-
-'java -cp karate.jar:. com.intuit.karate.Main tests'
+`java -cp karate.jar:. com.intuit.karate.Main tests`
 
 windows:
-
-'java -cp "karate.jar;." com.intuit.karate.Main tests'
+`java -cp "karate.jar;." com.intuit.karate.Main tests`
 - requires jre 8 or higher
