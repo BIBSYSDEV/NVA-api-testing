@@ -1,866 +1,110 @@
 {
-  "@context": "https://example.org/search-api-context.json",
-  "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/search?=__query_text__",
-  "numberOfResults": 2,
-  "query": "projects?title=__query_text__",
+  "@context": "https://example.org/project-context.json",
+  "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/search?=__query_text__&page=1&results=5",
+  "size": 1,
+  "searchString": "title=__query_text__",
   "processingTime": __PROCESSING_TIME__,
   "firstRecord": 1,
-  "totalRecords": 2,
+  "nextResults": null,
   "hits": [
     {
-      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/546614",
-      "cristin_project_id" : "546614",
-      "publishable" : true,
-      "published" : true,
-      "title" : {
-        "en" : "Clinical relevance of circulating tumor cells and circulating tumor DNA in advanced pancreatic cancer",
-        "nb" : "Klinisk betydning av sirkulerende tumorceller og sirkulerende tumor DNA hos pasienter med langkommet kreft i bukspyttkjertelen"
+      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/660212",
+      "type": "Project",
+      "identifier": [
+        {
+          "type": "CristinIdentifier",
+          "value": "660212"
+        }
+      ],
+      "title": "Sei meg, atterljom, kva originaltittelen er utan å vekkje åtgaum",
+      "language": "https://lexvo.org/id/iso639-3/nno",
+      "alternativeTitles": [
+        {
+          "en": "Tell me, echo, what the original title is without drawing attention"
+        }
+      ],
+      "startDate": "2021-01-22",
+      "endDate": "2021-01-23",
+      "grant": [
+        {
+          "id": "https://example.org/funding/4312267",
+          "type": "Grant",
+          "grantId": "4312267",
+          "metadataSource": "https://wherever-the-metadata.was/sourced-possibly-nfr-url",
+          "fundingStream": {
+            "type": "FundingStream",
+            "title": "Framework -6",
+            "funder": {
+              "id": "https://example.org/funder/0912112221",
+              "type": "Funder",
+              "name": "EU-trading-blok's Social Nadir 2023"
+            }
+          }
+        }
+      ],
+      "coordinatingInstitution": {
+        "id": "https://example.org/institution/1121112",
+        "type": "Organization",
+        "name": {
+          "en": "Kyrksæterøra centre for advanced psychosocial study"
+        }
       },
-      "main_language" : "en",
-      "start_date" : "2012-09-19T00:00:00.000Z",
-      "end_date" : "2021-05-01T00:00:00.000Z",
-      "status" : "ACTIVE",
-      "created" : {
-        "date" : "2017-07-26T15:32:38.000Z"
-      },
-      "last_modified" : {
-        "date" : "2019-03-12T10:17:28.000Z"
-      },
-      "coordinating_institution" : {
-        "institution" : {
-          "cristin_institution_id" : "1938",
-          "institution_name" : {
-            "en" : "Stavanger Hospital Trust - Stavanger University Hospital"
+      "contributors": [
+        {
+          "type": "ProjectManager",
+          "startDate": "2021-01-22",
+          "endDate": "2021-01-23",
+          "identity": {
+            "id": "https://example.org/person/76122421",
+            "type": "Person",
+            "firstName": "Ota",
+            "lastName": "Sengati"
           },
-          "url" : "https://api.cristin.no/v2/institutions/1938"
+          "affiliation": {
+            "id": "https://example.org/institution/1121112",
+            "type": "Organization",
+            "name": {
+              "en": "Kyrksæterøra centre for advanced psychosocial study"
+            }
+          }
         },
-        "unit" : {
-          "cristin_unit_id" : "1938.9.0.0",
-          "unit_name" : {
-            "nb" : "Klinikk for Blod- og Kreftsykdommer"
+        {
+          "type": "ProjectParticipant",
+          "startDate": "2021-01-22",
+          "endDate": "2021-01-23",
+          "identity": {
+            "id": "https://example.org/person/76122421",
+            "type": "Person",
+            "firstName": "Ota",
+            "lastName": "Sengati"
           },
-          "url" : "https://api.cristin.no/v2/units/1938.9.0.0"
-        }
-      },
-      "languages" : [ {
-        "code" : "en",
-        "name" : {
-          "en" : "English"
-        }
-      }, {
-        "code" : "nb",
-        "name" : {
-          "en" : "Norwegian, bokmål"
-        }
-      } ],
-      "project_funding_sources" : [ {
-        "funding_source_code" : "FOLKEHERMAN",
-        "funding_source_name" : {
-          "en" : "Folke Hermansens Fond"
-        }
-      }, {
-        "funding_source_code" : "HV",
-        "project_code" : "911887",
-        "funding_source_name" : {
-          "en" : "Western Norway Regional Health Authority"
-        }
-      } ],
-      "total_funding_amount" : {
-        "currency_code" : "NOK",
-        "amount" : 4000000.0
-      },
-      "contact_info" : {
-        "contact_person" : "Bjørnar Gilje",
-        "institution" : "Helse Stavanger HF Stavanger Universitetssjukehus",
-        "email" : "gibj@sus.no",
-        "phone" : "+47 47 80 90 92"
-      },
-      "participants" : [ {
-        "cristin_person_id" : "307604",
-        "first_name" : "Bjørnar",
-        "surname" : "Gilje",
-        "url" : "https://api.cristin.no/v2/persons/307604",
-        "roles" : [ {
-          "role_code" : "PRO_MANAGER",
-          "institution" : {
-            "cristin_institution_id" : "1938",
-            "institution_name" : {
-              "en" : "Stavanger Hospital Trust - Stavanger University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1938.9.0.0",
-            "unit_name" : {
-              "nb" : "Klinikk for Blod- og Kreftsykdommer"
+          "affiliation": {
+            "id": "https://example.org/institution/1121112",
+            "type": "Organization",
+            "name": {
+              "en": "Kyrksæterøra centre for advanced psychosocial study"
             }
           }
-        } ]
-      }, {
-        "cristin_person_id" : "333191",
-        "first_name" : "Oddmund",
-        "surname" : "Nordgård",
-        "url" : "https://api.cristin.no/v2/persons/333191",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "217",
-            "institution_name" : {
-              "en" : "University of Stavanger"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "217.0.0.0",
-            "unit_name" : {
-              "en" : "University of Stavanger"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1938",
-            "institution_name" : {
-              "en" : "Stavanger Hospital Trust - Stavanger University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1938.9.0.0",
-            "unit_name" : {
-              "nb" : "Klinikk for Blod- og Kreftsykdommer"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "50586",
-        "first_name" : "Kjersti",
-        "surname" : "Tjensvoll",
-        "url" : "https://api.cristin.no/v2/persons/50586",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1938",
-            "institution_name" : {
-              "en" : "Stavanger Hospital Trust - Stavanger University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1938.9.0.0",
-            "unit_name" : {
-              "nb" : "Klinikk for Blod- og Kreftsykdommer"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "399614",
-        "first_name" : "Satu",
-        "surname" : "Oltedal",
-        "url" : "https://api.cristin.no/v2/persons/399614",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1938",
-            "institution_name" : {
-              "en" : "Stavanger Hospital Trust - Stavanger University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1938.9.0.0",
-            "unit_name" : {
-              "nb" : "Klinikk for Blod- og Kreftsykdommer"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "710151",
-        "first_name" : "Morten",
-        "surname" : "Lapin",
-        "url" : "https://api.cristin.no/v2/persons/710151",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1938",
-            "institution_name" : {
-              "en" : "Stavanger Hospital Trust - Stavanger University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1938.9.0.0",
-            "unit_name" : {
-              "nb" : "Klinikk for Blod- og Kreftsykdommer"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "47388",
-        "first_name" : "Nils",
-        "surname" : "Glenjen",
-        "url" : "https://api.cristin.no/v2/persons/47388",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.0.0.0",
-            "unit_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "47186",
-        "first_name" : "Bjørn Tore",
-        "surname" : "Gjertsen",
-        "url" : "https://api.cristin.no/v2/persons/47186",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.0.0.0",
-            "unit_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "553367",
-        "first_name" : "Yves",
-        "surname" : "Rozenholc",
-        "url" : "https://api.cristin.no/v2/persons/553367",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "11700422",
-            "institution_name" : {
-              "en" : "University Paris Descartes (Paris V)"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "11700422.0.0.0",
-            "unit_name" : {
-              "en" : "University Paris Descartes (Paris V)"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "48638",
-        "first_name" : "Anders",
-        "surname" : "Molven",
-        "url" : "https://api.cristin.no/v2/persons/48638",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.0.0.0",
-            "unit_name" : {
-              "en" : "University of Bergen"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.0.0.0",
-            "unit_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          }
-        } ]
-      } ],
-      "participants_url" : "https://api.cristin.no/v2/projects/546614/participants",
-      "academic_summary" : {
-        "en" : "<p>In this project we investigate the clinical relevance of circulating tumor cells and/or circulating tumor DNA in patients undergoing chemotherapy for locally advanced or metastatic pancreatic cancer. Circulating tumor cells and circulating tumor DNA are assessed using advanced molecular methods such as quantitative RT-PCR and next-generation sequencing. Blood samples are obtained before and montly during chemotherapy. Both the potential for prognostic stratification and treatment monitoring will be investigated. The project is currently recruiting patients.</p>\r\n"
-      },
-      "popular_scientific_summary" : {
-        "nb" : "<p>Kreft i bukspyttkjertelen er en alvorlig sykdom som har lav langtidsoverlevelse. I 2015 var det 825 mennesker som fikk bukspyttkjertelkreft i Norge og trenden er dessverre at antall nye tilfeller per år øker. Den høye dødeligheten henger sammen med at sykdommen som oftest oppdages på et så sent stadium atoperasjon ikke er mulig,samt med liten effekt av kjemoterapi og stråling. Funn av svulstceller i blodprøver (såkalte sirkulerende tumorceller) og genmateriale fra svulstceller i blodprøver (såkalt sirkulerende tumor DNA) ser ut til å være lovende markører for sykdomsprognose og for overvåkning av behandlingseffekt ved en rekke kreftformer. I denne studien vil vi undersøke om påvisning og karakterisering av sirkulerende tumorceller og sirkulerende tumor DNA kan fortelle noe om prognose, behandlingseffekt og sykdomsutvikling hos pasienter med kreft i bukspyttkjertelen. Tanken er at disse markørene i framtiden kan gjøre oss bedre i stand til å skreddersy behandlingen for hver enkelt pasient, både ved oppstart, endring og avslutning av behandling. Når vi påviser at behandlingen ikke lenger har effekt, er det ønskelig å skifte eller avslutte behandlingen så snart som mulig for å unngå unødvendige bivirkninger og kostnader.  Prosjektet er et samarbeid mellom Stavanger Universitetssjukehus og Haukeland Universitetssjukehus. De fleste prosjektmøtene holdes i Stavanger.</p>\r\n"
-      },
-      "project_categories" : [ {
-        "code" : "APPLIEDRESEARCH",
-        "name" : {
-          "en" : "Applied Research"
-        }
-      }, {
-        "code" : "PHD",
-        "name" : {
-          "en" : "Ph.D. Project"
-        }
-      } ],
-      "academic_disciplines" : [ {
-        "code" : "473",
-        "name" : {
-          "en" : "Molecular biology"
-        }
-      }, {
-        "code" : "762",
-        "name" : {
-          "en" : "Oncology"
-        }
-      } ],
-      "keywords" : [ {
-        "code" : "2444",
-        "name" : {
-          "en" : "Cancer"
-        }
-      }, {
-        "code" : "6067",
-        "name" : {
-          "en" : "Prognosis"
-        }
-      }, {
-        "code" : "6491",
-        "name" : {
-          "en" : "Monitoring"
-        }
-      }, {
-        "code" : "6620",
-        "name" : {
-          "en" : "Clinical cancer research"
-        }
-      }, {
-        "code" : "6683",
-        "name" : {
-          "en" : "Biomarkers"
-        }
-      } ],
-      "hrcs_categories" : [ {
-        "code" : "2",
-        "name" : {
-          "en" : "Cancer "
-        }
-      } ],
-      "hrcs_activities" : [ {
-        "code" : "4",
-        "name" : {
-          "en" : "Detection, Screening and Diagnosis "
-        }
-      } ],
-      "results" : [ "https://api.cristin.no/v2/results/1019076", "https://api.cristin.no/v2/results/1340989", "https://api.cristin.no/v2/results/1376026", "https://api.cristin.no/v2/results/1483136", "https://api.cristin.no/v2/results/1547302", "https://api.cristin.no/v2/results/1647858" ]
-    },
-    {
-      "id": "https://__CURRENT_ENVIRONMENT__.nva.unit.no/project/678518",
-      "cristin_project_id" : "678518",
-      "publishable" : true,
-      "published" : true,
-      "title" : {
-        "en" : "sonoporation: enhanced therapy for the treatment of pancreatic carcinoma"
-      },
-      "main_language" : "en",
-      "start_date" : "2016-09-01T00:00:00.000Z",
-      "end_date" : "2020-05-31T00:00:00.000Z",
-      "status" : "CONCLUDED",
-      "created" : {
-        "date" : "2019-09-27T10:15:55.000Z"
-      },
-      "last_modified" : {
-        "date" : "2020-02-18T10:36:04.000Z"
-      },
-      "coordinating_institution" : {
-        "institution" : {
-          "cristin_institution_id" : "184",
-          "institution_name" : {
-            "en" : "University of Bergen"
-          },
-          "url" : "https://api.cristin.no/v2/institutions/184"
         },
-        "unit" : {
-          "cristin_unit_id" : "184.13.25.0",
-          "unit_name" : {
-            "nb" : "Klinisk institutt 2"
+        {
+          "type": "ProjectParticipant",
+          "startDate": "2021-01-22",
+          "endDate": "2021-01-23",
+          "identity": {
+            "id": "https://example.org/person/76551121",
+            "type": "Person",
+            "firstName": "Maha",
+            "lastName": "Busal"
           },
-          "url" : "https://api.cristin.no/v2/units/184.13.25.0"
+          "affiliation": {
+            "id": "https://example.org/institution/1121112",
+            "type": "Organization",
+            "name": {
+              "en": "Kyrksæterøra centre for advanced psychosocial study"
+            }
+          }
         }
-      },
-      "languages" : [ {
-        "code" : "en",
-        "name" : {
-          "en" : "English"
-        }
-      } ],
-      "project_funding_sources" : [ {
-        "funding_source_code" : "NFR",
-        "project_code" : "250317",
-        "funding_source_name" : {
-          "en" : "Research Council of Norway (RCN)"
-        }
-      } ],
-      "total_funding_amount" : {
-        "currency_code" : "NOK",
-        "amount" : 9000000.0
-      },
-      "participants" : [ {
-        "cristin_person_id" : "425427",
-        "first_name" : "Emmet",
-        "surname" : "McCormack",
-        "url" : "https://api.cristin.no/v2/persons/425427",
-        "roles" : [ {
-          "role_code" : "PRO_MANAGER",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.25.0",
-            "unit_name" : {
-              "nb" : "Klinisk institutt 2"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "526295",
-        "first_name" : "Spiros",
-        "surname" : "Kotopoulis",
-        "url" : "https://api.cristin.no/v2/persons/526295",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.24.0",
-            "unit_name" : {
-              "en" : "Department of Clinical Medicine"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.18.2.0",
-            "unit_name" : {
-              "nb" : "Nasjonal kompetansetjeneste for gastroenterologisk ultralyd"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "481625",
-        "first_name" : "Ragnhild",
-        "surname" : "Haugse",
-        "url" : "https://api.cristin.no/v2/persons/481625",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.25.0",
-            "unit_name" : {
-              "nb" : "Klinisk institutt 2"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "757210",
-        "first_name" : "Jack Alwin",
-        "surname" : "Panapasa",
-        "url" : "https://api.cristin.no/v2/persons/757210",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.0.0.0",
-            "unit_name" : {
-              "en" : "University of Bergen"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "405858",
-        "first_name" : "Endre",
-        "surname" : "Stigen",
-        "url" : "https://api.cristin.no/v2/persons/405858",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.14.0",
-            "unit_name" : {
-              "nb" : "Institutt for biomedisin"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "891160",
-        "first_name" : "Gorka",
-        "surname" : "Ruiz de Garibay",
-        "url" : "https://api.cristin.no/v2/persons/891160",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.25.0",
-            "unit_name" : {
-              "nb" : "Klinisk institutt 2"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "780047",
-        "first_name" : "Elvira",
-        "surname" : "García de Jalón Viñegra",
-        "url" : "https://api.cristin.no/v2/persons/780047",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.25.0",
-            "unit_name" : {
-              "nb" : "Klinisk institutt 2"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "642601",
-        "first_name" : "Mireia",
-        "surname" : "Mayoral Safont",
-        "url" : "https://api.cristin.no/v2/persons/642601",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.25.0",
-            "unit_name" : {
-              "nb" : "Klinisk institutt 2"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "820527",
-        "first_name" : "Elisa Ulvøen",
-        "surname" : "Thodesen",
-        "url" : "https://api.cristin.no/v2/persons/820527",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.0.0.0",
-            "unit_name" : {
-              "en" : "University of Bergen"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "52979",
-        "first_name" : "Odd Helge",
-        "surname" : "Gilja",
-        "url" : "https://api.cristin.no/v2/persons/52979",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.24.0",
-            "unit_name" : {
-              "en" : "Department of Clinical Medicine"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.18.0.0",
-            "unit_name" : {
-              "nb" : "Medisinsk avdeling"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.18.2.0",
-            "unit_name" : {
-              "nb" : "Nasjonal kompetansetjeneste for gastroenterologisk ultralyd"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "47186",
-        "first_name" : "Bjørn Tore",
-        "surname" : "Gjertsen",
-        "url" : "https://api.cristin.no/v2/persons/47186",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.25.0",
-            "unit_name" : {
-              "nb" : "Klinisk institutt 2"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.18.0.0",
-            "unit_name" : {
-              "nb" : "Medisinsk avdeling"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.24.1.0",
-            "unit_name" : {
-              "nb" : "Kompetansesenter for klinisk forskning"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "379956",
-        "first_name" : "Georg Gjorgji",
-        "surname" : "Dimcevski",
-        "url" : "https://api.cristin.no/v2/persons/379956",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.24.0",
-            "unit_name" : {
-              "en" : "Department of Clinical Medicine"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.18.0.0",
-            "unit_name" : {
-              "nb" : "Medisinsk avdeling"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "384403",
-        "first_name" : "Tormod Karlsen",
-        "surname" : "Bjånes",
-        "url" : "https://api.cristin.no/v2/persons/384403",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.20.2.0",
-            "unit_name" : {
-              "nb" : "Laboratorium for klinisk biokjemi"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "46865",
-        "first_name" : "Dag",
-        "surname" : "Hoem",
-        "url" : "https://api.cristin.no/v2/persons/46865",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.24.0",
-            "unit_name" : {
-              "en" : "Department of Clinical Medicine"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.23.0.0",
-            "unit_name" : {
-              "nb" : "Kirurgisk klinikk"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "48638",
-        "first_name" : "Anders",
-        "surname" : "Molven",
-        "url" : "https://api.cristin.no/v2/persons/48638",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.24.0",
-            "unit_name" : {
-              "en" : "Department of Clinical Medicine"
-            }
-          }
-        }, {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "1936",
-            "institution_name" : {
-              "en" : "Bergen Hospital Trust - Haukeland University Hospital"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "1936.20.6.0",
-            "unit_name" : {
-              "nb" : "Avdeling for patologi"
-            }
-          }
-        } ]
-      }, {
-        "cristin_person_id" : "990052",
-        "first_name" : "Anika",
-        "surname" : "Langer",
-        "url" : "https://api.cristin.no/v2/persons/990052",
-        "roles" : [ {
-          "role_code" : "PRO_PARTICIPANT",
-          "institution" : {
-            "cristin_institution_id" : "184",
-            "institution_name" : {
-              "en" : "University of Bergen"
-            }
-          },
-          "unit" : {
-            "cristin_unit_id" : "184.13.25.0",
-            "unit_name" : {
-              "nb" : "Klinisk institutt 2"
-            }
-          }
-        } ]
-      } ],
-      "participants_url" : "https://api.cristin.no/v2/projects/678518/participants",
-      "academic_summary" : {
-        "en" : "<p>Pancreatic ductal adenocarcinoma (PDAC) is the fourth leading cause of cancer death in Europe and the only cancer, which has not seen an improvement in mortality figures in over 40 years. In fact, survival from PDAC is only anecdotal, with a 5- year survival rate of only 3% and a median survival of less than 6 months. Current therapy approaches often combining chemotherapy and surgery carry the only possibility of cure. However, only 15 - 20% of patients are considered resectable at the time of diagnosis, and of these patients who present with surgically amenable disease their median overall survival is still only 15 months. Consequently, this constitutes an extraordinary challenge and the urgent need to provide society with a novel, meaningful therapeutic strategy for this disease.</p>\r\n\r\n<p>This proposal aims to usher in the radically new concept of sonoporation-enhanced targeted therapy for combating this deadly disease. SONOPORATION is the transient formation of nanometre- to micrometre-sized pores in cell membranes by the use of ultrasound or ultrasound and microbubbles, allowing for intracellular uptake of drugs or genes. The application of sonoporation in enhancing cancer-therapies is only in its preliminary stages but our pilot preclinical and clinical data demonstrate great promise in treatment of PDAC. However, the effective clinical translation is limited by lack of preclinical modelling platforms.</p>\r\n\r\n<p>We propose through the innovation of multidisciplinary technology platforms and next generation preclinical modelling systems to bridge the translational divide. We will fabricate innovative microbubble drug delivery formats designed specifically to the needs of sonoporation-enhanced therapy in addition to developing radically new tissue organoid models and animal models of PDAC. Importantly, the results of this project will not only impact the future of PDAC therapy, but the novel technologies will effect all aspects of preclinical oncology drug development.</p>\r\n"
-      },
-      "popular_scientific_summary" : {
-        "en" : "<p>Pankreatisk (bukspyttkjertel) adenokarsinom av duktal type (PAKD) er den fjerde dødeligste kreftsykdommen i Europa, og er den eneste kreftformen som ikke har vist noen forbedret overlevelse på over 40 år. I realiteten er overlevelse er kun anekdotisk, med en 5-årig overlevelse på bare 3 % og en gjennomsnittlig overlevelse på mindre enn 6 måneder. Kirurgi supplert med cellegift er den eneste behandlingsform som i dag kan kurere sykdommen. Desverre er det kun mulig å operere 15-20 % av pasientene med PAKD ved diagnosetidspunktet, og av denne pasientgruppen vil gjennomsnittlig overlevelse fremdeles kun være 15 måneder. Av dette følger det store utfordringer som innebærer et presserende behov for en ny og meningsfull behandlingsstrategi for pasienter med denne sykdommen.</p>\r\n\r\n<p>Dette forslaget tar sikte på å angripe denne dødelige sykdommen ved bruk av det helt nye konseptet sonoporasjon-målrettet terapi. SONOPORASJON er forbigående dannelse av nano- til mikrometer store porer i cellemembranen ved hjelp av ultralyd eller ultralyd sammen med mikrobobler. Dette gjør det mulig å øke intracellulært opptak av medisiner og gener. Anvendelsen av sonoporasjon for kreftbehandling er foreløpig i innledende fase, men våre prekliniske og kliniske pilotforsøk har vist stort potensiale i behandling av PAKD. Effektiviteten av klinisk translasjon er imidlertid begrenset av manglende prekliniske modellerings-plattformer. </p>\r\n\r\n<p>Vi foreslår, gjennom nyskapende flerfaglige teknologiplattformer og neste generasjons prekliniske modelleringssystemer, å korte ned den translasjonelle avstanden. Vi vil framstille en innovativ mikroboble-basert legemiddelform spesielt utformet for å muliggjøre sonoporasjon-målrettet terapi. I tillegg vil vi utvikle helt nye organoide-vevs modeller samt dyremodeller med PAKD. Det er også et viktig poeng at teknologien som utvikles i dette prosjektet generelt har stor overføringsverdi til utvikling av bedre kreftbehandling.</p>\r\n"
-      },
-      "method" : {
-        "en" : "<p>Framdrift til nå</p>\r\n\r\n<p>Optimalisering av sonoporering</p>\r\n\r\n<p>Ved å bruke det første state-of-the-art sonoporeringskammer i sitt slag har SonoCURE-gruppen fullført over 800 forsøk for å evaluere sonoporeringseffekt ved ulike ultralydinnstillinger, mikroboble formuleringer, mikroboble konsentrasjon (dose) og cellelinjer for å bestemme og predikere hvilke innstillinger som gir mest mulig økning i legemiddelopptak in vitro. Resultatene våre viser at ved å optimalisere disse betingelsene kan vi øke opptak mer enn 100 ganger. Disse resultatene vil videre overføres til dyrestudier og utvikling av nye bobleformuleringer. </p>\r\n\r\n<p>Fremstilling av innovativ mikroboble</p>\r\n\r\n<p>SonoCURE-gruppen har fortsatt utviklingen av antibobler og har stadig forbedret funksjonen av disse. Det siste året har vi forbedret framstillingsmåten, og har ved dette blandt annet forbedret størrelsen på boblene og halvert ultralydintensiteten som kreves for å frisette legemiddel fra dem. Boblene har nå 5 ganger lenger halveringstid i blodsirkulasjon i mus, og kan detekteres med kommersielt tilgjengelige ultralyd systemer for å kunne se hvor man frisetter innkapslet legemiddel.</p>\r\n\r\n<p>Pasientderiverte xenograft modeller (PDX)</p>\r\n\r\n<p>Svulstmateriale fra 9 ulike pasienter er implantert in immunokomprimitterte musemodeller og karakterisert med tanke på vekst, metastatisk potensiale og vevsstruktur. I nærmest framtid vil disse PDX-modellene bli brukt I sonoporeringsstudier. </p>\r\n\r\n<p>En biobank av immun stamceller er opprettet av prøver isolert fra navlestrengblod fra donorer. Disse cellene bli i framtiden bli brukt til å lage et mer humant immunsystem i disse musemodellene.</p>\r\n\r\n<p>Innsamling av pasientmateriale fra PAKD pågår i samarbeid med Kirurgisk avdeling på Haukeland Universitetssykehus, Katalansk Institutt for onkologi (Barcelona), Oslo Universitetssykehus og Saint Vincent&#96;s universitetssykehus (Dublin).</p>\r\n\r\n<p>Organoide modeller</p>\r\n\r\n<p>En organoid modell er en 3D kultur med en blanding av forskjellige celletyper. Et samarbeid med Fraunhofer Institute er etablert for å utvikle PAKD organoide modeller, ved å bruke naturlig matriks isolert fra gris. Teknologi har blitt utviklet for å dyrke celler på disse matriksene, og monitorere cellevekst ved bruk av mikroskopi og for å behandle med sonoporering.</p>\r\n\r\n<p>Primære celler isolert fra PAKD pasientmateriale vil snart bli sådd ut på disse matriksene for å utvikle pasientderiverte organoider som vil bli brukt i sonoporeringsstudier</p>\r\n"
-      },
-      "project_categories" : [ {
-        "code" : "BASICRESEARCH",
-        "name" : {
-          "en" : "Basic Research"
-        }
-      } ],
-      "hrcs_categories" : [ {
-        "code" : "2",
-        "name" : {
-          "en" : "Cancer "
-        }
-      } ],
-      "related_projects" : [ "https://api.cristin.no/v2/projects/680963", "https://api.cristin.no/v2/projects/680965" ],
-      "results" : [ "https://api.cristin.no/v2/results/1395256", "https://api.cristin.no/v2/results/1439344", "https://api.cristin.no/v2/results/1553036", "https://api.cristin.no/v2/results/1707288", "https://api.cristin.no/v2/results/1708914", "https://api.cristin.no/v2/results/1708916", "https://api.cristin.no/v2/results/1711311", "https://api.cristin.no/v2/results/1793921" ]
+      ]
     }
   ]
 }
