@@ -1,0 +1,8 @@
+{
+    "displayName": "API Test Customer PUT Success",
+    "archiveName": "API Test Archive",
+    "name": "API Test Customer PUT Success",
+    "shortName": "TEST_CUSTOMER_UPDATE",
+    "feideOrganizationId": "0000000000",
+    "cristinId": "https://api.cristin.no/v2/institutions/0000000000"
+}

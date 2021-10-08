@@ -1,0 +1,8 @@
+{
+    "displayName": "API Test Customer",
+    "archiveName": "API Test Archive",
+    "name": "API Test Customer",
+    "shortName": "CREATE_CUSTOMER_CREATE",
+    "feideOrganizationId": "0000000000",
+    "cristinId": "https://api.cristin.no/v2/institutions/0000000000"
+}

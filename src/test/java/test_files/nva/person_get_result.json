@@ -1,0 +1,28 @@
+{
+  "@context": {
+    "@vocab": "https://unit.no/person-ontology#",
+    "@base": "https://example.org/person/37285"
+  },
+  "type": "Person",
+  "id": "https://api.dev.nva.aws.unit.no/person/37285",
+  "identifier": [
+    {
+      "type": "CristinIdentifier",
+      "value": "37285"
+    }
+  ],
+  "name": "Barker, Daniel Martin Lewis",
+  "defaultPenName": "Barker, Daniel Martin L",
+  "orcid": "https://orcid.org/0000-0002-8617-3281",
+  "affiliation": [
+    {
+      "id": "https://api.cristin.no/v2/units/194.64.90.0"
+    },
+    {
+      "id": "https://api.cristin.no/v2/units/7467.30.0.0",
+      "role": "Senior Research Scientist"
+    }
+  ],
+  "imageUrl": "https://api.cristin.no/v2/persons/37285/picture",
+  "verified": true
+}

@@ -1,7 +1,0 @@
-{
-    "accessRights": [
-        "READ_DOI_REQUEST"
-    ],
-    "rolename": "TestExistingRole",
-    "type": "Role"
-}
