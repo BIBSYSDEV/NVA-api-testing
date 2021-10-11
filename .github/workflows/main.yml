@@ -9,5 +9,5 @@ jobs:
     - uses: actions/checkout@v1
     - uses: restqa/gherkin-linter-action@0.0.1
       with:
-        path: 'tests/'
+        path: 'src/test/java/tests'
         config_file: '.gherkin-lintrc'

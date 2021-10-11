@@ -32,7 +32,6 @@ test {
 
 repositories {
     mavenCentral()
-    // mavenLocal()
 }
 
 task karateDebug(type: JavaExec) {

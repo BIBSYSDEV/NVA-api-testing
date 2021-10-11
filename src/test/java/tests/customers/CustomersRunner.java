@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CustomersRunner {
 
     @Test
-    void test() {
+    void runAllCustomersFeatures() {
         Results results = Runner.path("classpath:tests/customers")
                 .outputCucumberJson(true).parallel(1);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
