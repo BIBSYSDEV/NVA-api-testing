@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+ext {
+    karateVersion = '1.1.0'
+}
+
+dependencies {
+    implementation platform('software.amazon.awssdk:bom:2.17.46')
+    implementation 'software.amazon.awssdk:cognitoidentity'
+    implementation 'software.amazon.awssdk:cognitoidentityprovider'
+
+    testImplementation "com.intuit.karate:karate-junit5:${karateVersion}"
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir file('src/test/java')
+            exclude '**/*.java'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+    systemProperty "karate.env", System.properties.getProperty("karate.env")
+    outputs.upToDateWhen { false }
+}
+
+repositories {
+    mavenCentral()
+}
+
+task karateDebug(type: JavaExec) {
+    classpath = sourceSets.test.runtimeClasspath
+    main = 'com.intuit.karate.cli.Main'
+}

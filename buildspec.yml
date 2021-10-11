@@ -10,7 +10,7 @@ phases:
       - echo "pre_build step"
   build:
     commands:
-      - java -cp karate.jar:. com.intuit.karate.Main tests
+      - ./gradlew test #TODO: add parameters in new task
   post_build:
     commands:
       - echo "post_build step"

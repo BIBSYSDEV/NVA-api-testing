@@ -1,0 +1,19 @@
+{
+    "type": "User",
+    "roles": [
+        {
+            "type": "Role",
+            "rolename": "Creator",
+            "accessRights": [
+                "READ_DOI_REQUEST"
+            ]
+        }
+    ],
+    "username": "user-internal-get@test.no",
+    "institution": "https://api.dev.nva.aws.unit.no/customer/9c1c941f-c713-4900-8482-f7d2684fc630",
+    "givenName": "User internal GET",
+    "familyName": "TestUser",
+    "accessRights": [
+        "READ_DOI_REQUEST"
+    ]
+}
