@@ -14,13 +14,13 @@ import software.amazon.awssdk.services.cognitoidentityprovider.model.AdminSetUse
 import software.amazon.awssdk.services.cognitoidentityprovider.model.AuthFlowType;
 
 import java.util.Map;
-import java.util.Random;
-import java.util.stream.Collectors;
+import java.util.UUID;
 
 public final class AuthenticationMethods {
 
     public static final String USERNAME = "USERNAME";
     public static final String PASSWORD = "PASSWORD";
+    public static final String PASSWORD_PREFIX = "P%";
 
     private AuthenticationMethods() {
     }
@@ -55,10 +55,7 @@ public final class AuthenticationMethods {
     }
 
     private static String generatePassword() {
-        return new Random()
-                .ints(10, 33, 122)
-                .mapToObj(i -> String.valueOf((char)i))
-                .collect(Collectors.joining());
+        return PASSWORD_PREFIX + UUID.randomUUID();
     }
 
     private static AdminInitiateAuthResponse adminInitiateAuth(

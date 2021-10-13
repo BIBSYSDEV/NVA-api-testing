@@ -28,6 +28,10 @@ test {
     systemProperty "karate.options", System.properties.getProperty("karate.options")
     systemProperty "karate.env", System.properties.getProperty("karate.env")
     outputs.upToDateWhen { false }
+
+    options {
+        systemProperties(System.getProperties())
+    }
 }
 
 repositories {

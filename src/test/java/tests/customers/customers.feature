@@ -66,7 +66,7 @@ Scenario: GET by badly formed Customer id returns status Bad Request
   When method GET
   Then status 400
   And match response.title == 'Bad Request'
-  And match response.detail == 'Customer not found: ' + badlyFormedCustomerId
+  And match response.detail == 'Identifier is not a valid UUID: ' + badlyFormedCustomerId
 
 Scenario: GET by OrgNr returns status OK and Customer details
   Given path '/orgNumber/' + orgNumber
@@ -90,5 +90,5 @@ Scenario: PUT returns status Accepted when updating an existing Customer with co
   When method PUT
   Then status 200
   * set putSuccessResponse.identifier = customer.customerId
-  * set putSuccessResponse.id = 'https://api.dev.nva.aws.unit.no/customer/' + customer.customerId
+  * set putSuccessResponse.id = SERVER_URL + 'customer/' + customer.customerId
   And match response contains putSuccessResponse

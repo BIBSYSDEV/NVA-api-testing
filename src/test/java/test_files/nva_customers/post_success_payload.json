@@ -1,4 +1,5 @@
 {
+    "type": "Customer",
     "displayName": "API Test Customer",
     "archiveName": "API Test Archive",
     "name": "API Test Customer",
