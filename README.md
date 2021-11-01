@@ -2,8 +2,8 @@
 
 ### Karate documentation:
 
-[Karate](https://intuit.github.io/karate)
-[Getting started](https://intuit.github.io/karate#getting-started)
+[Karate](https://karatelabs.github.io/karate/)
+[Getting started](https://karatelabs.github.io/karate/#getting-started)
 
 ### AWS
 
